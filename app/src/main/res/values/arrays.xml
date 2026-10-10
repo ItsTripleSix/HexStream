@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="playerEntries">
+        <item>ExoPlayer</item>
+        <item>MediaPlayer</item>
+    </string-array>
+
+    <string-array name="networkLibraryEntries">
+        <item>HttpEngine</item>
+        <item>Cronet</item>
+        <item>OkHttp</item>
+    </string-array>
+
+    <string-array name="networkLibraryEntriesNoCronet">
+        <item>HttpEngine</item>
+        <item>OkHttp</item>
+    </string-array>
+
+    <string-array name="networkLibraryEntriesNoHttpEngine">
+        <item>Cronet</item>
+        <item>OkHttp</item>
+    </string-array>
+
+    <string-array name="nameDisplayEntries">
+        <item>@string/name_display_entry1</item>
+        <item>@string/name_display_entry2</item>
+        <item>@string/name_display_entry3</item>
+    </string-array>
+
+    <string-array name="nameDisplayValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="followButtonEntries">
+        <item>@string/follow_account</item>
+        <item>@string/follow_local</item>
+        <item>@string/hide</item>
+    </string-array>
+
+    <string-array name="imageQualityEntries">
+        <item>1x</item>
+        <item>2x</item>
+        <item>3x</item>
+        <item>4x</item>
+    </string-array>
+
+    <string-array name="imageQualityValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="imageLibraryEntries">
+        <item>@string/imageLibraryEntries1</item>
+        <item>@string/imageLibraryEntries2</item>
+        <item>@string/imageLibraryEntries3</item>
+    </string-array>
+
+    <string-array name="imageLibraryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="imageLibraryEntriesNoWebp">
+        <item>@string/imageLibraryEntries2</item>
+        <item>@string/imageLibraryEntries3</item>
+    </string-array>
+
+    <string-array name="imageLibraryValuesNoWebp">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="spinnerStorage">
+        <item>@string/shared_storage</item>
+        <item>@string/app_storage</item>
+    </string-array>
+
+    <string-array name="themeEntries">
+        <item>@string/dynamic_dark</item>
+        <item>@string/dynamic_amoled</item>
+        <item>@string/dynamic_light</item>
+        <item>@string/dark</item>
+        <item>@string/amoled</item>
+        <item>@string/light</item>
+        <item>@string/blue</item>
+    </string-array>
+
+    <string-array name="themeValues">
+        <item>4</item>
+        <item>6</item>
+        <item>5</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="themeNoDynamicEntries">
+        <item>@string/dark</item>
+        <item>@string/amoled</item>
+        <item>@string/light</item>
+        <item>@string/blue</item>
+    </string-array>
+
+    <string-array name="themeNoDynamicValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="roundedCornerEntries">
+        <item>@string/enabled_setting</item>
+        <item>@string/less_rounded_corners</item>
+        <item>@string/disabled_setting</item>
+    </string-array>
+
+    <string-array name="roundedCornerValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="portraitColumnCount">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="landscapeColumnCount">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="playerQualityEntries">
+        <item>@string/saved_value</item>
+        <item>@string/auto</item>
+        <item>@string/source</item>
+        <item>1080p60</item>
+        <item>1080p</item>
+        <item>720p60</item>
+        <item>720p</item>
+        <item>480p</item>
+        <item>360p</item>
+        <item>160p</item>
+        <item>@string/audio_only</item>
+        <item>@string/chat_only</item>
+    </string-array>
+
+    <string-array name="playerQualityValues">
+        <item>saved</item>
+        <item>auto</item>
+        <item>Source</item>
+        <item>1080p60</item>
+        <item>1080</item>
+        <item>720p60</item>
+        <item>720</item>
+        <item>480</item>
+        <item>360</item>
+        <item>160</item>
+        <item>audio_only</item>
+        <item>chat_only</item>
+    </string-array>
+
+    <string-array name="languageEntries">
+        <item>@string/lang_auto</item>
+        <item>@string/lang_de</item>
+        <item>@string/lang_en</item>
+        <item>@string/lang_es</item>
+        <item>@string/lang_fr</item>
+        <item>@string/lang_gl</item>
+        <item>@string/lang_in</item>
+        <item>@string/lang_it</item>
+        <item>@string/lang_pt_br</item>
+        <item>@string/lang_tr</item>
+        <item>@string/lang_ru</item>
+        <item>@string/lang_ar</item>
+        <item>@string/lang_ja</item>
+        <item>@string/lang_zh_tw</item>
+        <item>@string/lang_zh_cn</item>
+    </string-array>
+
+    <string-array name="language">
+        <item>auto</item>
+        <item>de</item>
+        <item>en</item>
+        <item>es</item>
+        <item>fr</item>
+        <item>gl</item>
+        <item>in</item>
+        <item>it</item>
+        <item>pt-BR</item>
+        <item>tr</item>
+        <item>ru</item>
+        <item>ar</item>
+        <item>ja</item>
+        <item>zh-TW</item>
+        <item>zh-CN</item>
+    </string-array>
+
+    <string-array name="miscValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="followedEntries">
+        <item>@string/always</item>
+        <item>@string/when_logged_in</item>
+        <item>@string/never</item>
+    </string-array>
+
+    <string-array name="chatFirstMsgEntries">
+        <item>@string/chatFirstMsgEntries1</item>
+        <item>@string/chatFirstMsgEntries2</item>
+        <item>@string/chatFirstMsgEntries3</item>
+    </string-array>
+
+    <string-array name="loginApiEntries">
+        <item>@string/both</item>
+        <item>GQL</item>
+        <item>Helix</item>
+    </string-array>
+
+    <string-array name="timestampEntries">
+        <item>@string/timestamp_format_0</item>
+        <item>@string/timestamp_format_1</item>
+        <item>@string/timestamp_format_2</item>
+        <item>@string/timestamp_format_3</item>
+        <item>@string/timestamp_format_4</item>
+        <item>@string/timestamp_format_5</item>
+        <item>@string/timestamp_format_6</item>
+        <item>@string/timestamp_format_7</item>
+    </string-array>
+
+    <string-array name="timestampValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="gqlUserLanguageEntries">
+        <item>العربية</item>
+        <item>American sign language</item>
+        <item>Български</item>
+        <item>Catalan</item>
+        <item>čeština</item>
+        <item>Dansk</item>
+        <item>Deutsch</item>
+        <item>Eλληνικά</item>
+        <item>English</item>
+        <item>Español</item>
+        <item>Suomi</item>
+        <item>Français</item>
+        <item>Hindi</item>
+        <item>Magyar</item>
+        <item>Indonesian</item>
+        <item>Italiano</item>
+        <item>日本語</item>
+        <item>한국어</item>
+        <item>Malay</item>
+        <item>Nederlands</item>
+        <item>Norsk</item>
+        <item>Polski</item>
+        <item>Português</item>
+        <item>Română</item>
+        <item>Pусский</item>
+        <item>Slovenčina</item>
+        <item>Svenska</item>
+        <item>ภาษาไทย</item>
+        <item>Tagalog</item>
+        <item>Türkçe</item>
+        <item>Ukrainian</item>
+        <item>Tiếng việt</item>
+        <item>中文</item>
+        <item>Chinese (Hong Kong)</item>
+        <item>@string/other</item>
+    </string-array>
+
+    <string-array name="gqlUserLanguageValues">
+        <item>AR</item>
+        <item>ASL</item>
+        <item>BG</item>
+        <item>CA</item>
+        <item>CS</item>
+        <item>DA</item>
+        <item>DE</item>
+        <item>EL</item>
+        <item>EN</item>
+        <item>ES</item>
+        <item>FI</item>
+        <item>FR</item>
+        <item>HI</item>
+        <item>HU</item>
+        <item>ID</item>
+        <item>IT</item>
+        <item>JA</item>
+        <item>KO</item>
+        <item>MS</item>
+        <item>NL</item>
+        <item>NO</item>
+        <item>PL</item>
+        <item>PT</item>
+        <item>RO</item>
+        <item>RU</item>
+        <item>SK</item>
+        <item>SV</item>
+        <item>TH</item>
+        <item>TL</item>
+        <item>TR</item>
+        <item>UK</item>
+        <item>VI</item>
+        <item>ZH</item>
+        <item>ZH_HK</item>
+        <item>OTHER</item>
+    </string-array>
+
+    <string-array name="compactStreamsEntries">
+        <item>@string/all</item>
+        <item>@string/followed_only</item>
+        <item>@string/disabled</item>
+    </string-array>
+
+    <string-array name="compactStreamsValues">
+        <item>all</item>
+        <item>followed</item>
+        <item>disabled</item>
+    </string-array>
+</resources>

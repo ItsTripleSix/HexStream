@@ -1,0 +1,45 @@
+query UserFollowedStreams($first: Int, $after: Cursor) {
+    user {
+        followedLiveUsers(first: $first, after: $after) {
+            edges {
+                cursor
+                node {
+                    displayName
+                    id
+                    login
+                    profileImageURL(width: 300)
+                    self {
+                        follower {
+                            notificationSettings {
+                                isEnabled
+                            }
+                        }
+                    }
+                    stream {
+                        broadcaster {
+                            broadcastSettings {
+                        language
+                                title
+                            }
+                        }
+                        createdAt
+                        freeformTags {
+                            name
+                        }
+                        game {
+                            displayName
+                            id
+                            slug
+                        }
+                        id
+                        previewImageURL
+                        viewersCount
+                    }
+                }
+            }
+            pageInfo {
+                hasNextPage
+            }
+        }
+    }
+}

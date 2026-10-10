@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">No se pudo guardar el cambio de cuenta. Inténtalo de nuevo.</string>
+    <string name="hex_browser_retry">El navegador de inicio de sesión se cerró. Vuelve a abrir esta pantalla para intentarlo de nuevo.</string>
+    <string name="hex_points">Puntos</string>
+    <string name="hex_points_balance">Saldo: %1$s</string>
+    <string name="hex_unavailable">no disponible</string>
+    <string name="hex_reward_cost">%1$s · Puntos: %2$d</string>
+    <string name="hex_rules_count">Mostrados: %1$d · Reglas: %2$d</string>
+    <string name="hex_blocks_count">Mostrados: %1$d · Bloqueos recientes: %2$d</string>
+    <string name="hex_blocked_section">Bloqueados: %1$s</string>
+    <string name="hex_rule_section_tags">etiquetas</string>
+    <string name="hex_rule_section_channels">canales</string>
+    <string name="hex_rule_section_titles">títulos</string>
+    <string name="hex_rule_section_categories">categorías</string>
+    <string name="hex_details_show">Detalles y ejemplos ▾</string>
+    <string name="hex_details_hide">Ocultar explicación ▴</string>
+    <string name="hex_search_rules">Buscar reglas</string>
+    <string name="hex_done">Listo</string>
+    <string name="hex_search_blocked">Buscar canales, títulos o reglas</string>
+    <string name="hex_no_custom_rewards">No hay recompensas personalizadas disponibles. Abre Twitch para ver otras recompensas.</string>
+    <string name="hex_enter_message">Escribe un mensaje</string>
+    <string name="hex_points_sign_in">Inicia sesión para usar puntos de canal.</string>
+    <string name="hex_ok">Aceptar</string>
+    <string name="hex_channel_points">Puntos de canal</string>
+    <string name="hex_close">Cerrar</string>
+    <string name="hex_open_twitch">Abrir Twitch</string>
+    <string name="hex_cancel">Cancelar</string>
+    <string name="hex_redeem">Canjear</string>
+    <string name="hex_no_bonus">No hay bonificación disponible</string>
+    <string name="hex_claim_bonus">Reclamar puntos de bonificación</string>
+</resources>

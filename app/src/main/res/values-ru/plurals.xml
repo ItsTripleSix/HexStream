@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="views">
+        <item quantity="one">%s просмотр</item>
+        <item quantity="few">%s просмотра</item>
+        <item quantity="many">%s просмотров</item>
+        <item quantity="other">%s просмотров</item>
+    </plurals>
+    <plurals name="viewers">
+        <item quantity="one">%s зритель</item>
+        <item quantity="few">%s зрителя</item>
+        <item quantity="many">%s зрителей</item>
+        <item quantity="other">%s зрителей</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d час</item>
+        <item quantity="few">%d часа</item>
+        <item quantity="many">%d часов</item>
+        <item quantity="other">%d часов</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d минуту</item>
+        <item quantity="few">%d минуты</item>
+        <item quantity="many">%d минут</item>
+        <item quantity="other">%d минут</item>
+    </plurals>
+    <plurals name="broadcasters">
+        <item quantity="one">%s стример</item>
+        <item quantity="few">%s стримера</item>
+        <item quantity="many">%s стримеров</item>
+        <item quantity="other">%s стримеров</item>
+    </plurals>
+    <plurals name="languages">
+        <item quantity="one">Language: %s</item>
+        <item quantity="few">Languages: %s</item>
+        <item quantity="many">Languages: %s</item>
+        <item quantity="other">Languages: %s</item>
+    </plurals>
+    <plurals name="tags">
+        <item quantity="one">Tag: %s</item>
+        <item quantity="few">Tags: %s</item>
+        <item quantity="many">Tags: %s</item>
+        <item quantity="other">Tags: %s</item>
+    </plurals>
+    <plurals name="followers">
+        <item quantity="one">%s follower</item>
+        <item quantity="few">%s отслеживающих</item>
+        <item quantity="many">%s отслеживающих</item>
+        <item quantity="other">%s отслеживающих</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">%s member</item>
+        <item quantity="few">%s участников</item>
+        <item quantity="many">%s участников</item>
+        <item quantity="other">%s участников</item>
+    </plurals>
+</resources>

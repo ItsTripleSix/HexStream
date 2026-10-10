@@ -1,0 +1,1612 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="BaseDarkTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/primaryBlue</item>
+        <item name="chatStatus">@color/chatStatusDark</item>
+        <item name="sortBarTextColor">?android:textColorSecondary</item>
+        <item name="dialogPadding">8dp</item>
+        <item name="dialogLayoutPadding">8dp</item>
+        <item name="tabLayoutHeight">48dp</item>
+        <item name="bottomNavigationHeight">80dp</item>
+        <item name="cardStyle">@style/Card</item>
+        <item name="bottomSheetButtonStyle">@style/Widget.Material3.Button.ElevatedButton</item>
+        <item name="elevatedButtonStyle">@style/Widget.Material3.Button.ElevatedButton</item>
+        <item name="dialogButtonStyle">@style/Widget.Material3.Button.TextButton.Dialog</item>
+        <item name="tabStyle">@style/Widget.Material3.TabLayout.OnSurface</item>
+        <item name="radioButtonStyle">@style/RadioButton</item>
+        <item name="checkboxStyle">@style/CheckBox</item>
+        <item name="materialSwitchStyle">@style/SwitchBlue</item>
+        <item name="sliderStyle">@style/Slider</item>
+        <item name="linearProgressIndicatorStyle">@style/Widget.Material3.LinearProgressIndicator.Legacy</item>
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+        <item name="android:navigationBarColor">@color/darkScrim</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BaseLightTheme" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/accent</item>
+        <item name="chatStatus">@color/chatStatusLight</item>
+        <item name="sortBarTextColor">?android:textColorSecondary</item>
+        <item name="dialogPadding">8dp</item>
+        <item name="dialogLayoutPadding">8dp</item>
+        <item name="tabLayoutHeight">48dp</item>
+        <item name="bottomNavigationHeight">80dp</item>
+        <item name="cardStyle">@style/Card</item>
+        <item name="bottomSheetButtonStyle">@style/Widget.Material3.Button.ElevatedButton</item>
+        <item name="elevatedButtonStyle">@style/Widget.Material3.Button.ElevatedButton</item>
+        <item name="dialogButtonStyle">@style/Widget.Material3.Button.TextButton.Dialog</item>
+        <item name="tabStyle">@style/Widget.Material3.TabLayout.OnSurface</item>
+        <item name="radioButtonStyle">@style/RadioButton</item>
+        <item name="checkboxStyle">@style/CheckBox</item>
+        <item name="materialSwitchStyle">@style/SwitchBlue</item>
+        <item name="sliderStyle">@style/Slider</item>
+        <item name="linearProgressIndicatorStyle">@style/Widget.Material3.LinearProgressIndicator.Legacy</item>
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+        <item name="android:navigationBarColor">@color/darkScrim</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="BaseAmoledTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorSurface">@color/surfaceAmoled</item>
+        <item name="android:colorBackground">@color/surfaceAmoled</item>
+        <item name="colorSurfaceContainerLow">@color/surfaceAmoled</item>
+        <item name="colorSurfaceContainer">@color/surfaceContainerAmoled</item>
+        <item name="chatStatus">@color/chatStatusDark</item>
+        <item name="sortBarTextColor">?android:textColorSecondary</item>
+        <item name="dialogPadding">8dp</item>
+        <item name="dialogLayoutPadding">8dp</item>
+        <item name="tabLayoutHeight">48dp</item>
+        <item name="bottomNavigationHeight">80dp</item>
+        <item name="cardStyle">@style/CardAmoled</item>
+        <item name="bottomSheetButtonStyle">@style/Widget.Material3.Button.ElevatedButton</item>
+        <item name="elevatedButtonStyle">@style/Widget.Material3.Button.ElevatedButton</item>
+        <item name="dialogButtonStyle">@style/Widget.Material3.Button.TextButton.Dialog</item>
+        <item name="tabStyle">@style/Widget.Material3.TabLayout.OnSurface</item>
+        <item name="radioButtonStyle">@style/RadioButton</item>
+        <item name="checkboxStyle">@style/CheckBox</item>
+        <item name="materialSwitchStyle">@style/SwitchAmoled</item>
+        <item name="sliderStyle">@style/Slider</item>
+        <item name="linearProgressIndicatorStyle">@style/LinearProgressIndicatorAmoled</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationAmoled</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheet</item>
+        <item name="materialAlertDialogTheme">@style/Dialog</item>
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+        <item name="android:navigationBarColor">@color/darkScrim</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BaseBlueTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/primaryBlue</item>
+        <item name="colorSurface">@color/surfaceBlue</item>
+        <item name="android:colorBackground">@color/surfaceBlue</item>
+        <item name="colorSurfaceContainerLowest">@color/surfaceContainerLowestBlue</item>
+        <item name="colorSurfaceContainerLow">@color/surfaceContainerLowBlue</item>
+        <item name="colorSurfaceContainer">@color/surfaceContainerBlue</item>
+        <item name="colorSurfaceContainerHigh">@color/surfaceContainerHighBlue</item>
+        <item name="colorSurfaceContainerHighest">@color/surfaceContainerHighestBlue</item>
+        <item name="chatStatus">@color/chatStatusDark</item>
+        <item name="sortBarTextColor">?android:textColorSecondary</item>
+        <item name="dialogPadding">8dp</item>
+        <item name="dialogLayoutPadding">8dp</item>
+        <item name="tabLayoutHeight">48dp</item>
+        <item name="bottomNavigationHeight">80dp</item>
+        <item name="cardStyle">@style/Card</item>
+        <item name="bottomSheetButtonStyle">@style/Widget.Material3.Button.ElevatedButton</item>
+        <item name="elevatedButtonStyle">@style/Widget.Material3.Button.ElevatedButton</item>
+        <item name="dialogButtonStyle">@style/Widget.Material3.Button.TextButton.Dialog</item>
+        <item name="tabStyle">@style/Widget.Material3.TabLayout.OnSurface</item>
+        <item name="radioButtonStyle">@style/RadioButton</item>
+        <item name="checkboxStyle">@style/CheckBox</item>
+        <item name="materialSwitchStyle">@style/SwitchBlue</item>
+        <item name="sliderStyle">@style/Slider</item>
+        <item name="linearProgressIndicatorStyle">@style/Widget.Material3.LinearProgressIndicator.Legacy</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationBlue</item>
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+        <item name="android:navigationBarColor">@color/darkScrim</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BaseDarkThemeReducedPadding" parent="BaseDarkTheme">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseLightThemeReducedPadding" parent="BaseLightTheme">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseAmoledThemeReducedPadding" parent="BaseAmoledTheme">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationAmoled</item>
+        <item name="cardStyle">@style/CompactCardAmoled</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseBlueThemeReducedPadding" parent="BaseBlueTheme">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationBlue</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="CompactToolbar" parent="Widget.Material3.Toolbar">
+        <item name="maxButtonHeight">42dp</item>
+    </style>
+
+    <style name="CompactBottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemPaddingTop">6dp</item>
+        <item name="itemPaddingBottom">6dp</item>
+        <item name="activeIndicatorLabelPadding">2dp</item>
+        <item name="itemActiveIndicatorStyle">@style/CompactActiveIndicator</item>
+    </style>
+
+    <style name="CompactBottomNavigationAmoled" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemPaddingTop">6dp</item>
+        <item name="itemPaddingBottom">6dp</item>
+        <item name="activeIndicatorLabelPadding">2dp</item>
+        <item name="itemActiveIndicatorStyle">@style/CompactActiveIndicator</item>
+        <item name="materialThemeOverlay">@style/BottomNavigationOverlayAmoled</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="CompactBottomNavigationBlue" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemPaddingTop">6dp</item>
+        <item name="itemPaddingBottom">6dp</item>
+        <item name="activeIndicatorLabelPadding">2dp</item>
+        <item name="itemActiveIndicatorStyle">@style/CompactActiveIndicator</item>
+        <item name="materialThemeOverlay">@style/BottomNavigationOverlayBlue</item>
+    </style>
+
+    <style name="CompactActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:height">28dp</item>
+    </style>
+
+    <style name="CompactCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <style name="CompactCardAmoled" parent="Widget.Material3.CardView.Elevated">
+        <item name="materialThemeOverlay">@style/CardOverlayAmoled</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <style name="CompactRadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="android:padding">10dp</item>
+        <item name="android:minWidth">24dp</item>
+        <item name="android:minHeight">24dp</item>
+    </style>
+
+    <style name="CompactCheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:padding">10dp</item>
+        <item name="android:minWidth">24dp</item>
+        <item name="android:minHeight">24dp</item>
+    </style>
+
+    <style name="BaseDarkThemeCompactText" parent="BaseDarkTheme">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseLightThemeCompactText" parent="BaseLightTheme">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseAmoledThemeCompactText" parent="BaseAmoledTheme">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseBlueThemeCompactText" parent="BaseBlueTheme">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="CompactTextDisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">59sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">59sp</item>
+    </style>
+
+    <style name="CompactTextDisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">47sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">47sp</item>
+    </style>
+
+    <style name="CompactTextDisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">38sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">38sp</item>
+    </style>
+
+    <style name="CompactTextHeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">34sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">34sp</item>
+    </style>
+
+    <style name="CompactTextHeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">30sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">30sp</item>
+    </style>
+
+    <style name="CompactTextHeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">26sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">26sp</item>
+    </style>
+
+    <style name="CompactTextTitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">24sp</item>
+    </style>
+
+    <style name="CompactTextTitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">18sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">18sp</item>
+    </style>
+
+    <style name="CompactTextTitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">16sp</item>
+    </style>
+
+    <style name="CompactTextBodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">18sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">18sp</item>
+    </style>
+
+    <style name="CompactTextBodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">16sp</item>
+    </style>
+
+    <style name="CompactTextBodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">14sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">14sp</item>
+    </style>
+
+    <style name="CompactTextLabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">16sp</item>
+    </style>
+
+    <style name="CompactTextLabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">14sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">14sp</item>
+    </style>
+
+    <style name="CompactTextLabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">13sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">13sp</item>
+    </style>
+
+    <style name="BaseDarkThemeReducedPaddingCompactText" parent="BaseDarkTheme">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseLightThemeReducedPaddingCompactText" parent="BaseLightTheme">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseAmoledThemeReducedPaddingCompactText" parent="BaseAmoledTheme">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationAmoled</item>
+        <item name="cardStyle">@style/CompactCardAmoled</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseBlueThemeReducedPaddingCompactText" parent="BaseBlueTheme">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationBlue</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseDarkThemeSmallCorners" parent="BaseDarkTheme">
+        <item name="shapeCornerSizeExtraSmall">4dp</item>
+        <item name="shapeCornerSizeSmall">6dp</item>
+        <item name="shapeCornerSizeMedium">9dp</item>
+        <item name="shapeCornerSizeLarge">12dp</item>
+        <item name="shapeCornerSizeExtraLarge">14dp</item>
+        <item name="shapeAppearanceSmallComponent">@style/CompactSmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/CompactMediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/CompactLargeComponent</item>
+    </style>
+
+    <style name="BaseLightThemeSmallCorners" parent="BaseLightTheme">
+        <item name="shapeCornerSizeExtraSmall">4dp</item>
+        <item name="shapeCornerSizeSmall">6dp</item>
+        <item name="shapeCornerSizeMedium">9dp</item>
+        <item name="shapeCornerSizeLarge">12dp</item>
+        <item name="shapeCornerSizeExtraLarge">14dp</item>
+        <item name="shapeAppearanceSmallComponent">@style/CompactSmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/CompactMediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/CompactLargeComponent</item>
+    </style>
+
+    <style name="BaseAmoledThemeSmallCorners" parent="BaseAmoledTheme">
+        <item name="shapeCornerSizeExtraSmall">4dp</item>
+        <item name="shapeCornerSizeSmall">6dp</item>
+        <item name="shapeCornerSizeMedium">9dp</item>
+        <item name="shapeCornerSizeLarge">12dp</item>
+        <item name="shapeCornerSizeExtraLarge">14dp</item>
+        <item name="shapeAppearanceSmallComponent">@style/CompactSmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/CompactMediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/CompactLargeComponent</item>
+    </style>
+
+    <style name="BaseBlueThemeSmallCorners" parent="BaseBlueTheme">
+        <item name="shapeCornerSizeExtraSmall">4dp</item>
+        <item name="shapeCornerSizeSmall">6dp</item>
+        <item name="shapeCornerSizeMedium">9dp</item>
+        <item name="shapeCornerSizeLarge">12dp</item>
+        <item name="shapeCornerSizeExtraLarge">14dp</item>
+        <item name="shapeAppearanceSmallComponent">@style/CompactSmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/CompactMediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/CompactLargeComponent</item>
+    </style>
+
+    <style name="CompactSmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">2dp</item>
+    </style>
+
+    <style name="CompactMediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="CompactLargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="BaseDarkThemeSmallCornersReducedPadding" parent="BaseDarkThemeSmallCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseLightThemeSmallCornersReducedPadding" parent="BaseLightThemeSmallCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseAmoledThemeSmallCornersReducedPadding" parent="BaseAmoledThemeSmallCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationAmoled</item>
+        <item name="cardStyle">@style/CompactCardAmoled</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseBlueThemeSmallCornersReducedPadding" parent="BaseBlueThemeSmallCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationBlue</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseDarkThemeSmallCornersCompactText" parent="BaseDarkThemeSmallCorners">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseLightThemeSmallCornersCompactText" parent="BaseLightThemeSmallCorners">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseAmoledThemeSmallCornersCompactText" parent="BaseAmoledThemeSmallCorners">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseBlueThemeSmallCornersCompactText" parent="BaseBlueThemeSmallCorners">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseDarkThemeSmallCornersReducedPaddingCompactText" parent="BaseDarkThemeSmallCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseLightThemeSmallCornersReducedPaddingCompactText" parent="BaseLightThemeSmallCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseAmoledThemeSmallCornersReducedPaddingCompactText" parent="BaseAmoledThemeSmallCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationAmoled</item>
+        <item name="cardStyle">@style/CompactCardAmoled</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseBlueThemeSmallCornersReducedPaddingCompactText" parent="BaseBlueThemeSmallCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationBlue</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseDarkThemeNoCorners" parent="BaseDarkTheme">
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.None</item>
+    </style>
+
+    <style name="BaseLightThemeNoCorners" parent="BaseLightTheme">
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.None</item>
+    </style>
+
+    <style name="BaseAmoledThemeNoCorners" parent="BaseAmoledTheme">
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.None</item>
+    </style>
+
+    <style name="BaseBlueThemeNoCorners" parent="BaseBlueTheme">
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.None</item>
+    </style>
+
+    <style name="BaseDarkThemeNoCornersReducedPadding" parent="BaseDarkThemeNoCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseLightThemeNoCornersReducedPadding" parent="BaseLightThemeNoCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseAmoledThemeNoCornersReducedPadding" parent="BaseAmoledThemeNoCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationAmoled</item>
+        <item name="cardStyle">@style/CompactCardAmoled</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseBlueThemeNoCornersReducedPadding" parent="BaseBlueThemeNoCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationBlue</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+    </style>
+
+    <style name="BaseDarkThemeNoCornersCompactText" parent="BaseDarkThemeNoCorners">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseLightThemeNoCornersCompactText" parent="BaseLightThemeNoCorners">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseAmoledThemeNoCornersCompactText" parent="BaseAmoledThemeNoCorners">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseBlueThemeNoCornersCompactText" parent="BaseBlueThemeNoCorners">
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseDarkThemeNoCornersReducedPaddingCompactText" parent="BaseDarkThemeNoCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseLightThemeNoCornersReducedPaddingCompactText" parent="BaseLightThemeNoCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigation</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseAmoledThemeNoCornersReducedPaddingCompactText" parent="BaseAmoledThemeNoCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationAmoled</item>
+        <item name="cardStyle">@style/CompactCardAmoled</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="BaseBlueThemeNoCornersReducedPaddingCompactText" parent="BaseBlueThemeNoCorners">
+        <item name="actionBarSize">42dp</item>
+        <item name="toolbarStyle">@style/CompactToolbar</item>
+        <item name="tabLayoutHeight">42dp</item>
+        <item name="bottomNavigationHeight">40dp</item>
+        <item name="bottomNavigationStyle">@style/CompactBottomNavigationBlue</item>
+        <item name="cardStyle">@style/CompactCard</item>
+        <item name="radioButtonStyle">@style/CompactRadioButton</item>
+        <item name="checkboxStyle">@style/CompactCheckBox</item>
+        <item name="textAppearanceDisplayLarge">@style/CompactTextDisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/CompactTextDisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/CompactTextDisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/CompactTextHeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/CompactTextHeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/CompactTextHeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/CompactTextTitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/CompactTextTitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/CompactTextTitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/CompactTextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/CompactTextBodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/CompactTextBodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/CompactTextLabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/CompactTextLabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/CompactTextLabelSmall</item>
+    </style>
+
+    <style name="DarkTheme" parent="BaseDarkTheme" />
+    <style name="LightTheme" parent="BaseLightTheme" />
+    <style name="AmoledTheme" parent="BaseAmoledTheme" />
+    <style name="BlueTheme" parent="BaseBlueTheme" />
+    <style name="DarkThemeReducedPadding" parent="BaseDarkThemeReducedPadding" />
+    <style name="LightThemeReducedPadding" parent="BaseLightThemeReducedPadding" />
+    <style name="AmoledThemeReducedPadding" parent="BaseAmoledThemeReducedPadding" />
+    <style name="BlueThemeReducedPadding" parent="BaseBlueThemeReducedPadding" />
+    <style name="DarkThemeCompactText" parent="BaseDarkThemeCompactText" />
+    <style name="LightThemeCompactText" parent="BaseLightThemeCompactText" />
+    <style name="AmoledThemeCompactText" parent="BaseAmoledThemeCompactText" />
+    <style name="BlueThemeCompactText" parent="BaseBlueThemeCompactText" />
+    <style name="DarkThemeReducedPaddingCompactText" parent="BaseDarkThemeReducedPaddingCompactText" />
+    <style name="LightThemeReducedPaddingCompactText" parent="BaseLightThemeReducedPaddingCompactText" />
+    <style name="AmoledThemeReducedPaddingCompactText" parent="BaseAmoledThemeReducedPaddingCompactText" />
+    <style name="BlueThemeReducedPaddingCompactText" parent="BaseBlueThemeReducedPaddingCompactText" />
+
+    <style name="DarkThemeSmallCorners" parent="BaseDarkThemeSmallCorners" />
+    <style name="LightThemeSmallCorners" parent="BaseLightThemeSmallCorners" />
+    <style name="AmoledThemeSmallCorners" parent="BaseAmoledThemeSmallCorners" />
+    <style name="BlueThemeSmallCorners" parent="BaseBlueThemeSmallCorners" />
+    <style name="DarkThemeSmallCornersReducedPadding" parent="BaseDarkThemeSmallCornersReducedPadding" />
+    <style name="LightThemeSmallCornersReducedPadding" parent="BaseLightThemeSmallCornersReducedPadding" />
+    <style name="AmoledThemeSmallCornersReducedPadding" parent="BaseAmoledThemeSmallCornersReducedPadding" />
+    <style name="BlueThemeSmallCornersReducedPadding" parent="BaseBlueThemeSmallCornersReducedPadding" />
+    <style name="DarkThemeSmallCornersCompactText" parent="BaseDarkThemeSmallCornersCompactText" />
+    <style name="LightThemeSmallCornersCompactText" parent="BaseLightThemeSmallCornersCompactText" />
+    <style name="AmoledThemeSmallCornersCompactText" parent="BaseAmoledThemeSmallCornersCompactText" />
+    <style name="BlueThemeSmallCornersCompactText" parent="BaseBlueThemeSmallCornersCompactText" />
+    <style name="DarkThemeSmallCornersReducedPaddingCompactText" parent="BaseDarkThemeSmallCornersReducedPaddingCompactText" />
+    <style name="LightThemeSmallCornersReducedPaddingCompactText" parent="BaseLightThemeSmallCornersReducedPaddingCompactText" />
+    <style name="AmoledThemeSmallCornersReducedPaddingCompactText" parent="BaseAmoledThemeSmallCornersReducedPaddingCompactText" />
+    <style name="BlueThemeSmallCornersReducedPaddingCompactText" parent="BaseBlueThemeSmallCornersReducedPaddingCompactText" />
+
+    <style name="DarkThemeNoCorners" parent="BaseDarkThemeNoCorners" />
+    <style name="LightThemeNoCorners" parent="BaseLightThemeNoCorners" />
+    <style name="AmoledThemeNoCorners" parent="BaseAmoledThemeNoCorners" />
+    <style name="BlueThemeNoCorners" parent="BaseBlueThemeNoCorners" />
+    <style name="DarkThemeNoCornersReducedPadding" parent="BaseDarkThemeNoCornersReducedPadding" />
+    <style name="LightThemeNoCornersReducedPadding" parent="BaseLightThemeNoCornersReducedPadding" />
+    <style name="AmoledThemeNoCornersReducedPadding" parent="BaseAmoledThemeNoCornersReducedPadding" />
+    <style name="BlueThemeNoCornersReducedPadding" parent="BaseBlueThemeNoCornersReducedPadding" />
+    <style name="DarkThemeNoCornersCompactText" parent="BaseDarkThemeNoCornersCompactText" />
+    <style name="LightThemeNoCornersCompactText" parent="BaseLightThemeNoCornersCompactText" />
+    <style name="AmoledThemeNoCornersCompactText" parent="BaseAmoledThemeNoCornersCompactText" />
+    <style name="BlueThemeNoCornersCompactText" parent="BaseBlueThemeNoCornersCompactText" />
+    <style name="DarkThemeNoCornersReducedPaddingCompactText" parent="BaseDarkThemeNoCornersReducedPaddingCompactText" />
+    <style name="LightThemeNoCornersReducedPaddingCompactText" parent="BaseLightThemeNoCornersReducedPaddingCompactText" />
+    <style name="AmoledThemeNoCornersReducedPaddingCompactText" parent="BaseAmoledThemeNoCornersReducedPaddingCompactText" />
+    <style name="BlueThemeNoCornersReducedPaddingCompactText" parent="BaseBlueThemeNoCornersReducedPaddingCompactText" />
+
+    <style name="AppCompatDarkTheme" parent="BaseAppCompatDarkTheme" />
+    <style name="AppCompatLightTheme" parent="BaseAppCompatLightTheme" />
+    <style name="AppCompatAmoledTheme" parent="BaseAppCompatAmoledTheme" />
+    <style name="AppCompatBlueTheme" parent="BaseAppCompatBlueTheme" />
+
+    <style name="DarkDynamicOverlay" parent="ThemeOverlay.Material3.DynamicColors.Dark">
+        <item name="materialSwitchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+    </style>
+
+    <style name="LightDynamicOverlay" parent="ThemeOverlay.Material3.DynamicColors.Light">
+        <item name="materialSwitchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+    </style>
+
+    <style name="AmoledDynamicOverlay" parent="ThemeOverlay.Material3.DynamicColors.Dark">
+        <item name="colorSurface">@color/surfaceAmoled</item>
+        <item name="android:colorBackground">@color/surfaceAmoled</item>
+        <item name="colorSurfaceContainerLow">@color/surfaceAmoled</item>
+        <item name="colorSurfaceContainer">@color/surfaceContainerAmoled</item>
+        <item name="cardStyle">@style/CardAmoled</item>
+        <item name="materialSwitchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+        <item name="linearProgressIndicatorStyle">@style/LinearProgressIndicatorAmoled</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationAmoled</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheet</item>
+        <item name="materialAlertDialogTheme">@style/Dialog</item>
+    </style>
+
+    <style name="Thumbnail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintDimensionRatio">H,16:9</item>
+    </style>
+
+    <style name="ThumbnailItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowRadius">4</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="UserPicture">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="ChatMessageBannerOverlay">
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="CardAmoled" parent="Widget.Material3.CardView.Elevated">
+        <item name="materialThemeOverlay">@style/CardOverlayAmoled</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="CardOverlayAmoled">
+        <item name="colorPrimary">?attr/colorSurface</item>
+    </style>
+
+    <style name="RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="SwitchAmoled" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="materialThemeOverlay">@style/SwitchOverlayAmoled</item>
+    </style>
+
+    <style name="SwitchOverlayAmoled">
+        <item name="colorPrimary">@color/switchTrackAmoled</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorPrimaryContainer">@android:color/white</item>
+    </style>
+
+    <style name="SwitchBlue" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="materialThemeOverlay">@style/SwitchOverlayBlue</item>
+    </style>
+
+    <style name="SwitchOverlayBlue">
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorPrimaryContainer">@android:color/white</item>
+    </style>
+
+    <style name="Slider" parent="Widget.Material3.Slider">
+        <item name="trackColorInactive">?attr/colorSurfaceContainerHighest</item>
+    </style>
+
+    <style name="LinearProgressIndicatorAmoled" parent="Widget.Material3.LinearProgressIndicator.Legacy">
+        <item name="indicatorColor">@android:color/white</item>
+    </style>
+
+    <style name="BottomNavigationAmoled" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/BottomNavigationOverlayAmoled</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="BottomNavigationOverlayAmoled">
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorSecondaryContainer">@color/surfaceContainerAmoled</item>
+    </style>
+
+    <style name="BottomNavigationBlue" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/BottomNavigationOverlayBlue</item>
+    </style>
+
+    <style name="BottomNavigationOverlayBlue">
+        <item name="colorSecondaryContainer">@color/secondaryContainerBlue</item>
+    </style>
+
+    <style name="BottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetModal</item>
+    </style>
+
+    <style name="BottomSheetModal" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <style name="PreferenceTheme" parent="@style/PreferenceThemeOverlay">
+        <!-- icons -->
+        <item name="android:tint">?attr/colorControlNormal</item>
+        <!-- SeekBarPreference -->
+        <item name="android:progressTint">?attr/colorPrimary</item>
+        <item name="android:thumbTint">?attr/colorPrimary</item>
+
+        <item name="preferenceCategoryTitleTextColor">?attr/colorPrimary</item>
+        <item name="switchPreferenceCompatStyle">@style/SwitchPreference</item>
+    </style>
+
+    <style name="SwitchPreference" parent="@style/Preference.SwitchPreferenceCompat.Material">
+        <item name="widgetLayout">@layout/material_switch</item>
+    </style>
+
+    <style name="BaseAppCompatDarkTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorSurface">@color/surfaceDark</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
+        <item name="android:colorBackground">?attr/colorSurface</item>
+        <item name="colorSurfaceContainer">#303030</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColorDark</item>
+        <item name="colorButtonNormal">@color/secondaryDark</item>
+        <item name="chatStatus">@color/chatStatusDark</item>
+        <item name="sortBarTextColor">?attr/colorControlNormal</item>
+        <item name="dialogPadding">5dp</item>
+        <item name="dialogLayoutPadding">0dp</item>
+        <item name="tabLayoutHeight">48dp</item>
+        <item name="bottomNavigationHeight">56dp</item>
+        <item name="cardStyle">@style/MaterialCard</item>
+        <item name="bottomSheetButtonStyle">@style/MaterialButton</item>
+        <item name="elevatedButtonStyle">@style/MaterialElevatedButton</item>
+        <item name="dialogButtonStyle">@style/MaterialDialogButton</item>
+        <item name="tabStyle">@style/MaterialTabLayoutDark</item>
+        <item name="radioButtonStyle">@style/AppCompatRadioButton</item>
+        <item name="checkboxStyle">@style/MaterialCheckBox</item>
+        <item name="sliderStyle">@style/Widget.Material3.Slider.Legacy</item>
+        <item name="linearProgressIndicatorStyle">@style/MaterialLinearProgressIndicator</item>
+        <item name="floatingActionButtonSmallStyle">@style/MaterialFloatingActionButton</item>
+        <item name="materialDividerStyle">@style/MaterialDividerDark</item>
+        <item name="bottomNavigationStyle">@style/MaterialBottomNavigationDark</item>
+        <item name="bottomSheetDialogTheme">@style/MaterialBottomSheet</item>
+        <item name="alertDialogTheme">@style/MaterialDialog</item>
+        <item name="preferenceTheme">@style/MaterialPreferenceTheme</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.AppCompat.Display3</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.AppCompat.Display2</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.AppCompat.Headline</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.AppCompat.Title</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.AppCompat.Title</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.AppCompat.Body2</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="android:navigationBarColor">@color/darkScrim</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BaseAppCompatLightTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
+        <item name="android:colorBackground">?attr/colorSurface</item>
+        <item name="colorSurfaceContainer">#fff3edf7</item>
+        <item name="colorControlNormal">@android:color/black</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColorLight</item>
+        <item name="colorButtonNormal">@color/secondaryLight</item>
+        <item name="chatStatus">@color/chatStatusLight</item>
+        <item name="sortBarTextColor">?attr/colorControlNormal</item>
+        <item name="dialogPadding">5dp</item>
+        <item name="dialogLayoutPadding">0dp</item>
+        <item name="tabLayoutHeight">48dp</item>
+        <item name="bottomNavigationHeight">56dp</item>
+        <item name="cardStyle">@style/MaterialCard</item>
+        <item name="bottomSheetButtonStyle">@style/MaterialButton</item>
+        <item name="elevatedButtonStyle">@style/MaterialElevatedButton</item>
+        <item name="dialogButtonStyle">@style/MaterialDialogButton</item>
+        <item name="tabStyle">@style/MaterialTabLayoutLight</item>
+        <item name="radioButtonStyle">@style/AppCompatRadioButton</item>
+        <item name="checkboxStyle">@style/MaterialCheckBox</item>
+        <item name="sliderStyle">@style/Widget.Material3.Slider.Legacy</item>
+        <item name="linearProgressIndicatorStyle">@style/MaterialLinearProgressIndicator</item>
+        <item name="floatingActionButtonSmallStyle">@style/MaterialFloatingActionButton</item>
+        <item name="materialDividerStyle">@style/MaterialDividerLight</item>
+        <item name="bottomNavigationStyle">@style/MaterialBottomNavigationLight</item>
+        <item name="bottomSheetDialogTheme">@style/MaterialBottomSheet</item>
+        <item name="alertDialogTheme">@style/MaterialDialog</item>
+        <item name="preferenceTheme">@style/MaterialPreferenceTheme</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.AppCompat.Display3</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.AppCompat.Display2</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.AppCompat.Headline</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.AppCompat.Title</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.AppCompat.Title</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.AppCompat.Body2</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="android:navigationBarColor">@color/darkScrim</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="BaseAppCompatAmoledTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorAccent">@android:color/white</item>
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
+        <item name="android:colorBackground">?attr/colorSurface</item>
+        <item name="colorSurfaceContainer">@color/surfaceContainerAmoled</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColorDark</item>
+        <item name="colorButtonNormal">@color/secondaryAmoled</item>
+        <item name="chatStatus">@color/chatStatusDark</item>
+        <item name="sortBarTextColor">?attr/colorControlNormal</item>
+        <item name="dialogPadding">5dp</item>
+        <item name="dialogLayoutPadding">0dp</item>
+        <item name="tabLayoutHeight">48dp</item>
+        <item name="bottomNavigationHeight">56dp</item>
+        <item name="cardStyle">@style/MaterialCard</item>
+        <item name="bottomSheetButtonStyle">@style/MaterialButton</item>
+        <item name="elevatedButtonStyle">@style/MaterialElevatedButton</item>
+        <item name="dialogButtonStyle">@style/MaterialDialogButton</item>
+        <item name="tabStyle">@style/MaterialTabLayoutDark</item>
+        <item name="radioButtonStyle">@style/AppCompatRadioButton</item>
+        <item name="checkboxStyle">@style/MaterialCheckBox</item>
+        <item name="sliderStyle">@style/Widget.Material3.Slider.Legacy</item>
+        <item name="linearProgressIndicatorStyle">@style/MaterialLinearProgressIndicator</item>
+        <item name="floatingActionButtonSmallStyle">@style/MaterialFloatingActionButton</item>
+        <item name="materialDividerStyle">@style/MaterialDividerDark</item>
+        <item name="bottomNavigationStyle">@style/MaterialBottomNavigationDark</item>
+        <item name="bottomSheetDialogTheme">@style/MaterialBottomSheet</item>
+        <item name="alertDialogTheme">@style/MaterialDialog</item>
+        <item name="preferenceTheme">@style/MaterialPreferenceTheme</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.AppCompat.Display3</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.AppCompat.Display2</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.AppCompat.Headline</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.AppCompat.Title</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.AppCompat.Title</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.AppCompat.Body2</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="android:navigationBarColor">@color/darkScrim</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BaseAppCompatBlueTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorSurface">@color/surfaceBlue</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
+        <item name="android:colorBackground">?attr/colorSurface</item>
+        <item name="colorSurfaceContainer">@color/surfaceContainerBlue</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColorBlue</item>
+        <item name="colorButtonNormal">@color/secondaryBlue</item>
+        <item name="chatStatus">@color/chatStatusDark</item>
+        <item name="sortBarTextColor">?attr/colorControlNormal</item>
+        <item name="dialogPadding">5dp</item>
+        <item name="dialogLayoutPadding">0dp</item>
+        <item name="tabLayoutHeight">48dp</item>
+        <item name="bottomNavigationHeight">56dp</item>
+        <item name="cardStyle">@style/MaterialCard</item>
+        <item name="bottomSheetButtonStyle">@style/MaterialButton</item>
+        <item name="elevatedButtonStyle">@style/MaterialElevatedButton</item>
+        <item name="dialogButtonStyle">@style/MaterialDialogButton</item>
+        <item name="tabStyle">@style/MaterialTabLayoutDark</item>
+        <item name="radioButtonStyle">@style/AppCompatRadioButton</item>
+        <item name="checkboxStyle">@style/MaterialCheckBox</item>
+        <item name="sliderStyle">@style/Widget.Material3.Slider.Legacy</item>
+        <item name="linearProgressIndicatorStyle">@style/MaterialLinearProgressIndicatorBlue</item>
+        <item name="floatingActionButtonSmallStyle">@style/MaterialFloatingActionButton</item>
+        <item name="materialDividerStyle">@style/MaterialDividerBlue</item>
+        <item name="bottomNavigationStyle">@style/MaterialBottomNavigationBlue</item>
+        <item name="bottomSheetDialogTheme">@style/MaterialBottomSheet</item>
+        <item name="alertDialogTheme">@style/MaterialDialog</item>
+        <item name="preferenceTheme">@style/MaterialPreferenceTheme</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.AppCompat.Display3</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.AppCompat.Display2</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.AppCompat.Headline</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.AppCompat.Title</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.AppCompat.Title</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.AppCompat.Body2</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="android:navigationBarColor">@color/darkScrim</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <item name="materialThemeOverlay">@style/MaterialCardOverlay</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="MaterialCardOverlay">
+        <item name="colorPrimary">?attr/colorSurface</item>
+    </style>
+
+    <style name="MaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/MaterialButtonOverlay</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+    </style>
+
+    <style name="MaterialButtonOverlay">
+        <item name="colorPrimary">?attr/colorSurface</item>
+        <item name="colorOnPrimary">?attr/colorControlNormal</item>
+    </style>
+
+    <style name="MaterialElevatedButton" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/MaterialElevatedButtonOverlay</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+    </style>
+
+    <style name="MaterialElevatedButtonOverlay">
+        <item name="colorPrimary">?attr/colorButtonNormal</item>
+        <item name="colorOnPrimary">?attr/colorControlNormal</item>
+    </style>
+
+    <style name="MaterialDialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">?attr/colorControlNormal</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+    </style>
+
+    <style name="MaterialTabLayoutDark" parent="Widget.MaterialComponents.TabLayout">
+        <item name="materialThemeOverlay">@style/MaterialTabLayoutOverlayDark</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+    </style>
+
+    <style name="MaterialTabLayoutOverlayDark">
+        <item name="colorPrimary">?attr/colorControlNormal</item>
+        <item name="colorOnSurface">#CCCCCC</item>
+    </style>
+
+    <style name="MaterialTabLayoutLight" parent="Widget.MaterialComponents.TabLayout">
+        <item name="materialThemeOverlay">@style/MaterialTabLayoutOverlayLight</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+    </style>
+
+    <style name="MaterialTabLayoutOverlayLight">
+        <item name="colorPrimary">?attr/colorControlNormal</item>
+        <item name="colorOnSurface">@android:color/black</item>
+    </style>
+
+    <style name="AppCompatRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="MaterialCheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="buttonIconTint">?attr/colorSurface</item>
+        <item name="buttonTint">@color/material_check_box</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="MaterialLinearProgressIndicator" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="indicatorColor">?attr/colorAccent</item>
+        <item name="trackColor">?attr/colorButtonNormal</item>
+        <item name="trackThickness">4.5dp</item>
+    </style>
+
+    <style name="MaterialLinearProgressIndicatorBlue" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="indicatorColor">?attr/colorAccent</item>
+        <item name="trackThickness">4.5dp</item>
+    </style>
+
+    <style name="MaterialFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="fabCustomSize">40dp</item>
+        <item name="tint">@android:color/black</item>
+        <item name="backgroundTint">#B3364f61</item>
+    </style>
+
+    <style name="MaterialDividerDark" parent="Widget.MaterialComponents.MaterialDivider">
+        <item name="dividerColor">@color/secondaryDark</item>
+    </style>
+
+    <style name="MaterialDividerLight" parent="Widget.MaterialComponents.MaterialDivider">
+        <item name="dividerColor">@color/secondaryLight</item>
+    </style>
+
+    <style name="MaterialDividerBlue" parent="Widget.MaterialComponents.MaterialDivider">
+        <item name="dividerColor">@color/secondaryTextColorBlue</item>
+    </style>
+
+    <style name="MaterialBottomNavigationDark" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/MaterialBottomNavigationOverlay</item>
+        <item name="itemTextAppearanceActive">@style/MaterialBottomNavigationText</item>
+        <item name="itemTextAppearanceInactive">@style/MaterialBottomNavigationText</item>
+        <item name="elevation">0dp</item>
+        <item name="itemIconTint">@color/nav_bar_dark</item>
+        <item name="itemTextColor">@color/nav_bar_dark</item>
+    </style>
+
+    <style name="MaterialBottomNavigationLight" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/MaterialBottomNavigationOverlay</item>
+        <item name="itemTextAppearanceActive">@style/MaterialBottomNavigationText</item>
+        <item name="itemTextAppearanceInactive">@style/MaterialBottomNavigationText</item>
+        <item name="elevation">0dp</item>
+        <item name="itemIconTint">@color/nav_bar_light</item>
+        <item name="itemTextColor">@color/nav_bar_light</item>
+    </style>
+
+    <style name="MaterialBottomNavigationBlue" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/MaterialBottomNavigationOverlay</item>
+        <item name="itemTextAppearanceActive">@style/MaterialBottomNavigationText</item>
+        <item name="itemTextAppearanceInactive">@style/MaterialBottomNavigationText</item>
+        <item name="elevation">0dp</item>
+        <item name="itemIconTint">@color/nav_bar_blue</item>
+        <item name="itemTextColor">@color/nav_bar_blue</item>
+    </style>
+
+    <style name="MaterialBottomNavigationOverlay">
+        <item name="colorPrimary">?attr/colorControlNormal</item>
+        <item name="colorOnSurface">?attr/colorControlNormal</item>
+    </style>
+
+    <style name="MaterialBottomNavigationText" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="MaterialBottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/MaterialBottomSheetModal</item>
+        <item name="paddingLeftSystemWindowInsets">false</item>
+        <item name="paddingRightSystemWindowInsets">false</item>
+    </style>
+
+    <style name="MaterialBottomSheetModal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">?attr/colorSurface</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="MaterialDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="buttonBarButtonStyle">@style/MaterialDialogButton</item>
+    </style>
+
+    <style name="MaterialPreferenceTheme" parent="@style/PreferenceThemeOverlay">
+        <item name="android:tint">?attr/colorControlNormal</item>
+    </style>
+
+</resources>

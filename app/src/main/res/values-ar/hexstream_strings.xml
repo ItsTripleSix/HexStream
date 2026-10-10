@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">تعذر حفظ تغيير الحساب. يُرجى المحاولة مرة أخرى.</string>
+    <string name="hex_browser_retry">توقف متصفح تسجيل الدخول. أعد فتح هذه الشاشة للمحاولة مرة أخرى.</string>
+    <string name="hex_points">النقاط</string>
+    <string name="hex_points_balance">الرصيد: %1$s</string>
+    <string name="hex_unavailable">غير متاح</string>
+    <string name="hex_reward_cost">%1$s · النقاط: %2$d</string>
+    <string name="hex_rules_count">المعروض: %1$d · القواعد: %2$d</string>
+    <string name="hex_blocks_count">المعروض: %1$d · عمليات الحظر الأخيرة: %2$d</string>
+    <string name="hex_blocked_section">المحظور: %1$s</string>
+    <string name="hex_rule_section_tags">الوسوم</string>
+    <string name="hex_rule_section_channels">القنوات</string>
+    <string name="hex_rule_section_titles">العناوين</string>
+    <string name="hex_rule_section_categories">الفئات</string>
+    <string name="hex_details_show">التفاصيل والأمثلة ▾</string>
+    <string name="hex_details_hide">إخفاء الشرح ▴</string>
+    <string name="hex_search_rules">البحث عن قواعد</string>
+    <string name="hex_done">تم</string>
+    <string name="hex_search_blocked">البحث عن قنوات أو عناوين أو قواعد</string>
+    <string name="hex_no_custom_rewards">لا توجد مكافآت مخصصة متاحة. افتح Twitch للاطلاع على مكافآت أخرى.</string>
+    <string name="hex_enter_message">أدخل رسالة</string>
+    <string name="hex_points_sign_in">سجل الدخول لاستخدام نقاط القناة.</string>
+    <string name="hex_ok">موافق</string>
+    <string name="hex_channel_points">نقاط القناة</string>
+    <string name="hex_close">إغلاق</string>
+    <string name="hex_open_twitch">فتح Twitch</string>
+    <string name="hex_cancel">إلغاء</string>
+    <string name="hex_redeem">استبدال</string>
+    <string name="hex_no_bonus">لا توجد مكافأة إضافية</string>
+    <string name="hex_claim_bonus">المطالبة بالنقاط الإضافية</string>
+</resources>

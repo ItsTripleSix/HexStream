@@ -1,0 +1,18 @@
+query ClipUrls($slug: ID!) {
+    clip(slug: $slug) {
+        assets {
+            aspectRatio
+            videoQualities {
+                bitrate
+                codecs
+                frameRate
+                quality
+                sourceURL
+            }
+        }
+        playbackAccessToken(params: { platform: "web", playerType: "site" }) {
+            signature
+            value
+        }
+    }
+}

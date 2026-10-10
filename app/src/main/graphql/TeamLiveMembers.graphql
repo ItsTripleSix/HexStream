@@ -1,0 +1,70 @@
+query TeamLiveMembers($name: String!, $first: Int, $after: Cursor) {
+    team(name: $name) {
+        liveMembers(first: $first, after: $after) {
+            edges {
+                cursor
+                node {
+                    displayName
+                    id
+                    login
+                    profileImageURL(width: 300)
+                    stream {
+                        broadcaster {
+                            broadcastSettings {
+                        language
+                                title
+                            }
+                        }
+                        createdAt
+                        freeformTags {
+                            name
+                        }
+                        game {
+                            displayName
+                            id
+                            slug
+                        }
+                        id
+                        viewersCount
+                    }
+                }
+            }
+            pageInfo {
+                hasNextPage
+            }
+        }
+        members(first: $first) {
+            edges {
+                cursor
+                node {
+                    displayName
+                    id
+                    login
+                    profileImageURL(width: 300)
+                    stream {
+                        broadcaster {
+                            broadcastSettings {
+                        language
+                                title
+                            }
+                        }
+                        createdAt
+                        freeformTags {
+                            name
+                        }
+                        game {
+                            displayName
+                            id
+                            slug
+                        }
+                        id
+                        viewersCount
+                    }
+                }
+            }
+            pageInfo {
+                hasNextPage
+            }
+        }
+    }
+}

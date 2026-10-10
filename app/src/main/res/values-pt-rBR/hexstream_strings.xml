@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">Não foi possível salvar a alteração da conta. Tente novamente.</string>
+    <string name="hex_browser_retry">O navegador de login parou. Reabra esta tela para tentar novamente.</string>
+    <string name="hex_points">Pontos</string>
+    <string name="hex_points_balance">Saldo: %1$s</string>
+    <string name="hex_unavailable">indisponível</string>
+    <string name="hex_reward_cost">%1$s · Pontos: %2$d</string>
+    <string name="hex_rules_count">Exibidos: %1$d · Regras: %2$d</string>
+    <string name="hex_blocks_count">Exibidos: %1$d · Bloqueios recentes: %2$d</string>
+    <string name="hex_blocked_section">Bloqueados: %1$s</string>
+    <string name="hex_rule_section_tags">tags</string>
+    <string name="hex_rule_section_channels">canais</string>
+    <string name="hex_rule_section_titles">títulos</string>
+    <string name="hex_rule_section_categories">categorias</string>
+    <string name="hex_details_show">Detalhes e exemplos ▾</string>
+    <string name="hex_details_hide">Ocultar explicação ▴</string>
+    <string name="hex_search_rules">Pesquisar regras</string>
+    <string name="hex_done">Concluído</string>
+    <string name="hex_search_blocked">Pesquisar canais, títulos ou regras</string>
+    <string name="hex_no_custom_rewards">Nenhuma recompensa personalizada disponível. Abra a Twitch para ver outras recompensas.</string>
+    <string name="hex_enter_message">Digite uma mensagem</string>
+    <string name="hex_points_sign_in">Entre para usar pontos do canal.</string>
+    <string name="hex_ok">OK</string>
+    <string name="hex_channel_points">Pontos do canal</string>
+    <string name="hex_close">Fechar</string>
+    <string name="hex_open_twitch">Abrir Twitch</string>
+    <string name="hex_cancel">Cancelar</string>
+    <string name="hex_redeem">Resgatar</string>
+    <string name="hex_no_bonus">Nenhum bônus disponível</string>
+    <string name="hex_claim_bonus">Resgatar pontos de bônus</string>
+</resources>

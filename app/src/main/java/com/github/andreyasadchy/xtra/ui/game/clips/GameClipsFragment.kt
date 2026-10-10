@@ -1,0 +1,219 @@
+package com.github.andreyasadchy.xtra.ui.game.clips
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.navArgs
+import androidx.paging.PagingData
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.github.andreyasadchy.xtra.R
+import com.github.andreyasadchy.xtra.databinding.CommonRecyclerViewLayoutBinding
+import com.github.andreyasadchy.xtra.databinding.SortBarBinding
+import com.github.andreyasadchy.xtra.model.ui.Clip
+import com.github.andreyasadchy.xtra.model.ui.GameSort
+import com.github.andreyasadchy.xtra.ui.common.ClipsAdapter
+import com.github.andreyasadchy.xtra.ui.common.FragmentHost
+import com.github.andreyasadchy.xtra.ui.common.IntegrityDialog
+import com.github.andreyasadchy.xtra.ui.common.PagedListFragment
+import com.github.andreyasadchy.xtra.ui.common.Scrollable
+import com.github.andreyasadchy.xtra.ui.common.Sortable
+import com.github.andreyasadchy.xtra.ui.common.VideosSortDialog
+import com.github.andreyasadchy.xtra.ui.download.DownloadDialog
+import com.github.andreyasadchy.xtra.ui.game.GamePagerFragmentArgs
+import com.github.andreyasadchy.xtra.ui.game.clips.GameClipsViewModel.Companion.GameClipsViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+
+class GameClipsFragment : PagedListFragment(), Scrollable, Sortable, VideosSortDialog.OnFilter {
+
+    private var _binding: CommonRecyclerViewLayoutBinding? = null
+    private val binding get() = _binding!!
+    private val args: GamePagerFragmentArgs by navArgs()
+    private val viewModel: GameClipsViewModel by viewModels { GameClipsViewModelFactory }
+    private lateinit var pagingAdapter: PagingDataAdapter<Clip, out RecyclerView.ViewHolder>
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = CommonRecyclerViewLayoutBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val showDialog: (Clip) -> Unit = {
+            DownloadDialog.newClipInstance(
+                id = it.id,
+                channelId = it.channelId,
+                channelLogin = it.channelLogin,
+                channelName = it.channelName,
+                channelImage = it.channelImage,
+                gameId = it.gameId,
+                gameSlug = it.gameSlug,
+                gameName = it.gameName,
+                title = it.title,
+                thumbnail = it.thumbnail,
+                createdAt = it.createdAt,
+                durationSeconds = it.durationSeconds,
+                videoId = it.videoId,
+                videoOffsetSeconds = it.videoOffsetSeconds,
+                videoCreatedAt = it.videoCreatedAt,
+            ).show(childFragmentManager, null)
+        }
+        pagingAdapter = ClipsAdapter(this, showDialog, showGame = false)
+        setAdapter(binding.recyclerView, pagingAdapter)
+        ViewCompat.setOnApplyWindowInsetsListener(view) { _, windowInsets ->
+            if (activity?.findViewById<LinearLayout>(R.id.navBarContainer)?.isVisible == false) {
+                val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+                binding.recyclerView.updatePadding(bottom = insets.bottom)
+            }
+            WindowInsetsCompat.CONSUMED
+        }
+    }
+
+    override fun initialize() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            if (viewModel.filter.value == null) {
+                val sortValues = args.gameId?.let { viewModel.getGameSort(it) } ?: viewModel.getGameSort("default")
+                viewModel.setFilter(
+                    period = sortValues?.clipPeriod,
+                    languages = sortValues?.clipLanguages?.split(',')?.toTypedArray(),
+                )
+                viewModel.sortText.value = getString(
+                    R.string.sort_and_period,
+                    getString(R.string.view_count),
+                    getString(
+                        when (viewModel.period) {
+                            VideosSortDialog.PERIOD_DAY -> R.string.today
+                            VideosSortDialog.PERIOD_WEEK -> R.string.this_week
+                            VideosSortDialog.PERIOD_MONTH -> R.string.this_month
+                            VideosSortDialog.PERIOD_ALL -> R.string.all_time
+                            else -> R.string.this_week
+                        }
+                    )
+                )
+                viewModel.filtersText.value = if (viewModel.languages.isNotEmpty()) {
+                    resources.getQuantityString(R.plurals.languages, viewModel.languages.size, viewModel.languages.joinToString())
+                } else null
+            }
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.flow.collectLatest { pagingData ->
+                    pagingAdapter.submitData(pagingData)
+                }
+            }
+        }
+        initializeAdapter(binding, pagingAdapter)
+    }
+
+    override fun setupSortBar(sortBar: SortBarBinding) {
+        sortBar.root.visibility = View.VISIBLE
+        sortBar.root.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                VideosSortDialog.newInstance(
+                    sort = VideosSortDialog.SORT_VIEWS,
+                    period = viewModel.period,
+                    languages = viewModel.languages,
+                    saved = args.gameId?.let { viewModel.getGameSort(it) } != null
+                ).show(childFragmentManager, null)
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.sortText.collectLatest {
+                    sortBar.sortText.text = it
+                }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.filtersText.collectLatest {
+                    if (it != null) {
+                        sortBar.filtersText.visibility = View.VISIBLE
+                        sortBar.filtersText.text = it
+                    } else {
+                        sortBar.filtersText.visibility = View.GONE
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onChange(sort: String, sortText: CharSequence, period: String, periodText: CharSequence, type: String, typeText: CharSequence, languages: Array<String>, changed: Boolean, saveSort: Boolean, saveDefault: Boolean) {
+        if ((parentFragment as? FragmentHost)?.currentFragment == this) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                if (changed) {
+                    binding.scrollTop.visibility = View.GONE
+                    pagingAdapter.submitData(PagingData.empty())
+                    viewModel.setFilter(period, languages)
+                    viewModel.sortText.value = getString(R.string.sort_and_period, sortText, periodText)
+                    viewModel.filtersText.value = if (languages.isNotEmpty()) {
+                        resources.getQuantityString(R.plurals.languages, languages.size, languages.joinToString())
+                    } else null
+                }
+                if (saveSort) {
+                    args.gameId?.let { id ->
+                        val item = viewModel.getGameSort(id)?.apply {
+                            clipPeriod = period
+                            clipLanguages = languages.takeIf { it.isNotEmpty() }?.joinToString(",")
+                        } ?: GameSort(
+                            id = id,
+                            clipPeriod = period,
+                            clipLanguages = languages.takeIf { it.isNotEmpty() }?.joinToString(",")
+                        )
+                        viewModel.saveGameSort(item)
+                    }
+                }
+                if (saveDefault) {
+                    val item = viewModel.getGameSort("default")?.apply {
+                        clipPeriod = period
+                        clipLanguages = languages.takeIf { it.isNotEmpty() }?.joinToString(",")
+                    } ?: GameSort(
+                        id = "default",
+                        clipPeriod = period,
+                        clipLanguages = languages.takeIf { it.isNotEmpty() }?.joinToString(",")
+                    )
+                    viewModel.saveGameSort(item)
+                }
+            }
+        }
+    }
+
+    override fun deleteSavedSort() {
+        if ((parentFragment as? FragmentHost)?.currentFragment == this) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                args.gameId?.let { viewModel.getGameSort(it) }?.let { viewModel.deleteGameSort(it) }
+            }
+        }
+    }
+
+    override fun scrollToTop() {
+        binding.recyclerView.scrollToPosition(0)
+    }
+
+    override fun onNetworkRestored() {
+        pagingAdapter.retry()
+    }
+
+    override fun onIntegrityTokenLoaded(callback: String?) {
+        (parentFragment as? IntegrityDialog.Listener)?.onIntegrityTokenLoaded("refresh")
+        when (callback) {
+            "refresh" -> {
+                pagingAdapter.refresh()
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}

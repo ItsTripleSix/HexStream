@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">Impossible d’enregistrer le changement de compte. Réessaie.</string>
+    <string name="hex_browser_retry">Le navigateur de connexion s’est arrêté. Rouvrez cet écran pour réessayer.</string>
+    <string name="hex_points">Points</string>
+    <string name="hex_points_balance">Solde : %1$s</string>
+    <string name="hex_unavailable">indisponible</string>
+    <string name="hex_reward_cost">%1$s · Points : %2$d</string>
+    <string name="hex_rules_count">Affichés : %1$d · Règles : %2$d</string>
+    <string name="hex_blocks_count">Affichés : %1$d · Blocages récents : %2$d</string>
+    <string name="hex_blocked_section">Bloqués : %1$s</string>
+    <string name="hex_rule_section_tags">tags</string>
+    <string name="hex_rule_section_channels">chaînes</string>
+    <string name="hex_rule_section_titles">titres</string>
+    <string name="hex_rule_section_categories">catégories</string>
+    <string name="hex_details_show">Détails et exemples ▾</string>
+    <string name="hex_details_hide">Masquer les explications ▴</string>
+    <string name="hex_search_rules">Rechercher des règles</string>
+    <string name="hex_done">Terminé</string>
+    <string name="hex_search_blocked">Rechercher des chaînes, titres ou règles</string>
+    <string name="hex_no_custom_rewards">Aucune récompense personnalisée disponible. Ouvrez Twitch pour voir les autres récompenses.</string>
+    <string name="hex_enter_message">Saisissez un message</string>
+    <string name="hex_points_sign_in">Connectez-vous pour utiliser les points de chaîne.</string>
+    <string name="hex_ok">OK</string>
+    <string name="hex_channel_points">Points de chaîne</string>
+    <string name="hex_close">Fermer</string>
+    <string name="hex_open_twitch">Ouvrir Twitch</string>
+    <string name="hex_cancel">Annuler</string>
+    <string name="hex_redeem">Échanger</string>
+    <string name="hex_no_bonus">Aucun bonus disponible</string>
+    <string name="hex_claim_bonus">Récupérer les points bonus</string>
+</resources>

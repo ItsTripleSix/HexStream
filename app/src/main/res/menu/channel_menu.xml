@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/toggleNotifications"
+        android:icon="@drawable/baseline_notifications_none_black_24"
+        android:title="@string/enable_notifications"
+        app:iconTint="?attr/colorControlNormal"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/followButton"
+        android:icon="@drawable/baseline_favorite_border_black_24"
+        android:title="@string/follow"
+        android:visible="false"
+        app:iconTint="?attr/colorControlNormal"
+        app:showAsAction="ifRoom"
+        tools:visible="true" />
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/baseline_search_black_24"
+        android:title="@string/search"
+        app:iconTint="?attr/colorControlNormal"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/settings"
+        android:title="@string/settings" />
+    <item
+        android:id="@+id/login"
+        android:title="@string/log_in" />
+    <item
+        android:id="@+id/share"
+        android:title="@string/share" />
+    <item
+        android:id="@+id/download"
+        android:title="@string/download" />
+    <item android:id="@+id/prototype_accounts" android:title="@string/prototype_accounts" app:showAsAction="never" />
+    <item android:id="@+id/prototype_blocked_tags" android:title="@string/prototype_blocked_tags" app:showAsAction="never" />
+</menu>

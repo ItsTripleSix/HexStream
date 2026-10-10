@@ -1,0 +1,142 @@
+package com.github.andreyasadchy.xtra.repository.datasource
+
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.github.andreyasadchy.xtra.model.ui.Stream
+import com.github.andreyasadchy.xtra.repository.GraphQLRepository
+import com.github.andreyasadchy.xtra.repository.HelixRepository
+import com.github.andreyasadchy.xtra.util.C
+
+class SearchStreamsDataSource(
+    private val query: String,
+    private val gqlHeaders: Map<String, String>,
+    private val graphQLRepository: GraphQLRepository,
+    private val helixHeaders: Map<String, String>,
+    private val helixRepository: HelixRepository,
+    private val enableIntegrity: Boolean,
+    private val networkLibrary: String?,
+) : PagingSource<Int, Stream>() {
+    private var api: String? = null
+    private var offset: String? = null
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Stream> {
+        return if (query.isBlank()) {
+            LoadResult.Page(
+                data = emptyList(),
+                prevKey = null,
+                nextKey = null
+            )
+        } else {
+            if (!offset.isNullOrBlank()) {
+                try {
+                    loadFromApi(params)
+                } catch (e: Exception) {
+                    LoadResult.Error(e)
+                }
+            } else {
+                try {
+                    api = C.GQL
+                    loadFromApi(params)
+                } catch (e: Exception) {
+                    try {
+                        api = C.HELIX
+                        loadFromApi(params)
+                    } catch (e: Exception) {
+                        LoadResult.Error(e)
+                    }
+                }
+            }
+        }
+    }
+
+    private suspend fun loadFromApi(params: LoadParams<Int>): LoadResult<Int, Stream> {
+        return when (api) {
+            C.GQL -> gqlQueryLoad(params)
+            C.HELIX -> if (!helixHeaders[C.HEADER_TOKEN].isNullOrBlank()) helixLoad(params) else throw Exception()
+            else -> throw Exception()
+        }
+    }
+
+    private suspend fun gqlQueryLoad(params: LoadParams<Int>): LoadResult<Int, Stream> {
+        val response = graphQLRepository.loadQuerySearchStreams(networkLibrary, gqlHeaders, query, params.loadSize, offset)
+        if (enableIntegrity) {
+            response.errors?.find { it.message == C.FAILED_INTEGRITY_CHECK }?.let { return LoadResult.Error(Exception(it.message)) }
+        }
+        val data = response.data!!.searchStreams!!
+        val list = data.edges!!.mapNotNull { item ->
+            item.node?.let {
+                Stream(
+                    id = it.id,
+                    channelId = it.broadcaster?.id,
+                    channelLogin = it.broadcaster?.login,
+                    channelName = it.broadcaster?.displayName,
+                    channelImageURL = it.broadcaster?.profileImageURL,
+                    gameId = it.game?.id,
+                    gameSlug = it.game?.slug,
+                    gameName = it.game?.displayName,
+                    title = it.broadcaster?.broadcastSettings?.title,
+                    language = it.broadcaster?.broadcastSettings?.language,
+                    thumbnailURL = it.previewImageURL,
+                    createdAt = it.createdAt?.toString(),
+                    viewerCount = it.viewersCount,
+                    tags = it.freeformTags?.mapNotNull { tag -> tag.name },
+                ).takeIf { stream ->
+                    stream.channelId != null || stream.channelLogin != null
+                }
+            }
+        }
+        offset = data.edges.lastOrNull()?.cursor?.toString()
+        val nextPage = data.pageInfo?.hasNextPage != false
+        return LoadResult.Page(
+            data = com.github.andreyasadchy.xtra.util.ContentFilters.filter(list),
+            prevKey = null,
+            nextKey = if (!offset.isNullOrBlank() && nextPage) {
+                (params.key ?: 1) + 1
+            } else null
+        )
+    }
+
+    private suspend fun helixLoad(params: LoadParams<Int>): LoadResult<Int, Stream> {
+        val response = helixRepository.getSearchChannels(
+            networkLibrary = networkLibrary,
+            headers = helixHeaders,
+            query = query,
+            limit = params.loadSize,
+            offset = offset,
+            live = true,
+        )
+        val list = response.data.mapNotNull {
+            if (it.isLive == true) {
+                Stream(
+                    channelId = it.id,
+                    channelLogin = it.login,
+                    channelName = it.displayName,
+                    channelImageURL = it.profileImageURL,
+                    gameId = it.gameId,
+                    gameName = it.gameName,
+                    title = it.title,
+                    createdAt = it.startedAt,
+                    tags = it.tags,
+                language = it.language,
+                ).takeIf { stream ->
+                    stream.channelId != null || stream.channelLogin != null
+                }
+            } else null
+        }
+        offset = response.pagination?.cursor
+        return LoadResult.Page(
+            data = com.github.andreyasadchy.xtra.util.ContentFilters.filter(list),
+            prevKey = null,
+            nextKey = if (!offset.isNullOrBlank()) {
+                (params.key ?: 1) + 1
+            } else null
+        )
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, Stream>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+        }
+    }
+}

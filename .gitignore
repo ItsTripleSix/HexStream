@@ -1,0 +1,44 @@
+# Build output and local tooling
+.gradle/
+.kotlin/
+**/build/
+.idea/
+*.iml
+local.properties
+captures/
+*.log
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+.externalNativeBuild/
+.cxx/
+
+# Signing material, credentials and personal exports
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.key
+.env
+.env.*
+secrets.properties
+keystore.properties
+google-services.json
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*Blacklist*.json
+*Blocklist*.json
+/Xtra-Filters*.json
+/HexStream-Filters*.json
+backups/
+
+# Local publication files
+*.zip
+fastlane/report.xml
+fastlane/screenshots/
+fastlane/test_output/

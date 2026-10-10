@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">Impossibile salvare la modifica dell’account. Riprova.</string>
+    <string name="hex_browser_retry">Il browser di accesso si è arrestato. Riapri questa schermata per riprovare.</string>
+    <string name="hex_points">Punti</string>
+    <string name="hex_points_balance">Saldo: %1$s</string>
+    <string name="hex_unavailable">non disponibile</string>
+    <string name="hex_reward_cost">%1$s · Punti: %2$d</string>
+    <string name="hex_rules_count">Visualizzati: %1$d · Regole: %2$d</string>
+    <string name="hex_blocks_count">Visualizzati: %1$d · Blocchi recenti: %2$d</string>
+    <string name="hex_blocked_section">Bloccati: %1$s</string>
+    <string name="hex_rule_section_tags">tag</string>
+    <string name="hex_rule_section_channels">canali</string>
+    <string name="hex_rule_section_titles">titoli</string>
+    <string name="hex_rule_section_categories">categorie</string>
+    <string name="hex_details_show">Dettagli ed esempi ▾</string>
+    <string name="hex_details_hide">Nascondi spiegazione ▴</string>
+    <string name="hex_search_rules">Cerca regole</string>
+    <string name="hex_done">Fine</string>
+    <string name="hex_search_blocked">Cerca canali, titoli o regole</string>
+    <string name="hex_no_custom_rewards">Nessuna ricompensa personalizzata disponibile. Apri Twitch per altre ricompense.</string>
+    <string name="hex_enter_message">Inserisci un messaggio</string>
+    <string name="hex_points_sign_in">Accedi per usare i punti canale.</string>
+    <string name="hex_ok">OK</string>
+    <string name="hex_channel_points">Punti canale</string>
+    <string name="hex_close">Chiudi</string>
+    <string name="hex_open_twitch">Apri Twitch</string>
+    <string name="hex_cancel">Annulla</string>
+    <string name="hex_redeem">Riscatta</string>
+    <string name="hex_no_bonus">Nessun bonus disponibile</string>
+    <string name="hex_claim_bonus">Raccogli punti bonus</string>
+</resources>

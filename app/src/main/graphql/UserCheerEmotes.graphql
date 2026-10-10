@@ -1,0 +1,38 @@
+query UserCheerEmotes($id: ID, $login: String) {
+    cheerConfig {
+        displayConfig {
+            backgrounds
+            colors {
+                bits
+                color
+            }
+            scales
+            types {
+                animation
+                extension
+            }
+        }
+        groups {
+            nodes {
+                prefix
+                tiers {
+                    bits
+                }
+            }
+            templateURL
+        }
+    }
+    user(id: $id, login: $login, lookupType: ALL) {
+        cheer {
+            cheerGroups {
+                nodes {
+                    prefix
+                    tiers {
+                        bits
+                    }
+                }
+                templateURL
+            }
+        }
+    }
+}

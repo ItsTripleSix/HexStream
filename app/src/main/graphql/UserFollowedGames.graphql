@@ -1,0 +1,18 @@
+query UserFollowedGames($first: Int) {
+    user {
+        followedGames(first: $first, type: ALL) {
+            nodes {
+                boxArtURL
+                broadcastersCount
+                displayName
+                id
+                slug
+                tags(tagType: CONTENT) {
+                    id
+                    localizedName
+                }
+                viewersCount
+            }
+        }
+    }
+}

@@ -1,0 +1,133 @@
+package com.github.andreyasadchy.xtra.repository.datasource
+
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.github.andreyasadchy.xtra.model.ui.Video
+import com.github.andreyasadchy.xtra.repository.GraphQLRepository
+import com.github.andreyasadchy.xtra.util.C
+
+class SearchVideosDataSource(
+    private val query: String,
+    private val gqlHeaders: Map<String, String>,
+    private val graphQLRepository: GraphQLRepository,
+    private val enableIntegrity: Boolean,
+    private val networkLibrary: String?,
+) : PagingSource<Int, Video>() {
+    private var api: String? = null
+    private var offset: String? = null
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Video> {
+        return if (query.isBlank()) {
+            LoadResult.Page(
+                data = emptyList(),
+                prevKey = null,
+                nextKey = null
+            )
+        } else {
+            if (!offset.isNullOrBlank()) {
+                try {
+                    loadFromApi(params)
+                } catch (e: Exception) {
+                    LoadResult.Error(e)
+                }
+            } else {
+                try {
+                    api = C.GQL
+                    loadFromApi(params)
+                } catch (e: Exception) {
+                    try {
+                        api = C.GQL_PERSISTED_QUERY
+                        loadFromApi(params)
+                    } catch (e: Exception) {
+                        LoadResult.Error(e)
+                    }
+                }
+            }
+        }
+    }
+
+    private suspend fun loadFromApi(params: LoadParams<Int>): LoadResult<Int, Video> {
+        return when (api) {
+            C.GQL -> gqlQueryLoad(params)
+            C.GQL_PERSISTED_QUERY -> gqlLoad(params)
+            else -> throw Exception()
+        }
+    }
+
+    private suspend fun gqlQueryLoad(params: LoadParams<Int>): LoadResult<Int, Video> {
+        val response = graphQLRepository.loadQuerySearchVideos(networkLibrary, gqlHeaders, query, params.loadSize, offset)
+        if (enableIntegrity) {
+            response.errors?.find { it.message == C.FAILED_INTEGRITY_CHECK }?.let { return LoadResult.Error(Exception(it.message)) }
+        }
+        val data = response.data!!.searchFor!!.videos!!
+        val list = data.items!!.map {
+            Video(
+                id = it.id,
+                channelId = it.owner?.id,
+                channelLogin = it.owner?.login,
+                channelName = it.owner?.displayName,
+                channelImageURL = it.owner?.profileImageURL,
+                gameId = it.game?.id,
+                gameSlug = it.game?.slug,
+                gameName = it.game?.displayName,
+                title = it.title,
+                thumbnailURL = it.previewThumbnailURL,
+                createdAt = it.createdAt?.toString(),
+                viewCount = it.viewCount,
+                durationSeconds = it.lengthSeconds,
+                type = it.broadcastType?.toString(),
+                animatedPreviewURL = it.animatedPreviewURL,
+            )
+        }
+        offset = data.cursor
+        val nextPage = data.pageInfo?.hasNextPage != false
+        return LoadResult.Page(
+            data = com.github.andreyasadchy.xtra.util.ContentFilters.filter(list),
+            prevKey = null,
+            nextKey = if (!offset.isNullOrBlank() && nextPage) {
+                (params.key ?: 1) + 1
+            } else null
+        )
+    }
+
+    private suspend fun gqlLoad(params: LoadParams<Int>): LoadResult<Int, Video> {
+        val response = graphQLRepository.loadSearchVideos(networkLibrary, gqlHeaders, query, offset)
+        if (enableIntegrity) {
+            response.errors?.find { it.message == C.FAILED_INTEGRITY_CHECK }?.let { return LoadResult.Error(Exception(it.message)) }
+        }
+        val data = response.data!!.searchFor.videos
+        val list = data.edges.map { item ->
+            item.item.let {
+                Video(
+                    id = it.id,
+                    channelId = it.owner?.id,
+                    channelLogin = it.owner?.login,
+                    channelName = it.owner?.displayName,
+                    gameId = it.game?.id,
+                    gameSlug = it.game?.slug,
+                    gameName = it.game?.displayName,
+                    title = it.title,
+                    thumbnailURL = it.previewThumbnailURL,
+                    createdAt = it.createdAt,
+                    viewCount = it.viewCount,
+                    durationSeconds = it.lengthSeconds,
+                )
+            }
+        }
+        offset = data.cursor
+        return LoadResult.Page(
+            data = com.github.andreyasadchy.xtra.util.ContentFilters.filter(list),
+            prevKey = null,
+            nextKey = if (!offset.isNullOrBlank()) {
+                (params.key ?: 1) + 1
+            } else null
+        )
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, Video>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+        }
+    }
+}

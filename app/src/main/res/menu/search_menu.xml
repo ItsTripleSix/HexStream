@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/searchUser"
+        android:title="@string/search_user"
+        app:showAsAction="never" />
+    <item android:id="@+id/prototype_accounts" android:title="@string/prototype_accounts" app:showAsAction="never" />
+    <item android:id="@+id/prototype_blocked_tags" android:title="@string/prototype_blocked_tags" app:showAsAction="never" />
+</menu>

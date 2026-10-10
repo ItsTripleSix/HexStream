@@ -1,0 +1,89 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="debug_chat_fullmsg"
+        android:title="@string/show_copy_fullmsg"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="debug_api_commands"
+        android:title="@string/debug_api_commands"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="debug_api_chat_messages"
+        android:title="@string/use_api_chat_messages"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="debug_websocket_info"
+        android:title="@string/show_more_websocket_info"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <ListPreference
+        android:defaultValue="ExoPlayer"
+        android:entries="@array/playerEntries"
+        android:entryValues="@array/playerEntries"
+        android:key="player"
+        android:summary="%s"
+        android:title="@string/player"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="debug_eventsub_chat"
+        android:title="@string/use_eventsub_chat"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="debug_player_menu_playlist_tags"
+        android:title="@string/show_playlist_tags"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="enable_integrity"
+        android:title="@string/use_integrity"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="use_webview_integrity"
+        android:title="@string/get_webview_integrity"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="get_all_gql_headers"
+        android:title="@string/get_all_headers"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <EditTextPreference
+        android:key="gql_headers"
+        android:title="@string/gql_headers"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <Preference
+        android:key="get_integrity_token"
+        android:title="@string/get_integrity_token"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+</androidx.preference.PreferenceScreen>

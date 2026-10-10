@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">Die Kontoänderung konnte nicht gespeichert werden. Bitte versuche es erneut.</string>
+    <string name="hex_browser_retry">Der Anmeldebrowser wurde beendet. Öffne diesen Bildschirm erneut, um es noch einmal zu versuchen.</string>
+    <string name="hex_points">Punkte</string>
+    <string name="hex_points_balance">Guthaben: %1$s</string>
+    <string name="hex_unavailable">nicht verfügbar</string>
+    <string name="hex_reward_cost">%1$s · Punkte: %2$d</string>
+    <string name="hex_rules_count">Angezeigt: %1$d · Regeln: %2$d</string>
+    <string name="hex_blocks_count">Angezeigt: %1$d · zuletzt blockiert: %2$d</string>
+    <string name="hex_blocked_section">Blockiert: %1$s</string>
+    <string name="hex_rule_section_tags">Tags</string>
+    <string name="hex_rule_section_channels">Kanäle</string>
+    <string name="hex_rule_section_titles">Titel</string>
+    <string name="hex_rule_section_categories">Kategorien</string>
+    <string name="hex_details_show">Details und Beispiele ▾</string>
+    <string name="hex_details_hide">Erklärung ausblenden ▴</string>
+    <string name="hex_search_rules">Regeln suchen</string>
+    <string name="hex_done">Fertig</string>
+    <string name="hex_search_blocked">Kanäle, Titel oder Regeln suchen</string>
+    <string name="hex_no_custom_rewards">Keine benutzerdefinierten Belohnungen verfügbar. Öffne Twitch für weitere Belohnungen.</string>
+    <string name="hex_enter_message">Nachricht eingeben</string>
+    <string name="hex_points_sign_in">Melde dich an, um Kanalpunkte zu verwenden.</string>
+    <string name="hex_ok">OK</string>
+    <string name="hex_channel_points">Kanalpunkte</string>
+    <string name="hex_close">Schließen</string>
+    <string name="hex_open_twitch">Twitch öffnen</string>
+    <string name="hex_cancel">Abbrechen</string>
+    <string name="hex_redeem">Einlösen</string>
+    <string name="hex_no_bonus">Kein Bonus verfügbar</string>
+    <string name="hex_claim_bonus">Bonuspunkte abholen</string>
+</resources>

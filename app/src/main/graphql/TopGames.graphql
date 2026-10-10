@@ -1,0 +1,22 @@
+query TopGames($tags: [String!], $first: Int, $after: Cursor) {
+    games(first: $first, after: $after, options: { tags: $tags }) {
+        edges {
+            cursor
+            node {
+                boxArtURL
+                broadcastersCount
+                displayName
+                id
+                slug
+                tags(tagType: CONTENT) {
+                    id
+                    localizedName
+                }
+                viewersCount
+            }
+        }
+        pageInfo {
+            hasNextPage
+        }
+    }
+}

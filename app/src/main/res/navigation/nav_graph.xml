@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/rootTopFragment">
+
+    <fragment
+        android:id="@+id/rootGamesFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.games.GamesFragment">
+        <argument
+            android:name="tags"
+            app:argType="com.github.andreyasadchy.xtra.model.ui.Tag[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/rootTopFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.top.TopStreamsFragment">
+        <argument
+            android:name="tags"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="languages"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/gamesFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.games.GamesFragment">
+        <argument
+            android:name="tags"
+            app:argType="com.github.andreyasadchy.xtra.model.ui.Tag[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_gamesFragment"
+        app:destination="@id/gamesFragment" />
+    <fragment
+        android:id="@+id/topFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.top.TopStreamsFragment">
+        <argument
+            android:name="tags"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="languages"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_topFragment"
+        app:destination="@id/topFragment" />
+    <fragment
+        android:id="@+id/followPagerFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.following.FollowPagerFragment" />
+    <fragment
+        android:id="@+id/followMediaFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.following.FollowMediaFragment" />
+    <fragment
+        android:id="@+id/savedPagerFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.saved.SavedPagerFragment" />
+    <fragment
+        android:id="@+id/savedMediaFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.saved.SavedMediaFragment" />
+    <fragment
+        android:id="@+id/searchPagerFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.search.SearchPagerFragment" />
+    <action
+        android:id="@+id/action_global_searchPagerFragment"
+        app:destination="@id/searchPagerFragment" />
+    <fragment
+        android:id="@+id/gamePagerFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.game.GamePagerFragment">
+        <argument
+            android:name="gameId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="gameSlug"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="gameName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="boxArt"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="tags"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="languages"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="updateLocal"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_gamePagerFragment"
+        app:destination="@id/gamePagerFragment" />
+    <fragment
+        android:id="@+id/gameMediaFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.game.GameMediaFragment">
+        <argument
+            android:name="gameId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="gameSlug"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="gameName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="boxArt"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="tags"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="languages"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="updateLocal"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_gameMediaFragment"
+        app:destination="@id/gameMediaFragment" />
+    <fragment
+        android:id="@+id/channelPagerFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.channel.ChannelPagerFragment">
+        <argument
+            android:name="channelId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="channelLogin"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="channelName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="channelImage"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="updateLocal"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="streamId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_channelPagerFragment"
+        app:destination="@id/channelPagerFragment" />
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.github.andreyasadchy.xtra.ui.team.TeamFragment">
+        <argument
+            android:name="teamName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_teamFragment"
+        app:destination="@id/teamFragment" />
+</navigation>

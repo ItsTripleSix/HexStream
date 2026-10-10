@@ -1,0 +1,8 @@
+query Badges($quality: BadgeImageSize) {
+    badges {
+        imageURL(size: $quality)
+        setID
+        title
+        version
+    }
+}

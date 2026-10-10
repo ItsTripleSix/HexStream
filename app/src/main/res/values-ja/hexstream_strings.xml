@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">アカウントの変更を保存できませんでした。もう一度お試しください。</string>
+    <string name="hex_browser_retry">ログイン用ブラウザが停止しました。この画面を開き直して再試行してください。</string>
+    <string name="hex_points">ポイント</string>
+    <string name="hex_points_balance">残高：%1$s</string>
+    <string name="hex_unavailable">取得できません</string>
+    <string name="hex_reward_cost">%1$s · ポイント：%2$d</string>
+    <string name="hex_rules_count">表示：%1$d · ルール：%2$d</string>
+    <string name="hex_blocks_count">表示：%1$d · 最近のブロック：%2$d</string>
+    <string name="hex_blocked_section">ブロック対象：%1$s</string>
+    <string name="hex_rule_section_tags">タグ</string>
+    <string name="hex_rule_section_channels">チャンネル</string>
+    <string name="hex_rule_section_titles">タイトル</string>
+    <string name="hex_rule_section_categories">カテゴリー</string>
+    <string name="hex_details_show">詳細と例 ▾</string>
+    <string name="hex_details_hide">説明を隠す ▴</string>
+    <string name="hex_search_rules">ルールを検索</string>
+    <string name="hex_done">完了</string>
+    <string name="hex_search_blocked">チャンネル、タイトル、ルールを検索</string>
+    <string name="hex_no_custom_rewards">カスタム報酬はありません。他の報酬はTwitchで確認してください。</string>
+    <string name="hex_enter_message">メッセージを入力</string>
+    <string name="hex_points_sign_in">チャンネルポイントを使うにはログインしてください。</string>
+    <string name="hex_ok">OK</string>
+    <string name="hex_channel_points">チャンネルポイント</string>
+    <string name="hex_close">閉じる</string>
+    <string name="hex_open_twitch">Twitchを開く</string>
+    <string name="hex_cancel">キャンセル</string>
+    <string name="hex_redeem">交換</string>
+    <string name="hex_no_bonus">ボーナスはありません</string>
+    <string name="hex_claim_bonus">ボーナスポイントを受け取る</string>
+</resources>

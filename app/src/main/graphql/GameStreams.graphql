@@ -1,0 +1,31 @@
+query GameStreams($id: ID, $slug: String, $name: String, $sort: StreamSort, $tags: [String!], $languages: [Language!], $first: Int, $after: Cursor) {
+    game(id: $id, slug: $slug, name: $name) {
+        streams(first: $first, after: $after, options: { sort: $sort, freeformTags: $tags, broadcasterLanguages: $languages }) {
+            edges {
+                cursor
+                node {
+                    broadcaster {
+                        broadcastSettings {
+                        language
+                            title
+                        }
+                        displayName
+                        id
+                        login
+                        profileImageURL(width: 300)
+                    }
+                    createdAt
+                    freeformTags {
+                        name
+                    }
+                    id
+                    previewImageURL
+                    viewersCount
+                }
+            }
+            pageInfo {
+                hasNextPage
+            }
+        }
+    }
+}

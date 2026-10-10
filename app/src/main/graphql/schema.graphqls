@@ -1,0 +1,713 @@
+type Query {
+    badges: [Badge]
+    cheerConfig: GlobalCheerConfig
+    clip(slug: ID!): Clip
+    contentTag(id: ID!): Tag
+    emote(id: ID!): Emote
+    games(first: Int, after: Cursor, options: GameOptions): GameConnection
+    game(id: ID, slug: String, name: String): Game
+    searchCategories(query: String!, first: Int, after: Cursor): SearchCategoriesConnection
+    searchCategoryTags(userQuery: String!, limit: Int): [Tag!]
+    searchFor(userQuery: String!, platform: String!, target: SearchForTarget): SearchFor
+    searchFreeformTags(userQuery: String!, first: Int): SearchFreeformTagConnection
+    searchStreams(userQuery: String!, first: Int, after: Cursor): SearchStreamConnection
+    searchUsers(userQuery: String!, first: Int, after: Cursor): SearchUserConnection
+    streamPlaybackAccessToken(channelName: String!, params: PlaybackAccessTokenParams!): PlaybackAccessToken
+    streams(first: Int, after: Cursor, options: StreamOptions): StreamConnection
+    team(name: String!): Team
+    user(id: ID, login: String, lookupType: UserLookupType): User
+    userResultByID(id: ID!): UserResult
+    userResultByLogin(login: String!): UserResult
+    users(ids: [ID!], logins: [String!]): [User]
+    video(id: ID): Video
+    videoPlaybackAccessToken(id: ID!, params: PlaybackAccessTokenParams!): PlaybackAccessToken
+}
+
+type Badge {
+    imageURL(size: BadgeImageSize): String
+    setID: ID
+    title: String
+    version: String
+}
+
+type Broadcast {
+    startedAt: Time
+}
+
+type BroadcastSettings {
+    language: String
+    title: String
+}
+
+type Channel {
+    chatters: ChattersInfo
+    socialMedias: [SocialMedia!]
+}
+
+type ChannelNotificationSettings {
+    isEnabled: Boolean
+}
+
+type Chatter {
+    login: String
+}
+
+type ChattersInfo {
+    broadcasters: [Chatter!]
+    count: Int
+    moderators: [Chatter!]
+    viewers: [Chatter!]
+    vips: [Chatter!]
+}
+
+type CheerInfo {
+    cheerGroups: [CheermoteGroup!]
+}
+
+type Cheermote {
+    prefix: String
+    tiers: [CheermoteTier]
+}
+
+type CheermoteColorConfig {
+    bits: Int
+    color: String
+}
+
+type CheermoteDisplayConfig {
+    backgrounds: [String!]
+    colors: [CheermoteColorConfig!]
+    scales: [String!]
+    types: [CheermoteDisplayType!]
+}
+
+type CheermoteDisplayType {
+    animation: String
+    extension: String
+}
+
+type CheermoteGroup {
+    nodes: [Cheermote!]
+    templateURL: String
+}
+
+type CheermoteTier {
+    bits: Int
+}
+
+type Clip {
+    assets: [ClipAsset]
+    broadcaster: User
+    createdAt: Time
+    durationSeconds: Int
+    game: Game
+    id: ID
+    playbackAccessToken(params: PlaybackAccessTokenParams!): PlaybackAccessToken
+    slug: String
+    thumbnailURL: String
+    title: String
+    video: Video
+    videoOffsetSeconds: Int
+    viewCount: Int
+}
+
+type ClipAsset {
+    aspectRatio: Float,
+    videoQualities: [ClipVideoQuality]
+    portraitMetadata: PortraitClipCropping
+}
+
+type ClipConnection {
+    edges: [ClipEdge]
+    pageInfo: PageInfo
+}
+
+type ClipEdge {
+    cursor: Cursor
+    node: Clip
+}
+
+type ClipVideoQuality {
+    bitrate: Int
+    codecs: String
+    frameRate: Float
+    quality: String
+    sourceURL: String
+}
+
+type DefaultPanel implements Panel {
+    description: String
+    id: ID
+    imageURL: String
+    linkURL: String
+    title: String
+}
+
+type EmbeddedEmote {
+    emoteID: ID
+}
+
+type Emote {
+    bitsBadgeTierSummary: EmoteBitsBadgeTierSummary
+    id: ID
+    owner: User
+    setID: ID
+    subscriptionTier: SubscriptionSummaryTier
+    token: String
+    type: EmoteType
+}
+
+type EmoteBitsBadgeTierSummary {
+    threshold: Int
+}
+
+type EmoteSet {
+    emotes: [Emote]
+}
+
+type Follow {
+    followedAt: Time
+}
+
+type FollowConnection {
+    edges: [FollowEdge]
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type FollowedGameConnection {
+    nodes: [Game]
+}
+
+type FollowEdge {
+    cursor: Cursor
+    followedAt: Time
+    node: User
+}
+
+type FollowedLiveUserConnection {
+    edges: [FollowedLiveUserEdge]
+    pageInfo: PageInfo
+}
+
+type FollowedLiveUserEdge {
+    cursor: Cursor
+    node: User
+}
+
+type FollowerConnection {
+    totalCount: Int
+}
+
+type FollowerEdge {
+    followedAt: Time
+    notificationSettings: ChannelNotificationSettings
+}
+
+type FreeformTag {
+    name: String
+}
+
+type Game {
+    boxArtURL(width: Int, height: Int): String
+    broadcastersCount: Int
+    clips(first: Int, after: Cursor, criteria: GameClipsInput): ClipConnection
+    displayName: String
+    followersCount: Int
+    id: ID
+    self: GameSelfConnection
+    slug: String
+    streams(first: Int, after: Cursor, options: GameStreamOptions): StreamConnection
+    tags(tagType: TagType!): [Tag!]
+    videos(first: Int, after: Cursor, languages: [String!], types: [BroadcastType!], sort: VideoSort): VideoConnection
+    viewersCount: Int
+}
+
+type GameChangeMomentDetails {
+    game: Game
+}
+
+type GameConnection {
+    edges: [GameEdge]
+    pageInfo: PageInfo
+}
+
+type GameEdge {
+    cursor: Cursor
+    node: Game
+}
+
+type GameFollow {
+    followedAt: Time
+}
+
+type GameSelfConnection {
+    follow: GameFollow
+}
+
+type GlobalCheerConfig {
+    displayConfig: CheermoteDisplayConfig
+    groups: [CheermoteGroup!]
+}
+
+type PageInfo {
+    hasNextPage: Boolean
+    hasPreviousPage: Boolean
+}
+
+type PlaybackAccessToken {
+    signature: String
+    value: String
+}
+
+type PortraitClipCropping {
+    portraitClipLayout: String
+}
+
+type SearchCategoriesConnection {
+    edges: [SearchCategoriesEdge!]
+    pageInfo: PageInfo
+}
+
+type SearchCategoriesEdge {
+    cursor: Cursor
+    node: Game
+}
+
+type SearchFor {
+    channels: SearchForResultUsers
+    games: SearchForResultGames
+    videos: SearchForResultVideos
+}
+
+type SearchForResultGames {
+    cursor: String
+    items: [Game!]
+    pageInfo: PageInfo
+}
+
+type SearchForResultUsers {
+    cursor: String
+    items: [User!]
+    pageInfo: PageInfo
+}
+
+type SearchForResultVideos {
+    cursor: String
+    items: [Video!]
+    pageInfo: PageInfo
+}
+
+type SearchFreeformTagItem {
+    tagName: String
+}
+
+type SearchFreeformTagConnection {
+    edges: [SearchFreeformTagEdge]
+}
+
+type SearchFreeformTagEdge {
+    node: SearchFreeformTagItem
+}
+
+type SearchStreamConnection {
+    edges: [SearchStreamEdge!]
+    pageInfo: PageInfo
+}
+
+type SearchStreamEdge {
+    cursor: Cursor
+    node: Stream
+}
+
+type SearchUserConnection {
+    edges: [SearchUserEdge!]
+    pageInfo: PageInfo
+}
+
+type SearchUserEdge {
+    cursor: Cursor
+    node: User
+}
+
+type SocialMedia {
+    title: String
+    url: String
+}
+
+type Stream {
+    broadcaster: User
+    createdAt: Time
+    freeformTags: [FreeformTag!]
+    game: Game
+    id: ID
+    previewImageURL: String
+    title: String
+    viewersCount: Int
+}
+
+type StreamConnection {
+    edges: [StreamEdge]
+    pageInfo: PageInfo
+}
+
+type StreamEdge {
+    cursor: Cursor
+    node: Stream
+}
+
+type SubscriptionProduct {
+    name: String
+    tier: String
+}
+
+type Tag {
+    id: ID
+    localizedName: String
+    scope: TagScope
+}
+
+type Team {
+    bannerURL: String
+    description: String
+    displayName: String
+    liveMembers(first: Int, after: Cursor): UserConnection
+    logoURL: String
+    members(first: Int, after: Cursor, metricsRevealedFilter: MemberMetricsRevealedParams): UserConnection
+    name: String
+    owner: User
+}
+
+type User {
+    bannerImageURL: String
+    broadcastBadges: [Badge]
+    broadcastSettings: BroadcastSettings,
+    channel: Channel
+    cheer: CheerInfo
+    clips(first: Int, after: Cursor, criteria: UserClipsInput): ClipConnection
+    createdAt: Time
+    description: String
+    displayName: String
+    emoteSets: [EmoteSet!]
+    follow(targetID: ID, targetLogin: String): Follow
+    followedGames(first: Int, type: FollowedGamesType): FollowedGameConnection
+    followedLiveUsers(first: Int, after: Cursor, sort: StreamSort): FollowedLiveUserConnection
+    followedVideos(first: Int, after: Cursor, languages: [String!], types: [BroadcastType!], sort: VideoSort): VideoConnection
+    followers: FollowerConnection
+    follows(first: Int, after: Cursor, order: SortOrder): FollowConnection
+    id: ID
+    login: String
+    lastBroadcast: Broadcast
+    panels(hideExtensions: Boolean): [Panel]
+    primaryTeam: Team
+    profileImageURL(width: Int): String
+    roles: UserRoles
+    self: UserSelfConnection
+    stream: Stream
+    subscriptionProducts: [SubscriptionProduct]
+    videos(first: Int, after: Cursor, types: [BroadcastType!], sort: VideoSort): VideoConnection
+}
+
+type UserConnection {
+    edges: [UserEdge]
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type UserDoesNotExist {
+    key: String!
+    reason: String!
+}
+
+type UserEdge {
+    cursor: Cursor
+    node: User
+}
+
+type UserError {
+    key: String!
+}
+
+type UserRoles {
+    isAffiliate: Boolean
+    isPartner: Boolean
+    isStaff: Boolean
+}
+
+type UserSelfConnection {
+    follower: FollowerEdge
+}
+
+type Video {
+    animatedPreviewURL: String
+    broadcastType: BroadcastType
+    comments(first: Int, after: Cursor, last: Int, Before: Cursor, contentOffsetSeconds: Int): VideoCommentConnection
+    contentTags: [Tag!]
+    createdAt: Time
+    game: Game
+    id: ID
+    lengthSeconds: Int
+    moments(first: Int, after: Cursor, sort: SortOrder, types: [VideoMomentType], momentRequestType: VideoMomentRequestType): VideoMomentConnection
+    owner: User
+    previewThumbnailURL: String
+    title: String
+    viewCount: Int
+}
+
+type VideoComment {
+    commenter: User
+    contentOffsetSeconds: Int
+    createdAt: Time
+    id: ID
+    message: VideoCommentMessage
+}
+
+type VideoCommentConnection {
+    edges: [VideoCommentEdge]
+    pageInfo: PageInfo
+}
+
+type VideoCommentEdge {
+    cursor: Cursor
+    node: VideoComment
+}
+
+type VideoCommentMessage {
+    fragments: [VideoCommentMessageFragment]
+    userBadges: [Badge]
+    userColor: String
+}
+
+type VideoCommentMessageFragment {
+    emote: EmbeddedEmote
+    text: String
+}
+
+type VideoConnection {
+    edges: [VideoEdge]
+    pageInfo: PageInfo
+}
+
+type VideoEdge {
+    cursor: Cursor
+    node: Video
+}
+
+type VideoMoment {
+    details: VideoMomentDetails
+    durationMilliseconds: Int
+    positionMilliseconds: Int
+}
+
+type VideoMomentConnection {
+    edges: [VideoMomentEdge!]
+    pageInfo: PageInfo
+}
+
+type VideoMomentEdge {
+    cursor: Cursor
+    node: VideoMoment
+}
+
+interface Panel {
+    id: ID
+}
+
+input GameClipsInput {
+    languages: [Language!]
+    period: ClipsPeriod
+    sort: ClipsSort
+}
+
+input GameOptions {
+    tags: [String!]
+}
+
+input GameStreamOptions {
+    broadcasterLanguages: [Language!]
+    freeformTags: [String!]
+    sort: StreamSort
+}
+
+input PlaybackAccessTokenParams {
+    platform: String!
+    playerType: String!
+}
+
+input SearchForTarget {
+    cursor: String
+    index: SearchIndex
+    limit: Int
+}
+
+input StreamOptions {
+    broadcasterLanguages: [Language!]
+    freeformTags: [String!]
+    sort: StreamSort
+}
+
+input UserClipsInput {
+    period: ClipsPeriod
+    sort: ClipsSort
+}
+
+enum BadgeImageSize {
+    NORMAL
+    DOUBLE
+    QUADRUPLE
+}
+
+enum BroadcastType {
+    ARCHIVE
+    HIGHLIGHT
+    UPLOAD
+    PREMIERE_UPLOAD
+    PAST_PREMIERE
+}
+
+enum ClipsPeriod {
+    LAST_DAY
+    LAST_WEEK
+    LAST_MONTH
+    ALL_TIME
+}
+
+enum ClipsSort {
+    CREATED_AT_ASC
+    CREATED_AT_DESC
+    VIEWS_ASC
+    VIEWS_DESC
+    TRENDING
+}
+
+enum EmoteType {
+    CHANNEL_POINTS
+    BITS_BADGE_TIERS
+    SUBSCRIPTIONS
+    PRIME
+    TURBO
+    TWO_FACTOR
+    SMILIES
+    GLOBALS
+    LIMITED_TIME
+    HYPE_TRAIN
+    MEGA_COMMERCE
+    ARCHIVE
+    FOLLOWER
+    UNKNOWN
+}
+
+enum FollowedGamesType {
+    LIVE
+    ALL
+}
+
+enum Language {
+    AR
+    ASL
+    BG
+    CA
+    CS
+    DA
+    DE
+    EL
+    EN
+    ES
+    FI
+    FR
+    HI
+    HU
+    ID
+    IT
+    JA
+    KO
+    MS
+    NL
+    NO
+    OTHER
+    PL
+    PT
+    RO
+    RU
+    SK
+    SV
+    TH
+    TL
+    TR
+    UK
+    VI
+    ZH
+    ZH_HK
+}
+
+enum MemberMetricsRevealedParams {
+    NONE
+    STATS
+    REVENUE
+    STATS_AND_REVENUE
+}
+
+enum SearchIndex {
+    GAME
+    VOD
+    CHANNEL
+}
+
+enum SortOrder {
+    ASC
+    DESC
+}
+
+enum StreamSort {
+    VIEWER_COUNT
+    VIEWER_COUNT_ASC
+    RECENT
+    RELEVANCE
+}
+
+enum SubscriptionSummaryTier {
+    TIER_1
+    TIER_2
+    TIER_3
+}
+
+enum TagScope {
+    ALL
+    CATEGORY
+}
+
+enum TagType {
+    CONTENT
+    TOP
+}
+
+enum UserLookupType {
+    ACTIVE
+    ALL
+}
+
+enum VideoMomentRequestType {
+    HIGHLIGHTER_SUGGESTIONS
+    VIDEO_CHAPTER_MARKERS
+}
+
+enum VideoMomentType {
+    STREAM_MARKER
+    GAME_CHANGE
+}
+
+enum VideoSort {
+    TIME
+    TIME_ASC
+    VIEWS
+}
+
+union UserResult = User | UserDoesNotExist | UserError
+union VideoMomentDetails = GameChangeMomentDetails
+
+scalar Cursor
+scalar Time
+
+schema {
+    query: Query
+}

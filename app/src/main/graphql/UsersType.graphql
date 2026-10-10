@@ -1,0 +1,10 @@
+query UsersType($ids: [ID!], $logins: [String!]) {
+    users(ids: $ids, logins: $logins) {
+        id
+        roles {
+            isAffiliate
+            isPartner
+            isStaff
+        }
+    }
+}

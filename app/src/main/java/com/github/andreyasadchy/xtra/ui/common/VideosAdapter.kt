@@ -1,0 +1,277 @@
+package com.github.andreyasadchy.xtra.ui.common
+
+import android.content.Intent
+import android.text.format.DateUtils
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import coil3.imageLoader
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
+import coil3.request.crossfade
+import coil3.request.target
+import coil3.request.transformations
+import coil3.transform.CircleCropTransformation
+import com.github.andreyasadchy.xtra.R
+import com.github.andreyasadchy.xtra.databinding.FragmentVideosListItemBinding
+import com.github.andreyasadchy.xtra.model.VideoPosition
+import com.github.andreyasadchy.xtra.model.ui.Bookmark
+import com.github.andreyasadchy.xtra.model.ui.Video
+import com.github.andreyasadchy.xtra.ui.channel.ChannelPagerFragmentDirections
+import com.github.andreyasadchy.xtra.ui.game.GameMediaFragmentDirections
+import com.github.andreyasadchy.xtra.ui.game.GamePagerFragmentDirections
+import com.github.andreyasadchy.xtra.ui.main.MainActivity
+import com.github.andreyasadchy.xtra.util.C
+import com.github.andreyasadchy.xtra.util.TwitchApiHelper
+import com.github.andreyasadchy.xtra.util.prefs
+import kotlin.time.Instant
+
+class VideosAdapter(
+    private val fragment: Fragment,
+    private val showDownloadDialog: (Video) -> Unit,
+    private val saveBookmark: (Video) -> Unit,
+    private val showGame: Boolean = true,
+    private val showChannel: Boolean = true,
+) : PagingDataAdapter<Video, VideosAdapter.PagingViewHolder>(
+    object : DiffUtil.ItemCallback<Video>() {
+        override fun areItemsTheSame(oldItem: Video, newItem: Video): Boolean =
+            oldItem.id == newItem.id
+
+        override fun areContentsTheSame(oldItem: Video, newItem: Video): Boolean =
+            oldItem.viewCount == newItem.viewCount &&
+                    oldItem.thumbnailURL == newItem.thumbnailURL &&
+                    oldItem.title == newItem.title &&
+                    oldItem.durationSeconds == newItem.durationSeconds
+    }) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingViewHolder {
+        val binding = FragmentVideosListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return PagingViewHolder(binding, fragment, showGame, showChannel)
+    }
+
+    override fun onBindViewHolder(holder: PagingViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
+    private var positions = emptyMap<Long, Long>()
+
+    fun setVideoPositions(positions: List<VideoPosition>) {
+        val next = positions.associate { it.id to it.position }
+        val previous = this.positions
+        if (next == previous) return
+        this.positions = next
+        val rows = snapshot()
+        for (index in 0 until rows.size) {
+            val id = rows[index]?.id?.toLongOrNull() ?: continue
+            if (previous[id] != next[id]) notifyItemChanged(index)
+        }
+    }
+
+    private var bookmarks: List<Bookmark>? = null
+
+    fun setBookmarksList(list: List<Bookmark>) {
+        this.bookmarks = list
+    }
+
+    inner class PagingViewHolder(
+        private val binding: FragmentVideosListItemBinding,
+        private val fragment: Fragment,
+        private val showGame: Boolean,
+        private val showChannel: Boolean,
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Video?) {
+            with(binding) {
+                if (item != null) {
+                    val context = fragment.requireContext()
+                    val position = item.id?.toLongOrNull()?.let(positions::get)
+                    val startFromBeginning = position != null && item.durationSeconds != null && item.durationSeconds > 0 && position >= (item.durationSeconds * 1000)
+                            && item.thumbnail.let { it != null && !it.startsWith("https://vod-secure.twitch.tv/_404/404_processing") }
+                    root.setOnClickListener {
+                        (fragment.activity as MainActivity).startVideo(
+                            item,
+                            if (startFromBeginning) {
+                                0
+                            } else {
+                                position
+                            },
+                            startFromBeginning
+                        )
+                    }
+                    root.setOnLongClickListener {
+                        showDownloadDialog(item)
+                        true
+                    }
+                    fragment.requireContext().imageLoader.enqueue(
+                        ImageRequest.Builder(fragment.requireContext()).apply {
+                            data(item.thumbnail)
+                            diskCachePolicy(CachePolicy.DISABLED)
+                            crossfade(true)
+                            target(thumbnail)
+                        }.build()
+                    )
+                    if (item.createdAt != null) {
+                        val text = Instant.parseOrNull(item.createdAt)?.toEpochMilliseconds()?.takeIf { ms -> ms > 0 }?.let {
+                            TwitchApiHelper.formatDate(context, it)
+                        }
+                        if (text != null) {
+                            date.visibility = View.VISIBLE
+                            date.text = text
+                        } else {
+                            date.visibility = View.GONE
+                        }
+                    } else {
+                        date.visibility = View.GONE
+                    }
+                    if (item.viewCount != null) {
+                        views.visibility = View.VISIBLE
+                        val count = item.viewCount
+                        views.text = context.resources.getQuantityString(
+                            R.plurals.views,
+                            count,
+                            TwitchApiHelper.formatCount(count, context.prefs().getBoolean(C.UI_TRUNCATE_VIEW_COUNT, true))
+                        )
+                    } else {
+                        views.visibility = View.GONE
+                    }
+                    if (item.durationSeconds != null) {
+                        duration.visibility = View.VISIBLE
+                        duration.text = DateUtils.formatElapsedTime(item.durationSeconds.toLong())
+                    } else {
+                        duration.visibility = View.GONE
+                    }
+                    if (item.type != null) {
+                        val text = TwitchApiHelper.getType(context, item.type)
+                        if (text != null) {
+                            type.visibility = View.VISIBLE
+                            type.text = text
+                        } else {
+                            type.visibility = View.GONE
+                        }
+                    } else {
+                        type.visibility = View.GONE
+                    }
+                    if (position != null && item.durationSeconds != null && item.durationSeconds > 0L) {
+                        progressBar.progress = (position / (item.durationSeconds * 10)).toInt()
+                        progressBar.visibility = View.VISIBLE
+                    } else {
+                        progressBar.visibility = View.GONE
+                    }
+                    if (showChannel) {
+                        val channelListener: (View) -> Unit = {
+                            fragment.findNavController().navigate(
+                                ChannelPagerFragmentDirections.actionGlobalChannelPagerFragment(
+                                    channelId = item.channelId,
+                                    channelLogin = item.channelLogin,
+                                    channelName = item.channelName,
+                                    channelImage = item.channelImage,
+                                )
+                            )
+                        }
+                        if (item.channelImage != null) {
+                            userImage.visibility = View.VISIBLE
+                            fragment.requireContext().imageLoader.enqueue(
+                                ImageRequest.Builder(fragment.requireContext()).apply {
+                                    data(item.channelImage)
+                                    if (context.prefs().getBoolean(C.UI_ROUND_USER_IMAGE, true)) {
+                                        transformations(CircleCropTransformation())
+                                    }
+                                    crossfade(true)
+                                    target(userImage)
+                                }.build()
+                            )
+                            userImage.setOnClickListener(channelListener)
+                        } else {
+                            userImage.visibility = View.GONE
+                        }
+                        if (item.channelName != null) {
+                            username.visibility = View.VISIBLE
+                            username.text = if (item.channelLogin != null && !item.channelLogin.equals(item.channelName, true)) {
+                                when (context.prefs().getString(C.UI_NAME_DISPLAY, "0")) {
+                                    "0" -> "${item.channelName}(${item.channelLogin})"
+                                    "1" -> item.channelName
+                                    else -> item.channelLogin
+                                }
+                            } else {
+                                item.channelName
+                            }
+                            username.setOnClickListener(channelListener)
+                        } else {
+                            username.visibility = View.GONE
+                        }
+                    } else {
+                        userImage.visibility = View.GONE
+                        username.visibility = View.GONE
+                    }
+                    if (!item.title.isNullOrBlank()) {
+                        title.visibility = View.VISIBLE
+                        title.text = item.title.trim()
+                    } else {
+                        title.visibility = View.GONE
+                    }
+                    if (showGame && item.gameName != null) {
+                        val gameListener: (View) -> Unit = {
+                            fragment.findNavController().navigate(
+                                if (context.prefs().getBoolean(C.UI_GAME_PAGER, true)) {
+                                    GamePagerFragmentDirections.actionGlobalGamePagerFragment(
+                                        gameId = item.gameId,
+                                        gameSlug = item.gameSlug,
+                                        gameName = item.gameName
+                                    )
+                                } else {
+                                    GameMediaFragmentDirections.actionGlobalGameMediaFragment(
+                                        gameId = item.gameId,
+                                        gameSlug = item.gameSlug,
+                                        gameName = item.gameName
+                                    )
+                                }
+                            )
+                        }
+                        gameName.visibility = View.VISIBLE
+                        gameName.text = item.gameName
+                        gameName.setOnClickListener(gameListener)
+                    } else {
+                        gameName.visibility = View.GONE
+                    }
+                    options.setOnClickListener { it ->
+                        PopupMenu(context, it).apply {
+                            inflate(R.menu.media_item)
+                            if (!item.id.isNullOrBlank()) {
+                                menu.findItem(R.id.bookmark).isVisible = true
+                                if (bookmarks?.find { it.videoId == item.id } != null) {
+                                    menu.findItem(R.id.bookmark).title = context.getString(R.string.remove_bookmark)
+                                } else {
+                                    menu.findItem(R.id.bookmark).title = context.getString(R.string.add_bookmark)
+                                }
+                            }
+                            setOnMenuItemClickListener {
+                                when (it.itemId) {
+                                    R.id.download -> showDownloadDialog(item)
+                                    R.id.bookmark -> saveBookmark(item)
+                                    R.id.share -> {
+                                        context.startActivity(Intent.createChooser(Intent().apply {
+                                            action = Intent.ACTION_SEND
+                                            putExtra(Intent.EXTRA_TEXT, "https://twitch.tv/videos/${item.id}")
+                                            item.title?.let {
+                                                putExtra(Intent.EXTRA_TITLE, it)
+                                            }
+                                            type = "text/plain"
+                                        }, null))
+                                    }
+                                    else -> menu.close()
+                                }
+                                true
+                            }
+                            show()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

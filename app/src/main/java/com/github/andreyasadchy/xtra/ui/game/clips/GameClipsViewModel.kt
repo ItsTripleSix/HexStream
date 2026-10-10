@@ -1,0 +1,139 @@
+package com.github.andreyasadchy.xtra.ui.game.clips
+
+import android.content.Context
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
+import com.github.andreyasadchy.xtra.XtraApp
+import com.github.andreyasadchy.xtra.graphql.type.ClipsPeriod
+import com.github.andreyasadchy.xtra.graphql.type.Language
+import com.github.andreyasadchy.xtra.model.ui.GameSort
+import com.github.andreyasadchy.xtra.repository.GameSortRepository
+import com.github.andreyasadchy.xtra.repository.GraphQLRepository
+import com.github.andreyasadchy.xtra.repository.HelixRepository
+import com.github.andreyasadchy.xtra.repository.datasource.GameClipsDataSource
+import com.github.andreyasadchy.xtra.ui.common.VideosSortDialog
+import com.github.andreyasadchy.xtra.ui.game.GamePagerFragmentArgs
+import com.github.andreyasadchy.xtra.util.C
+import com.github.andreyasadchy.xtra.util.TwitchApiHelper
+import com.github.andreyasadchy.xtra.util.prefs
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlin.time.Clock
+import kotlin.time.Duration.Companion.days
+
+class GameClipsViewModel(
+    private val applicationContext: Context,
+    private val gameSortRepository: GameSortRepository,
+    private val graphQLRepository: GraphQLRepository,
+    private val helixRepository: HelixRepository,
+    savedStateHandle: SavedStateHandle,
+) : ViewModel() {
+
+    private val args = GamePagerFragmentArgs.fromSavedStateHandle(savedStateHandle)
+    val filter = MutableStateFlow<Filter?>(null)
+    val sortText = MutableStateFlow<CharSequence?>(null)
+    val filtersText = MutableStateFlow<CharSequence?>(null)
+
+    val period: String
+        get() = filter.value?.period ?: VideosSortDialog.PERIOD_WEEK
+    val languages: Array<String>
+        get() = filter.value?.languages ?: emptyArray()
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val flow = filter.flatMapLatest {
+        Pager(
+            PagingConfig(pageSize = 20, prefetchDistance = 3, initialLoadSize = 20)
+        ) {
+            val started = when (period) {
+                VideosSortDialog.PERIOD_ALL -> null
+                else -> {
+                    val days = when (period) {
+                        VideosSortDialog.PERIOD_DAY -> 1
+                        VideosSortDialog.PERIOD_WEEK -> 7
+                        VideosSortDialog.PERIOD_MONTH -> 30
+                        else -> 7
+                    }
+                    (Clock.System.now() - days.days).toString()
+                }
+            }
+            val ended = when (period) {
+                VideosSortDialog.PERIOD_ALL -> null
+                else -> Clock.System.now().toString()
+            }
+            val gqlQueryPeriod = when (period) {
+                VideosSortDialog.PERIOD_DAY -> ClipsPeriod.LAST_DAY
+                VideosSortDialog.PERIOD_WEEK -> ClipsPeriod.LAST_WEEK
+                VideosSortDialog.PERIOD_MONTH -> ClipsPeriod.LAST_MONTH
+                VideosSortDialog.PERIOD_ALL -> ClipsPeriod.ALL_TIME
+                else -> ClipsPeriod.LAST_WEEK
+            }
+            val gqlPeriod = when (period) {
+                VideosSortDialog.PERIOD_DAY -> "LAST_DAY"
+                VideosSortDialog.PERIOD_WEEK -> "LAST_WEEK"
+                VideosSortDialog.PERIOD_MONTH -> "LAST_MONTH"
+                VideosSortDialog.PERIOD_ALL -> "ALL_TIME"
+                else -> "LAST_WEEK"
+            }
+            GameClipsDataSource(
+                gameId = args.gameId,
+                gameSlug = args.gameSlug,
+                gameName = args.gameName,
+                gqlQueryLanguages = languages.ifEmpty { null }?.mapNotNull { language ->
+                    Language.entries.find { it.rawValue == language }
+                },
+                gqlQueryPeriod = gqlQueryPeriod,
+                gqlLanguages = languages.ifEmpty { null }?.toList(),
+                gqlPeriod = gqlPeriod,
+                startedAt = started,
+                endedAt = ended,
+                helixHeaders = TwitchApiHelper.getHelixHeaders(applicationContext),
+                helixRepository = helixRepository,
+                gqlHeaders = TwitchApiHelper.getGQLHeaders(applicationContext),
+                graphQLRepository = graphQLRepository,
+                enableIntegrity = applicationContext.prefs().getBoolean(C.ENABLE_INTEGRITY, false),
+                networkLibrary = applicationContext.prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP),
+            )
+        }.flow
+    }.cachedIn(viewModelScope)
+
+    suspend fun getGameSort(id: String): GameSort? {
+        return gameSortRepository.getById(id)
+    }
+
+    suspend fun saveGameSort(item: GameSort) {
+        gameSortRepository.save(item)
+    }
+
+    suspend fun deleteGameSort(item: GameSort) {
+        gameSortRepository.delete(item)
+    }
+
+    fun setFilter(period: String?, languages: Array<String>?) {
+        filter.value = Filter(period, languages)
+    }
+
+    class Filter(
+        val period: String?,
+        val languages: Array<String>?,
+    )
+
+    companion object {
+        val GameClipsViewModelFactory = viewModelFactory {
+            initializer {
+                val savedStateHandle = createSavedStateHandle()
+                val application = (this[APPLICATION_KEY] as XtraApp)
+                val xtraModule = application.xtraModule
+                GameClipsViewModel(application.applicationContext, xtraModule.gameSortRepository, xtraModule.graphQLRepository, xtraModule.helixRepository, savedStateHandle)
+            }
+        }
+    }
+}

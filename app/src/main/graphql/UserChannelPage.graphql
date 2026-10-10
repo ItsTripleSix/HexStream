@@ -1,0 +1,33 @@
+query UserChannelPage($id: ID, $login: String) {
+    user(id: $id, login: $login, lookupType: ALL) {
+        bannerImageURL
+        createdAt
+        displayName
+        followers {
+            totalCount
+        }
+        lastBroadcast {
+            startedAt
+        }
+        id
+        login
+        profileImageURL(width: 300)
+        roles {
+            isAffiliate
+            isPartner
+            isStaff
+        }
+        stream {
+            createdAt
+            game {
+                displayName
+                id
+                slug
+            }
+            id
+            previewImageURL
+            title
+            viewersCount
+        }
+    }
+}

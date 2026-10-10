@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">無法儲存帳號變更，請再試一次。</string>
+    <string name="hex_browser_retry">登入瀏覽器已停止。請重新開啟此頁面後重試。</string>
+    <string name="hex_points">點數</string>
+    <string name="hex_points_balance">餘額：%1$s</string>
+    <string name="hex_unavailable">無法取得</string>
+    <string name="hex_reward_cost">%1$s · 點數：%2$d</string>
+    <string name="hex_rules_count">已顯示：%1$d · 規則：%2$d</string>
+    <string name="hex_blocks_count">已顯示：%1$d · 最近封鎖：%2$d</string>
+    <string name="hex_blocked_section">已封鎖：%1$s</string>
+    <string name="hex_rule_section_tags">標籤</string>
+    <string name="hex_rule_section_channels">頻道</string>
+    <string name="hex_rule_section_titles">標題</string>
+    <string name="hex_rule_section_categories">分類</string>
+    <string name="hex_details_show">詳情與範例 ▾</string>
+    <string name="hex_details_hide">收起說明 ▴</string>
+    <string name="hex_search_rules">搜尋規則</string>
+    <string name="hex_done">完成</string>
+    <string name="hex_search_blocked">搜尋頻道、標題或規則</string>
+    <string name="hex_no_custom_rewards">暫無自訂獎勵。請開啟 Twitch 查看其他獎勵。</string>
+    <string name="hex_enter_message">輸入訊息</string>
+    <string name="hex_points_sign_in">請登入以使用頻道點數。</string>
+    <string name="hex_ok">確定</string>
+    <string name="hex_channel_points">頻道點數</string>
+    <string name="hex_close">關閉</string>
+    <string name="hex_open_twitch">開啟 Twitch</string>
+    <string name="hex_cancel">取消</string>
+    <string name="hex_redeem">兌換</string>
+    <string name="hex_no_bonus">暫無獎勵點數</string>
+    <string name="hex_claim_bonus">領取獎勵點數</string>
+</resources>

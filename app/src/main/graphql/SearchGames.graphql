@@ -1,0 +1,22 @@
+query SearchGames($query: String!, $first: Int, $after: Cursor) {
+    searchCategories(query: $query, first: $first, after: $after) {
+        edges {
+            cursor
+            node {
+                boxArtURL
+                broadcastersCount
+                displayName
+                id
+                slug
+                tags(tagType: CONTENT) {
+                    id
+                    localizedName
+                }
+                viewersCount
+            }
+        }
+        pageInfo {
+            hasNextPage
+        }
+    }
+}

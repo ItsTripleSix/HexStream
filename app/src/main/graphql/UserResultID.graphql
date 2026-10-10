@@ -1,0 +1,14 @@
+query UserResultID($id: ID!) {
+    userResultByID(id: $id) {
+        ... on User {
+            id
+        }
+        ... on UserDoesNotExist {
+            key
+            reason
+        }
+        ... on UserError {
+            key
+        }
+    }
+}

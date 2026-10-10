@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="views">
+        <item quantity="other">%s ditonton</item>
+    </plurals>
+    <plurals name="viewers">
+        <item quantity="other">%s penonton</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="other">%d jam</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="other">%d menit</item>
+    </plurals>
+    <plurals name="broadcasters">
+        <item quantity="other">%s penyiar</item>
+    </plurals>
+    <plurals name="languages">
+        <item quantity="other">Languages: %s</item>
+    </plurals>
+    <plurals name="tags">
+        <item quantity="other">Tags: %s</item>
+    </plurals>
+    <plurals name="followers">
+        <item quantity="other">%s pengikut</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="other">%s members</item>
+    </plurals>
+</resources>

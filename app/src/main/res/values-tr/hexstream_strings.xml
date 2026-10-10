@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">Hesap değişikliği kaydedilemedi. Lütfen tekrar deneyin.</string>
+    <string name="hex_browser_retry">Giriş tarayıcısı durdu. Tekrar denemek için bu ekranı yeniden açın.</string>
+    <string name="hex_points">Puanlar</string>
+    <string name="hex_points_balance">Bakiye: %1$s</string>
+    <string name="hex_unavailable">kullanılamıyor</string>
+    <string name="hex_reward_cost">%1$s · Puan: %2$d</string>
+    <string name="hex_rules_count">Gösterilen: %1$d · Kural: %2$d</string>
+    <string name="hex_blocks_count">Gösterilen: %1$d · Son engellemeler: %2$d</string>
+    <string name="hex_blocked_section">Engellenen: %1$s</string>
+    <string name="hex_rule_section_tags">etiketler</string>
+    <string name="hex_rule_section_channels">kanallar</string>
+    <string name="hex_rule_section_titles">başlıklar</string>
+    <string name="hex_rule_section_categories">kategoriler</string>
+    <string name="hex_details_show">Ayrıntılar ve örnekler ▾</string>
+    <string name="hex_details_hide">Açıklamayı gizle ▴</string>
+    <string name="hex_search_rules">Kural ara</string>
+    <string name="hex_done">Bitti</string>
+    <string name="hex_search_blocked">Kanal, başlık veya kural ara</string>
+    <string name="hex_no_custom_rewards">Özel ödül yok. Diğer ödüller için Twitch’i açın.</string>
+    <string name="hex_enter_message">Bir mesaj girin</string>
+    <string name="hex_points_sign_in">Kanal puanlarını kullanmak için giriş yapın.</string>
+    <string name="hex_ok">Tamam</string>
+    <string name="hex_channel_points">Kanal puanları</string>
+    <string name="hex_close">Kapat</string>
+    <string name="hex_open_twitch">Twitch’i aç</string>
+    <string name="hex_cancel">İptal</string>
+    <string name="hex_redeem">Kullan</string>
+    <string name="hex_no_bonus">Bonus yok</string>
+    <string name="hex_claim_bonus">Bonus puanları al</string>
+</resources>

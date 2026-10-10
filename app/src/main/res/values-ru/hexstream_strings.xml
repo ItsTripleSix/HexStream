@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">Не удалось сохранить изменение аккаунта. Попробуйте ещё раз.</string>
+    <string name="hex_browser_retry">Браузер входа остановился. Откройте этот экран снова, чтобы повторить попытку.</string>
+    <string name="hex_points">Баллы</string>
+    <string name="hex_points_balance">Баланс: %1$s</string>
+    <string name="hex_unavailable">недоступно</string>
+    <string name="hex_reward_cost">%1$s · Баллы: %2$d</string>
+    <string name="hex_rules_count">Показано: %1$d · Правила: %2$d</string>
+    <string name="hex_blocks_count">Показано: %1$d · Недавние блокировки: %2$d</string>
+    <string name="hex_blocked_section">Заблокировано: %1$s</string>
+    <string name="hex_rule_section_tags">теги</string>
+    <string name="hex_rule_section_channels">каналы</string>
+    <string name="hex_rule_section_titles">заголовки</string>
+    <string name="hex_rule_section_categories">категории</string>
+    <string name="hex_details_show">Подробности и примеры ▾</string>
+    <string name="hex_details_hide">Скрыть пояснение ▴</string>
+    <string name="hex_search_rules">Поиск правил</string>
+    <string name="hex_done">Готово</string>
+    <string name="hex_search_blocked">Поиск каналов, заголовков или правил</string>
+    <string name="hex_no_custom_rewards">Нет доступных пользовательских наград. Откройте Twitch, чтобы посмотреть другие награды.</string>
+    <string name="hex_enter_message">Введите сообщение</string>
+    <string name="hex_points_sign_in">Войдите, чтобы использовать баллы канала.</string>
+    <string name="hex_ok">ОК</string>
+    <string name="hex_channel_points">Баллы канала</string>
+    <string name="hex_close">Закрыть</string>
+    <string name="hex_open_twitch">Открыть Twitch</string>
+    <string name="hex_cancel">Отмена</string>
+    <string name="hex_redeem">Получить</string>
+    <string name="hex_no_bonus">Бонус недоступен</string>
+    <string name="hex_claim_bonus">Забрать бонусные баллы</string>
+</resources>

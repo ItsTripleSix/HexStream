@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">Perubahan akun tidak dapat disimpan. Coba lagi.</string>
+    <string name="hex_browser_retry">Browser masuk berhenti. Buka kembali layar ini untuk mencoba lagi.</string>
+    <string name="hex_points">Poin</string>
+    <string name="hex_points_balance">Saldo: %1$s</string>
+    <string name="hex_unavailable">tidak tersedia</string>
+    <string name="hex_reward_cost">%1$s · Poin: %2$d</string>
+    <string name="hex_rules_count">Ditampilkan: %1$d · Aturan: %2$d</string>
+    <string name="hex_blocks_count">Ditampilkan: %1$d · Blokir terbaru: %2$d</string>
+    <string name="hex_blocked_section">Diblokir: %1$s</string>
+    <string name="hex_rule_section_tags">tag</string>
+    <string name="hex_rule_section_channels">kanal</string>
+    <string name="hex_rule_section_titles">judul</string>
+    <string name="hex_rule_section_categories">kategori</string>
+    <string name="hex_details_show">Detail dan contoh ▾</string>
+    <string name="hex_details_hide">Sembunyikan penjelasan ▴</string>
+    <string name="hex_search_rules">Cari aturan</string>
+    <string name="hex_done">Selesai</string>
+    <string name="hex_search_blocked">Cari kanal, judul, atau aturan</string>
+    <string name="hex_no_custom_rewards">Tidak ada hadiah khusus. Buka Twitch untuk hadiah lainnya.</string>
+    <string name="hex_enter_message">Masukkan pesan</string>
+    <string name="hex_points_sign_in">Masuk untuk menggunakan poin kanal.</string>
+    <string name="hex_ok">OK</string>
+    <string name="hex_channel_points">Poin kanal</string>
+    <string name="hex_close">Tutup</string>
+    <string name="hex_open_twitch">Buka Twitch</string>
+    <string name="hex_cancel">Batal</string>
+    <string name="hex_redeem">Tukar</string>
+    <string name="hex_no_bonus">Tidak ada bonus</string>
+    <string name="hex_claim_bonus">Klaim poin bonus</string>
+</resources>

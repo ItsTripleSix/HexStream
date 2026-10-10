@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="views">
+        <item quantity="one">%s Aufruf</item>
+        <item quantity="other">%s Aufrufe</item>
+    </plurals>
+    <plurals name="viewers">
+        <item quantity="one">%s Zuschauer</item>
+        <item quantity="other">%s Zuschauer</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d Stunde</item>
+        <item quantity="other">%d Stunden</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d Minute</item>
+        <item quantity="other">%d Minuten</item>
+    </plurals>
+    <plurals name="broadcasters">
+        <item quantity="one">%s Streamer</item>
+        <item quantity="other">%s Streamer</item>
+    </plurals>
+    <plurals name="languages">
+        <item quantity="one">Sprache: %s</item>
+        <item quantity="other">Sprachen: %s</item>
+    </plurals>
+    <plurals name="tags">
+        <item quantity="one">Tag: %s</item>
+        <item quantity="other">Tags: %s</item>
+    </plurals>
+    <plurals name="followers">
+        <item quantity="one">%s follower</item>
+        <item quantity="other">%s followers</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">%s Mitglied</item>
+        <item quantity="other">%s Mitglieder</item>
+    </plurals>
+</resources>

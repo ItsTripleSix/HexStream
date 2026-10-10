@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_account_save_failed">Could not save the account change. Please try again.</string>
+    <string name="hex_browser_retry">The sign-in browser stopped. Please reopen this screen to try again.</string>
+    <string name="hex_points">Points</string>
+    <string name="hex_points_balance">Balance: %1$s</string>
+    <string name="hex_unavailable">unavailable</string>
+    <string name="hex_reward_cost">%1$s · Points: %2$d</string>
+    <string name="hex_rules_count">Shown: %1$d · Rules: %2$d</string>
+    <string name="hex_blocks_count">Shown: %1$d · Recent blocks: %2$d</string>
+    <string name="hex_blocked_section">Blocked %1$s</string>
+    <string name="hex_rule_section_tags">tags</string>
+    <string name="hex_rule_section_channels">channels</string>
+    <string name="hex_rule_section_titles">titles</string>
+    <string name="hex_rule_section_categories">categories</string>
+    <string name="hex_details_show">Details &amp; examples ▾</string>
+    <string name="hex_details_hide">Hide explanation ▴</string>
+    <string name="hex_search_rules">Search rules</string>
+    <string name="hex_done">Done</string>
+    <string name="hex_search_blocked">Search channels, titles or rules</string>
+    <string name="hex_no_custom_rewards">No custom rewards available. Open Twitch for other rewards.</string>
+    <string name="hex_enter_message">Enter a message</string>
+    <string name="hex_points_sign_in">Sign in to use channel points.</string>
+    <string name="hex_ok">OK</string>
+    <string name="hex_channel_points">Channel points</string>
+    <string name="hex_close">Close</string>
+    <string name="hex_open_twitch">Open Twitch</string>
+    <string name="hex_cancel">Cancel</string>
+    <string name="hex_redeem">Redeem</string>
+    <string name="hex_no_bonus">No bonus available</string>
+    <string name="hex_claim_bonus">Claim bonus points</string>
+</resources>

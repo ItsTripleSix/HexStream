@@ -1,0 +1,239 @@
+package com.github.andreyasadchy.xtra.ui.settings
+
+import android.content.Context
+import android.os.Build
+import android.os.Bundle
+import android.text.InputType
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowInsets
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import android.widget.LinearLayout
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.github.andreyasadchy.xtra.R
+import com.github.andreyasadchy.xtra.databinding.DialogCustomProxyEditBinding
+import com.github.andreyasadchy.xtra.databinding.FragmentProxySettingsBinding
+import com.github.andreyasadchy.xtra.databinding.FragmentProxySettingsListItemBinding
+import com.github.andreyasadchy.xtra.model.ui.CustomProxy
+import com.github.andreyasadchy.xtra.ui.settings.CustomProxySettingsViewModel.Companion.CustomProxySettingsViewModelFactory
+import com.github.andreyasadchy.xtra.util.C
+import com.github.andreyasadchy.xtra.util.getAlertDialogBuilder
+import com.github.andreyasadchy.xtra.util.prefs
+import com.google.android.material.appbar.AppBarLayout
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import java.util.Collections
+
+class CustomProxySettingsFragment : Fragment() {
+
+    private var _binding: FragmentProxySettingsBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: CustomProxySettingsViewModel by viewModels { CustomProxySettingsViewModelFactory }
+    private var mEditText: EditText? = null
+    private val mShowSoftInputRunnable = Runnable { scheduleShowSoftInputInner() }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentProxySettingsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        with(binding) {
+            val adapter = CustomProxySettingsAdapter(this@CustomProxySettingsFragment)
+            val itemTouchHelper = ItemTouchHelper(
+                object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
+                    override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                        val list = viewModel.list.value
+                        val fromPosition = viewHolder.bindingAdapterPosition
+                        val toPosition = target.bindingAdapterPosition
+                        if (fromPosition < toPosition) {
+                            for (from in fromPosition until toPosition) {
+                                val to = from + 1
+                                Collections.swap(list, from, to)
+                                adapter.notifyItemMoved(from, to)
+                            }
+                        } else {
+                            for (to in (toPosition until fromPosition).reversed()) {
+                                val from = to + 1
+                                Collections.swap(list, from, to)
+                                adapter.notifyItemMoved(from, to)
+                            }
+                        }
+                        viewModel.updateProxies()
+                        return true
+                    }
+
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
+
+                    override fun isLongPressDragEnabled(): Boolean {
+                        return false
+                    }
+                }
+            )
+            adapter.itemTouchHelper = itemTouchHelper
+            recyclerView.adapter = adapter
+            adapter.checkListener = { item ->
+                viewModel.updateProxy(item)
+            }
+            adapter.editListener = { item ->
+                showEditDialog(item) { url, addQueryParams ->
+                    item.url = url
+                    item.addQueryParams = addQueryParams
+                    viewModel.updateProxy(item)
+                    viewModel.list.value.indexOf(item).takeIf { it != -1 }?.let {
+                        adapter.notifyItemChanged(it)
+                    }
+                    viewModel.updateProxyStatus(requireContext().prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP), url)
+                }
+            }
+            adapter.deleteListener = { item ->
+                val delete = getString(R.string.delete)
+                requireContext().getAlertDialogBuilder()
+                    .setTitle(delete)
+                    .setMessage(getString(R.string.delete_proxy_message))
+                    .setPositiveButton(delete) { _, _ ->
+                        val list = viewModel.list.value
+                        val index = list.indexOf(item).takeIf { it != -1 }
+                        list.remove(item)
+                        index?.let { adapter.notifyItemRemoved(it) }
+                        viewModel.deleteProxy(item)
+                    }
+                    .setNegativeButton(getString(android.R.string.cancel), null)
+                    .show()
+            }
+            adapter.statusMap = viewModel.statusMap
+            itemTouchHelper.attachToRecyclerView(recyclerView)
+            viewModel.getProxies(requireContext().prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP))
+            viewLifecycleOwner.lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.list.collectLatest { list ->
+                        adapter.submitList(list)
+                    }
+                }
+            }
+            viewLifecycleOwner.lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.statusChanged.collect { url ->
+                        viewModel.list.value.forEachIndexed { index, proxy ->
+                            if (proxy.url == url) {
+                                (recyclerView.layoutManager?.findViewByPosition(index) as? LinearLayout)?.let {
+                                    val binding = FragmentProxySettingsListItemBinding.bind(it)
+                                    adapter.updateStatus(binding, requireContext(), proxy)
+                                } ?: adapter.notifyItemChanged(index)
+                            }
+                        }
+                    }
+                }
+            }
+            addItem.setOnClickListener {
+                val list = viewModel.list.value
+                val index = list.lastIndex + 1
+                val item = CustomProxy(position = index)
+                showEditDialog(item) { url, addQueryParams ->
+                    item.url = url
+                    item.addQueryParams = addQueryParams
+                    list.add(item)
+                    adapter.notifyItemInserted(index)
+                    viewModel.saveProxy(item)
+                    viewModel.updateProxyStatus(requireContext().prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP), url)
+                }
+            }
+            requireActivity().findViewById<AppBarLayout>(R.id.appBar)?.let { appBar ->
+                if (requireContext().prefs().getBoolean(C.UI_THEME_APPBAR_LIFT, true)) {
+                    recyclerView.let {
+                        appBar.setLiftOnScrollTargetView(it)
+                        it.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                                super.onScrolled(recyclerView, dx, dy)
+                                appBar.isLifted = recyclerView.canScrollVertically(-1)
+                            }
+                        })
+                        it.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+                            appBar.isLifted = it.canScrollVertically(-1)
+                        }
+                    }
+                } else {
+                    appBar.setLiftable(false)
+                    appBar.background = null
+                }
+            }
+            ViewCompat.setOnApplyWindowInsetsListener(view) { _, windowInsets ->
+                val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+                recyclerView.updatePadding(bottom = insets.bottom)
+                WindowInsetsCompat.CONSUMED
+            }
+        }
+    }
+
+    private fun showEditDialog(item: CustomProxy, positiveButtonListener: (String?, Boolean) -> Unit) {
+        val binding = DialogCustomProxyEditBinding.inflate(layoutInflater)
+        val dialog = requireContext().getAlertDialogBuilder()
+            .setView(binding.root)
+            .setPositiveButton(getString(android.R.string.ok)) { _, _ ->
+                positiveButtonListener(
+                    binding.editText.editText?.text?.toString(),
+                    binding.checkBox.isChecked
+                )
+            }
+            .setNegativeButton(getString(android.R.string.cancel), null)
+            .create()
+        binding.editText.editText?.apply {
+            val url = item.url ?: ""
+            text.replace(0, length(), url, 0, url.length)
+            inputType = InputType.TYPE_TEXT_FLAG_MULTI_LINE
+            isSingleLine = false
+            maxLines = 3
+            setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    positiveButtonListener(
+                        binding.editText.editText?.text?.toString(),
+                        binding.checkBox.isChecked
+                    )
+                    dialog.dismiss()
+                    true
+                } else {
+                    false
+                }
+            }
+            if (requestFocus()) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    dialog.window?.decorView?.windowInsetsController?.show(WindowInsets.Type.ime())
+                } else {
+                    mEditText = this
+                    scheduleShowSoftInputInner()
+                }
+            }
+        }
+        binding.checkBox.isChecked = item.addQueryParams
+        dialog.show()
+    }
+
+    private fun scheduleShowSoftInputInner() {
+        mEditText?.let { mEditText ->
+            if (mEditText.isFocused) {
+                val imm = mEditText.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                if (!imm.showSoftInput(mEditText, 0)) {
+                    mEditText.removeCallbacks(mShowSoftInputRunnable)
+                    mEditText.postDelayed(mShowSoftInputRunnable, 50)
+                }
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}

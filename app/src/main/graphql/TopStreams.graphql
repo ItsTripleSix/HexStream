@@ -1,0 +1,34 @@
+query TopStreams($sort: StreamSort, $tags: [String!], $languages: [Language!], $first: Int, $after: Cursor) {
+    streams(first: $first, after: $after, options: { sort: $sort, freeformTags: $tags, broadcasterLanguages: $languages }) {
+        edges {
+            cursor
+            node {
+                broadcaster {
+                    broadcastSettings {
+                        language
+                        title
+                    }
+                    displayName
+                    id
+                    login
+                    profileImageURL(width: 300)
+                }
+                createdAt
+                freeformTags {
+                    name
+                }
+                game {
+                    displayName
+                    id
+                    slug
+                }
+                id
+                previewImageURL
+                viewersCount
+            }
+        }
+        pageInfo {
+            hasNextPage
+        }
+    }
+}

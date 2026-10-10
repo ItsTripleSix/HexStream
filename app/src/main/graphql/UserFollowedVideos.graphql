@@ -1,0 +1,33 @@
+query UserFollowedVideos($languages: [String!], $sort: VideoSort, $type: [BroadcastType!], $first: Int, $after: Cursor) {
+    user {
+        followedVideos(first: $first, after: $after, languages: $languages, types: $type, sort: $sort) {
+            edges {
+                cursor
+                node {
+                    animatedPreviewURL
+                    broadcastType
+                    createdAt
+                    game {
+                        displayName
+                        id
+                        slug
+                    }
+                    id
+                    lengthSeconds
+                    owner {
+                        displayName
+                        id
+                        login
+                        profileImageURL(width: 300)
+                    }
+                    previewThumbnailURL
+                    title
+                    viewCount
+                }
+            }
+            pageInfo {
+                hasNextPage
+            }
+        }
+    }
+}

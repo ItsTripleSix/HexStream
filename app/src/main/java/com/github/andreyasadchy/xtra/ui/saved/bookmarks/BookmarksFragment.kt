@@ -1,0 +1,309 @@
+package com.github.andreyasadchy.xtra.ui.saved.bookmarks
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.github.andreyasadchy.xtra.R
+import com.github.andreyasadchy.xtra.databinding.CommonRecyclerViewLayoutBinding
+import com.github.andreyasadchy.xtra.databinding.SortBarBinding
+import com.github.andreyasadchy.xtra.model.ui.Bookmark
+import com.github.andreyasadchy.xtra.model.ui.ChannelSort
+import com.github.andreyasadchy.xtra.ui.common.BaseNetworkFragment
+import com.github.andreyasadchy.xtra.ui.common.FragmentHost
+import com.github.andreyasadchy.xtra.ui.common.IntegrityDialog
+import com.github.andreyasadchy.xtra.ui.common.Scrollable
+import com.github.andreyasadchy.xtra.ui.common.Sortable
+import com.github.andreyasadchy.xtra.ui.download.DownloadDialog
+import com.github.andreyasadchy.xtra.ui.main.MainActivity
+import com.github.andreyasadchy.xtra.ui.saved.bookmarks.BookmarksViewModel.Companion.BookmarksViewModelFactory
+import com.github.andreyasadchy.xtra.util.C
+import com.github.andreyasadchy.xtra.util.TwitchApiHelper
+import com.github.andreyasadchy.xtra.util.getAlertDialogBuilder
+import com.github.andreyasadchy.xtra.util.prefs
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import kotlin.time.Clock
+import kotlin.time.Duration.Companion.days
+import kotlin.time.Instant
+
+class BookmarksFragment : BaseNetworkFragment(), Scrollable, Sortable, BookmarksSortDialog.OnFilter, IntegrityDialog.Listener {
+
+    private var _binding: CommonRecyclerViewLayoutBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: BookmarksViewModel by viewModels { BookmarksViewModelFactory }
+    private lateinit var adapter: ListAdapter<Bookmark, out RecyclerView.ViewHolder>
+    override var enableNetworkCheck = false
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = CommonRecyclerViewLayoutBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.integrity.collect {
+                    (requireActivity() as? MainActivity)?.getNewIntegrityToken(it, childFragmentManager)
+                }
+            }
+        }
+        adapter = BookmarksAdapter(this, {
+            viewModel.updateVideo(
+                requireContext().filesDir.path,
+                it,
+                requireContext().prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP),
+                TwitchApiHelper.getGQLHeaders(requireContext()),
+                TwitchApiHelper.getHelixHeaders(requireContext()),
+                requireContext().prefs().getBoolean(C.ENABLE_INTEGRITY, false),
+            )
+        }, {
+            DownloadDialog.newVideoInstance(
+                id = it.id,
+                channelId = it.channelId,
+                channelLogin = it.channelLogin,
+                channelName = it.channelName,
+                channelImage = it.channelImage,
+                gameId = it.gameId,
+                gameSlug = it.gameSlug,
+                gameName = it.gameName,
+                title = it.title,
+                thumbnail = it.thumbnail,
+                createdAt = it.createdAt,
+                durationSeconds = it.durationSeconds,
+                type = it.type,
+                animatedPreviewUrl = it.animatedPreviewURL,
+            ).show(childFragmentManager, null)
+        }, {
+            viewModel.vodIgnoreUser(it)
+        }, {
+            val delete = getString(R.string.delete)
+            requireActivity().getAlertDialogBuilder()
+                .setTitle(delete)
+                .setMessage(getString(R.string.are_you_sure))
+                .setPositiveButton(delete) { _, _ -> viewModel.delete(it) }
+                .setNegativeButton(getString(android.R.string.cancel), null)
+                .show()
+        })
+        with(binding) {
+            adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+                override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                    adapter.unregisterAdapterDataObserver(this)
+                    adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+                        override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                            if (positionStart == 0) {
+                                recyclerView.smoothScrollToPosition(0)
+                            }
+                        }
+                    })
+                }
+            })
+            recyclerView.adapter = adapter
+            ViewCompat.setOnApplyWindowInsetsListener(view) { _, windowInsets ->
+                if (activity?.findViewById<LinearLayout>(R.id.navBarContainer)?.isVisible == false) {
+                    val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+                    recyclerView.updatePadding(bottom = insets.bottom)
+                }
+                WindowInsetsCompat.CONSUMED
+            }
+        }
+    }
+
+    override fun initialize() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            if (viewModel.filter.value == null) {
+                val sortValues = viewModel.getChannelSort("bookmarks")
+                viewModel.setFilter(
+                    sort = sortValues?.videoSort,
+                    order = sortValues?.videoType,
+                )
+                viewModel.sortText.value = getString(
+                    R.string.sort_and_order,
+                    getString(
+                        when (viewModel.sort) {
+                            BookmarksSortDialog.SORT_EXPIRES_AT -> R.string.deletion_date
+                            BookmarksSortDialog.SORT_CREATED_AT -> R.string.creation_date
+                            BookmarksSortDialog.SORT_SAVED_AT -> R.string.saved_date
+                            else -> R.string.saved_date
+                        }
+                    ),
+                    getString(
+                        when (viewModel.order) {
+                            BookmarksSortDialog.ORDER_DESC -> R.string.descending
+                            BookmarksSortDialog.ORDER_ASC -> R.string.ascending
+                            else -> R.string.descending
+                        }
+                    )
+                )
+            }
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.flow.collectLatest { list ->
+                    val sorted = if (viewModel.order == BookmarksSortDialog.ORDER_ASC) {
+                        when (viewModel.sort) {
+                            BookmarksSortDialog.SORT_EXPIRES_AT -> list.sortedWith(compareBy(nullsLast()) {
+                                if (it.type?.lowercase() == "archive") {
+                                    it.createdAt?.let { createdAt ->
+                                        Instant.parseOrNull(createdAt)?.takeIf { time -> time.toEpochMilliseconds() > 0 }?.let { time ->
+                                            val userType = it.userType ?: it.userBroadcasterType
+                                            val days = if (userType.isNullOrBlank()) {
+                                                7
+                                            } else {
+                                                when (userType.lowercase()) {
+                                                    "affiliate" -> 14
+                                                    else -> 60 // Partners, Prime, Turbo
+                                                }
+                                            }
+                                            val timeLeft = (time + days.days) - Clock.System.now()
+                                            if (timeLeft.isPositive()) {
+                                                timeLeft.inWholeSeconds
+                                            } else null
+                                        }
+                                    }
+                                } else null
+                            })
+                            BookmarksSortDialog.SORT_CREATED_AT -> list.sortedWith(compareBy(nullsLast()) {
+                                it.createdAt?.let { createdAt -> Instant.parseOrNull(createdAt)?.toEpochMilliseconds()?.takeIf { ms -> ms > 0 } }
+                            })
+                            else -> list.sortedWith(compareBy(nullsLast()) { it.id })
+                        }
+                    } else {
+                        when (viewModel.sort) {
+                            BookmarksSortDialog.SORT_EXPIRES_AT -> list.sortedWith(compareByDescending(nullsFirst()) {
+                                if (it.type?.lowercase() == "archive") {
+                                    it.createdAt?.let { createdAt ->
+                                        Instant.parseOrNull(createdAt)?.takeIf { time -> time.toEpochMilliseconds() > 0 }?.let { time ->
+                                            val userType = it.userType ?: it.userBroadcasterType
+                                            val days = if (userType.isNullOrBlank()) {
+                                                7
+                                            } else {
+                                                when (userType.lowercase()) {
+                                                    "affiliate" -> 14
+                                                    else -> 60 // Partners, Prime, Turbo
+                                                }
+                                            }
+                                            val timeLeft = (time + days.days) - Clock.System.now()
+                                            if (timeLeft.isPositive()) {
+                                                timeLeft.inWholeSeconds
+                                            } else null
+                                        }
+                                    }
+                                } else null
+                            })
+                            BookmarksSortDialog.SORT_CREATED_AT -> list.sortedWith(compareByDescending(nullsFirst()) {
+                                it.createdAt?.let { createdAt -> Instant.parseOrNull(createdAt)?.toEpochMilliseconds()?.takeIf { ms -> ms > 0 } }
+                            })
+                            else -> list.sortedWith(compareByDescending(nullsFirst()) { it.id })
+                        }
+                    }
+                    adapter.submitList(sorted)
+                    binding.nothingHere.isVisible = sorted.isEmpty()
+                }
+            }
+        }
+        if (requireContext().prefs().getBoolean(C.PLAYER_USE_VIDEO_POSITIONS, true)) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.positions.collectLatest {
+                        (adapter as BookmarksAdapter).setVideoPositions(it)
+                    }
+                }
+            }
+        }
+        if (requireContext().prefs().getBoolean(C.UI_BOOKMARK_TIME_LEFT, true)) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.ignoredUsers.collectLatest {
+                        (adapter as BookmarksAdapter).setIgnoredUsers(it)
+                    }
+                }
+            }
+            viewModel.updateUsers(
+                requireContext().prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP),
+                TwitchApiHelper.getGQLHeaders(requireContext()),
+                TwitchApiHelper.getHelixHeaders(requireContext()),
+                requireContext().prefs().getBoolean(C.ENABLE_INTEGRITY, false),
+            )
+        }
+        val helixHeaders = TwitchApiHelper.getHelixHeaders(requireContext())
+        if (!helixHeaders[C.HEADER_TOKEN].isNullOrBlank()) {
+            viewModel.updateVideos(requireContext().filesDir.path, requireContext().prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP), helixHeaders)
+        }
+    }
+
+    override fun setupSortBar(sortBar: SortBarBinding) {
+        sortBar.root.visibility = View.VISIBLE
+        sortBar.root.setOnClickListener {
+            BookmarksSortDialog.newInstance(
+                sort = viewModel.sort,
+                order = viewModel.order,
+            ).show(childFragmentManager, null)
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.sortText.collectLatest {
+                    sortBar.sortText.text = it
+                }
+            }
+        }
+    }
+
+    override fun onChange(sort: String, sortText: CharSequence, order: String, orderText: CharSequence, changed: Boolean, saveDefault: Boolean) {
+        if ((parentFragment as? FragmentHost)?.currentFragment == this) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                if (changed) {
+                    adapter.submitList(emptyList())
+                    viewModel.setFilter(sort, order)
+                    viewModel.sortText.value = getString(R.string.sort_and_order, sortText, orderText)
+                }
+                if (saveDefault) {
+                    val item = viewModel.getChannelSort("bookmarks")?.apply {
+                        videoSort = sort
+                        videoType = order
+                    } ?: ChannelSort(
+                        id = "bookmarks",
+                        videoSort = sort,
+                        videoType = order
+                    )
+                    viewModel.saveChannelSort(item)
+                }
+            }
+        }
+    }
+
+    override fun scrollToTop() {
+        binding.recyclerView.scrollToPosition(0)
+    }
+
+    override fun onNetworkRestored() {
+    }
+
+    override fun onIntegrityTokenLoaded(callback: String?) {
+        when (callback) {
+            "users" -> {
+                viewModel.updateUsers(
+                    requireContext().prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP),
+                    TwitchApiHelper.getGQLHeaders(requireContext()),
+                    TwitchApiHelper.getHelixHeaders(requireContext()),
+                    requireContext().prefs().getBoolean(C.ENABLE_INTEGRITY, false),
+                )
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}

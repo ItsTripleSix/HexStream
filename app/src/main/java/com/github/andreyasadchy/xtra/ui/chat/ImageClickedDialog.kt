@@ -1,0 +1,212 @@
+package com.github.andreyasadchy.xtra.ui.chat
+
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Drawable
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import coil3.asDrawable
+import coil3.imageLoader
+import coil3.network.NetworkHeaders
+import coil3.network.httpHeaders
+import coil3.request.ImageRequest
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import com.github.andreyasadchy.xtra.BuildConfig
+import com.github.andreyasadchy.xtra.R
+import com.github.andreyasadchy.xtra.databinding.DialogChatImageClickBinding
+import com.github.andreyasadchy.xtra.model.chat.Emote
+import com.github.andreyasadchy.xtra.ui.chat.ImageClickedViewModel.Companion.ImageClickedViewModelFactory
+import com.github.andreyasadchy.xtra.ui.common.IntegrityDialog
+import com.github.andreyasadchy.xtra.ui.main.MainActivity
+import com.github.andreyasadchy.xtra.util.C
+import com.github.andreyasadchy.xtra.util.TwitchApiHelper
+import com.github.andreyasadchy.xtra.util.prefs
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+
+class ImageClickedDialog : BottomSheetDialogFragment(), IntegrityDialog.Listener {
+
+    companion object {
+        private const val IMAGE_URL = "image_url"
+        private const val IMAGE_NAME = "image_name"
+        private const val IMAGE_FORMAT = "image_format"
+        private const val IMAGE_ANIMATED = "image_animated"
+        private const val IMAGE_SOURCE = "image_source"
+        private const val IMAGE_THIRD_PARTY = "image_third_party"
+        private const val EMOTE_ID = "emote_id"
+
+        fun newInstance(url: String?, name: String?, format: String?, isAnimated: Boolean?, source: Int?, thirdParty: Boolean?, emoteId: String?): ImageClickedDialog {
+            return ImageClickedDialog().apply {
+                arguments = Bundle().apply {
+                    putString(IMAGE_URL, url)
+                    putString(IMAGE_NAME, name)
+                    putString(IMAGE_FORMAT, format)
+                    putBoolean(IMAGE_ANIMATED, isAnimated == true)
+                    putInt(IMAGE_SOURCE, source ?: -1)
+                    putBoolean(IMAGE_THIRD_PARTY, thirdParty == true)
+                    putString(EMOTE_ID, emoteId)
+                }
+            }
+        }
+    }
+
+    private var _binding: DialogChatImageClickBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: ImageClickedViewModel by viewModels { ImageClickedViewModelFactory }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = DialogChatImageClickBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val behavior = BottomSheetBehavior.from(view.parent as View)
+        behavior.skipCollapsed = true
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.integrity.collect {
+                    (requireActivity() as? MainActivity)?.getNewIntegrityToken(it, childFragmentManager)
+                }
+            }
+        }
+        with(binding) {
+            val args = requireArguments()
+            val imageLibrary = requireContext().prefs().getString(C.CHAT_IMAGE_LIBRARY, "0")
+            if (imageLibrary == "0" || (imageLibrary == "1" && !args.getString(IMAGE_FORMAT).equals("webp", true))) {
+                requireContext().imageLoader.enqueue(
+                    ImageRequest.Builder(requireContext()).apply {
+                        data(args.getString(IMAGE_URL))
+                        if (args.getBoolean(IMAGE_THIRD_PARTY)) {
+                            httpHeaders(NetworkHeaders.Builder().apply {
+                                add("User-Agent", "Xtra/" + BuildConfig.VERSION_NAME)
+                            }.build())
+                        }
+                        target(
+                            onSuccess = {
+                                val result = it.asDrawable(resources)
+                                if (result is Animatable && args.getBoolean(IMAGE_ANIMATED) && requireContext().prefs().getBoolean(C.ANIMATED_EMOTES, true)) {
+                                    (result as Animatable).start()
+                                }
+                                image.setImageDrawable(result)
+                            }
+                        )
+                    }.build()
+                )
+            } else {
+                Glide.with(this@ImageClickedDialog)
+                    .load(args.getString(IMAGE_URL).let {
+                        if (args.getBoolean(IMAGE_THIRD_PARTY)) {
+                            GlideUrl(it) { mapOf("User-Agent" to "Xtra/" + BuildConfig.VERSION_NAME) }
+                        } else it
+                    })
+                    .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .into(object : CustomTarget<Drawable>() {
+                        override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                            if (resource is Animatable && args.getBoolean(IMAGE_ANIMATED) && requireContext().prefs().getBoolean(C.ANIMATED_EMOTES, true)) {
+                                (resource as Animatable).start()
+                            }
+                            image.setImageDrawable(resource)
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {}
+                    })
+            }
+            args.getString(IMAGE_NAME)?.let {
+                imageName.visibility = View.VISIBLE
+                imageName.text = it
+            }
+            args.getInt(IMAGE_SOURCE, -1).takeIf { it != -1 }?.let {
+                imageSource.visibility = View.VISIBLE
+                imageSource.text = when (it) {
+                    Emote.PERSONAL_STV -> getString(R.string.personal_stv_emote)
+                    Emote.CHANNEL_STV -> getString(R.string.channel_stv_emote)
+                    Emote.CHANNEL_BTTV -> getString(R.string.channel_bttv_emote)
+                    Emote.CHANNEL_FFZ -> getString(R.string.channel_ffz_emote)
+                    Emote.GLOBAL_STV -> getString(R.string.global_stv_emote)
+                    Emote.GLOBAL_BTTV -> getString(R.string.global_bttv_emote)
+                    Emote.GLOBAL_FFZ -> getString(R.string.global_ffz_emote)
+                    else -> null
+                }
+            }
+            args.getString(EMOTE_ID)?.let {
+                viewModel.loadEmoteCard(
+                    it,
+                    requireContext().prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP),
+                    TwitchApiHelper.getGQLHeaders(requireContext()),
+                    requireContext().prefs().getBoolean(C.ENABLE_INTEGRITY, false),
+                )
+                viewLifecycleOwner.lifecycleScope.launch {
+                    repeatOnLifecycle(Lifecycle.State.STARTED) {
+                        viewModel.emoteCard.collectLatest { emoteCard ->
+                            if (emoteCard != null) {
+                                val name = if (emoteCard.channelLogin != null && !emoteCard.channelLogin.equals(emoteCard.channelName, true)) {
+                                    when (requireContext().prefs().getString(C.UI_NAME_DISPLAY, "0")) {
+                                        "0" -> "${emoteCard.channelName}(${emoteCard.channelLogin})"
+                                        "1" -> emoteCard.channelName
+                                        else -> emoteCard.channelLogin
+                                    }
+                                } else {
+                                    emoteCard.channelName
+                                }
+                                when (emoteCard.type) {
+                                    "SUBSCRIPTIONS" -> {
+                                        imageSource.visibility = View.VISIBLE
+                                        imageSource.text = getString(R.string.channel_sub_emote, name,
+                                            when (emoteCard.subTier) {
+                                                "TIER_1" -> "1"
+                                                "TIER_2" -> "2"
+                                                "TIER_3" -> "3"
+                                                else -> emoteCard.subTier
+                                            }
+                                        )
+                                    }
+                                    "FOLLOWER" -> {
+                                        imageSource.visibility = View.VISIBLE
+                                        imageSource.text = getString(R.string.channel_follower_emote, name)
+                                    }
+                                    "BITS_BADGE_TIERS" -> {
+                                        imageSource.visibility = View.VISIBLE
+                                        imageSource.text = resources.getQuantityString(R.plurals.bits_reward_emote, emoteCard.bitThreshold ?: 0, emoteCard.bitThreshold)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onIntegrityTokenLoaded(callback: String?) {
+        when (callback) {
+            "refresh" -> {
+                requireArguments().getString(EMOTE_ID)?.let {
+                    viewModel.loadEmoteCard(
+                        it,
+                        requireContext().prefs().getString(C.NETWORK_LIBRARY, C.OKHTTP),
+                        TwitchApiHelper.getGQLHeaders(requireContext()),
+                        requireContext().prefs().getBoolean(C.ENABLE_INTEGRITY, false),
+                    )
+                }
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}

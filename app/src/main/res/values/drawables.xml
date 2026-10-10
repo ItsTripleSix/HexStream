@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <drawable name="exo_styled_controls_play" tools:override="true">@drawable/baseline_play_arrow_black_48</drawable>
+    <drawable name="exo_styled_controls_pause" tools:override="true">@drawable/baseline_pause_black_48</drawable>
+    <drawable name="media3_notification_small_icon" tools:override="true">@drawable/notification_icon</drawable>
+</resources>

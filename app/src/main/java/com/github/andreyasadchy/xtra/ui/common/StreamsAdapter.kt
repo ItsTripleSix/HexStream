@@ -1,0 +1,241 @@
+package com.github.andreyasadchy.xtra.ui.common
+
+import android.text.format.DateUtils
+import android.util.TypedValue
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.constraintlayout.helper.widget.Flow
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.res.use
+import androidx.core.widget.TextViewCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import coil3.imageLoader
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
+import coil3.request.crossfade
+import coil3.request.target
+import coil3.request.transformations
+import coil3.transform.CircleCropTransformation
+import com.github.andreyasadchy.xtra.R
+import com.github.andreyasadchy.xtra.databinding.FragmentStreamsListItemBinding
+import com.github.andreyasadchy.xtra.model.ui.Stream
+import com.github.andreyasadchy.xtra.ui.channel.ChannelPagerFragmentDirections
+import com.github.andreyasadchy.xtra.ui.game.GameMediaFragmentDirections
+import com.github.andreyasadchy.xtra.ui.game.GamePagerFragmentDirections
+import com.github.andreyasadchy.xtra.ui.main.MainActivity
+import com.github.andreyasadchy.xtra.ui.main.QuickFilterActions
+import com.github.andreyasadchy.xtra.util.ContentFilters
+import com.github.andreyasadchy.xtra.util.C
+import com.github.andreyasadchy.xtra.util.TwitchApiHelper
+import com.github.andreyasadchy.xtra.util.prefs
+import kotlin.time.Clock
+import kotlin.time.Instant
+
+class StreamsAdapter(
+    private val fragment: Fragment,
+    private val selectTag: (String) -> Unit,
+    private val showGame: Boolean = true,
+) : PagingDataAdapter<Stream, StreamsAdapter.PagingViewHolder>(
+    object : DiffUtil.ItemCallback<Stream>() {
+        override fun areItemsTheSame(oldItem: Stream, newItem: Stream): Boolean =
+            oldItem.id == newItem.id
+
+        override fun areContentsTheSame(oldItem: Stream, newItem: Stream): Boolean =
+            oldItem.viewerCount == newItem.viewerCount &&
+                    oldItem.gameName == newItem.gameName &&
+                    oldItem.title == newItem.title
+    }) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingViewHolder {
+        val binding = FragmentStreamsListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return PagingViewHolder(binding, fragment, showGame)
+    }
+
+    override fun onBindViewHolder(holder: PagingViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
+    inner class PagingViewHolder(
+        private val binding: FragmentStreamsListItemBinding,
+        private val fragment: Fragment,
+        private val showGame: Boolean,
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Stream?) {
+            with(binding) {
+                if (item != null) {
+                    val context = fragment.requireContext()
+                    val channelListener: (View) -> Unit = {
+                        fragment.findNavController().navigate(
+                            ChannelPagerFragmentDirections.actionGlobalChannelPagerFragment(
+                                channelId = item.channelId,
+                                channelLogin = item.channelLogin,
+                                channelName = item.channelName,
+                                channelImage = item.channelImage,
+                                streamId = item.id
+                            )
+                        )
+                    }
+                    root.setOnClickListener {
+                        (fragment.activity as MainActivity).startStream(item)
+                    }
+                    root.setOnLongClickListener {
+                        QuickFilterActions.show(context, ContentFilters.card(item), onSaved = { refresh() })
+                        true
+                    }
+                    if (item.channelImage != null) {
+                        userImage.visibility = View.VISIBLE
+                        fragment.requireContext().imageLoader.enqueue(
+                            ImageRequest.Builder(fragment.requireContext()).apply {
+                                data(item.channelImage)
+                                if (context.prefs().getBoolean(C.UI_ROUND_USER_IMAGE, true)) {
+                                    transformations(CircleCropTransformation())
+                                }
+                                crossfade(true)
+                                target(userImage)
+                            }.build()
+                        )
+                        userImage.setOnClickListener(channelListener)
+                    } else {
+                        userImage.visibility = View.GONE
+                    }
+                    if (item.channelName != null) {
+                        username.visibility = View.VISIBLE
+                        username.text = if (item.channelLogin != null && !item.channelLogin.equals(item.channelName, true)) {
+                            when (context.prefs().getString(C.UI_NAME_DISPLAY, "0")) {
+                                "0" -> "${item.channelName}(${item.channelLogin})"
+                                "1" -> item.channelName
+                                else -> item.channelLogin
+                            }
+                        } else {
+                            item.channelName
+                        }
+                        username.setOnClickListener(channelListener)
+                    } else {
+                        username.visibility = View.GONE
+                    }
+                    val streamTitle = item.title
+                    if (!streamTitle.isNullOrBlank()) {
+                        title.visibility = View.VISIBLE
+                        title.text = streamTitle.trim()
+                    } else {
+                        title.visibility = View.GONE
+                    }
+                    if (showGame && item.gameName != null) {
+                        val gameListener: (View) -> Unit = {
+                            fragment.findNavController().navigate(
+                                if (context.prefs().getBoolean(C.UI_GAME_PAGER, true)) {
+                                    GamePagerFragmentDirections.actionGlobalGamePagerFragment(
+                                        gameId = item.gameId,
+                                        gameSlug = item.gameSlug,
+                                        gameName = item.gameName
+                                    )
+                                } else {
+                                    GameMediaFragmentDirections.actionGlobalGameMediaFragment(
+                                        gameId = item.gameId,
+                                        gameSlug = item.gameSlug,
+                                        gameName = item.gameName
+                                    )
+                                }
+                            )
+                        }
+                        gameName.visibility = View.VISIBLE
+                        gameName.text = item.gameName
+                        gameName.setOnClickListener(gameListener)
+                    } else {
+                        gameName.visibility = View.GONE
+                    }
+                    if (item.thumbnailURL != null) {
+                        thumbnail.visibility = View.VISIBLE
+                        //update every 5 minutes
+                        val minutes = System.currentTimeMillis() / 60000L
+                        val lastMinute = minutes % 10
+                        val key = if (lastMinute < 5) minutes - lastMinute else minutes - (lastMinute - 5)
+                        fragment.requireContext().imageLoader.enqueue(
+                            ImageRequest.Builder(fragment.requireContext()).apply {
+                                data(item.thumbnail)
+                                memoryCacheKeyExtra("minutes", key.toString())
+                                diskCachePolicy(CachePolicy.DISABLED)
+                                crossfade(true)
+                                target(thumbnail)
+                            }.build()
+                        )
+                    } else {
+                        thumbnail.visibility = View.GONE
+                    }
+                    if (item.viewerCount != null) {
+                        viewers.visibility = View.VISIBLE
+                        val count = item.viewerCount ?: 0
+                        viewers.text = context.resources.getQuantityString(
+                            R.plurals.viewers,
+                            count,
+                            TwitchApiHelper.formatCount(count, context.prefs().getBoolean(C.UI_TRUNCATE_VIEW_COUNT, true))
+                        )
+                    } else {
+                        viewers.visibility = View.GONE
+                    }
+                    if (context.prefs().getBoolean(C.UI_UPTIME, true) && item.createdAt != null) {
+                        val text = item.createdAt?.let {
+                            Instant.parseOrNull(it)?.takeIf { time -> time.toEpochMilliseconds() > 0 }?.let { createdAt ->
+                                val uptime = Clock.System.now() - createdAt
+                                if (uptime.isPositive()) {
+                                    DateUtils.formatElapsedTime(uptime.inWholeSeconds)
+                                } else null
+                            }
+                        }
+                        if (text != null) {
+                            uptime.visibility = View.VISIBLE
+                            uptime.text = context.getString(R.string.uptime, text)
+                        } else {
+                            uptime.visibility = View.GONE
+                        }
+                    } else {
+                        uptime.visibility = View.GONE
+                    }
+                    if (!item.tags.isNullOrEmpty() && context.prefs().getBoolean(C.UI_TAGS, true)) {
+                        tagsLayout.removeAllViews()
+                        tagsLayout.visibility = View.VISIBLE
+                        val tagsFlowLayout = Flow(context).apply {
+                            layoutParams = ConstraintLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            ).apply {
+                                topToTop = tagsLayout.id
+                                bottomToBottom = tagsLayout.id
+                                startToStart = tagsLayout.id
+                                endToEnd = tagsLayout.id
+                            }
+                            setWrapMode(Flow.WRAP_CHAIN)
+                        }
+                        tagsLayout.addView(tagsFlowLayout)
+                        val ids = mutableListOf<Int>()
+                        for (tag in item.tags) {
+                            val text = TextView(context)
+                            val id = View.generateViewId()
+                            text.id = id
+                            ids.add(id)
+                            text.text = tag
+                            context.obtainStyledAttributes(intArrayOf(com.google.android.material.R.attr.textAppearanceBodyMedium)).use {
+                                TextViewCompat.setTextAppearance(text, it.getResourceId(0, 0))
+                            }
+                            text.setOnClickListener {
+                                selectTag(tag)
+                            }
+                            val padding = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5f, context.resources.displayMetrics).toInt()
+                            text.setPadding(padding, 0, padding, 0)
+                            tagsLayout.addView(text)
+                        }
+                        tagsFlowLayout.referencedIds = ids.toIntArray()
+                    } else {
+                        tagsLayout.visibility = View.GONE
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,6 @@
+query StreamPlaybackAccessToken($login: String!, $platform: String!, $playerType: String!) {
+    streamPlaybackAccessToken(channelName: $login, params: { platform: $platform, playerType: $playerType }) {
+        signature
+        value
+    }
+}

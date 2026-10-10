@@ -1,0 +1,13 @@
+{
+  "categories": [],
+  "channels": [],
+  "tags": [],
+  "titles": [],
+  "allowedChannels": [],
+  "enabled": true,
+  "englishOnly": false,
+  "blockNonEnglishCharacters": false,
+  "detectTitleLanguage": false,
+  "useDeclaredLanguageAlone": false,
+  "allowFollowedChannels": true
+}

@@ -1,0 +1,78 @@
+package com.github.andreyasadchy.xtra.ui.channel.about
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.github.andreyasadchy.xtra.XtraApp
+import com.github.andreyasadchy.xtra.model.ui.ChannelPanel
+import com.github.andreyasadchy.xtra.repository.GraphQLRepository
+import com.github.andreyasadchy.xtra.util.C
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
+
+class ChannelAboutViewModel(
+    private val graphQLRepository: GraphQLRepository,
+) : ViewModel() {
+
+    val integrity = MutableSharedFlow<String?>()
+
+    val description = MutableStateFlow<String?>(null)
+    val socialMedias = MutableStateFlow<List<Pair<String?, String?>>?>(null)
+    val team = MutableStateFlow<Pair<String?, String?>?>(null)
+    val originalName = MutableStateFlow<String?>(null)
+    val panels = MutableStateFlow<List<ChannelPanel>?>(null)
+
+    private var isLoading = false
+
+    fun loadAbout(channelId: String?, channelLogin: String?, networkLibrary: String?, gqlHeaders: Map<String, String>, enableIntegrity: Boolean) {
+        if ((description.value == null || team.value == null || socialMedias.value == null || panels.value == null) && !isLoading) {
+            isLoading = true
+            viewModelScope.launch {
+                try {
+                    val response = graphQLRepository.loadQueryUserAbout(networkLibrary, gqlHeaders, channelId, channelLogin.takeIf { channelId.isNullOrBlank() })
+                    if (enableIntegrity) {
+                        response.errors?.find { it.message == C.FAILED_INTEGRITY_CHECK }?.let {
+                            integrity.emit("refresh")
+                            isLoading = false
+                            return@launch
+                        }
+                    }
+                    response.data!!.user?.let { user ->
+                        description.value = user.description
+                        socialMedias.value = user.channel?.socialMedias?.map {
+                            it.title to it.url
+                        }
+                        team.value = user.primaryTeam?.name to user.primaryTeam?.displayName
+                        originalName.value = user.subscriptionProducts?.find { it?.tier == "1000" }?.name?.takeIf { it != channelLogin }
+                        panels.value = user.panels?.mapNotNull { item ->
+                            item?.onDefaultPanel?.let {
+                                ChannelPanel(
+                                    title = it.title,
+                                    imageUrl = it.imageURL,
+                                    linkUrl = it.linkURL,
+                                    description = it.description,
+                                )
+                            }
+                        }
+                    }
+                } catch (e: Exception) {
+
+                }
+                isLoading = false
+            }
+        }
+    }
+
+    companion object {
+        val ChannelAboutViewModelFactory = viewModelFactory {
+            initializer {
+                val application = (this[APPLICATION_KEY] as XtraApp)
+                val xtraModule = application.xtraModule
+                ChannelAboutViewModel(xtraModule.graphQLRepository)
+            }
+        }
+    }
+}

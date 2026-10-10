@@ -1,0 +1,28 @@
+# Credits and provenance
+
+## Xtra comes first
+
+**HexStream is built on Xtra.** It is not a Twitch client written from scratch.
+
+- **Andrey Asadchy** created the original [AndreyAsadchy/Xtra](https://github.com/AndreyAsadchy/Xtra).
+- **crackededed and Xtra contributors** continued development in [crackededed/Xtra](https://github.com/crackededed/Xtra), the upstream used here.
+- **TripleSix** maintains the HexStream customization and branding.
+
+The starting source is Xtra **2.60.7**, upstream commit [`a3cbb0325f3330573a6738f7d36a2c5b785f4d1c`](https://github.com/crackededed/Xtra/commit/a3cbb0325f3330573a6738f7d36a2c5b785f4d1c). The public HexStream branch begins with a source snapshot; upstream author history remains available in those linked repositories. The original upstream README is retained in [docs/upstream/README-Xtra.md](docs/upstream/README-Xtra.md).
+
+Xtra provides the app architecture and much of the player, Twitch integration, chat, emote support, browsing, VOD/clip handling, downloads, saved content, themes and settings. HexStream’s changes focus on category pagination, global content controls, saved-account switching, global proxy presets, live-delay tuning, gestures, points/reward handling, reliability and branding.
+
+## License
+
+The app source is distributed under the **GNU Affero General Public License, version 3**, following Xtra’s license. See the complete [LICENSE](LICENSE). Keep upstream copyright and license notices when redistributing or modifying the source. Corresponding source for each published build is available at its release tag.
+
+Dependency components and included assets can have their own licenses. Existing source headers and third-party notices are retained; the app license does not replace them. In particular, the Unicode emoji data notice is at [`UNICODE-LICENSE.txt`](app/src/main/assets/UNICODE-LICENSE.txt), and Media3-derived resources retain their applicable notices.
+
+## Other projects and services
+
+- [Unwanted Twitch by kwaschny](https://github.com/kwaschny/unwanted-twitch): inspiration for the filtering workflow and compatible blocking-list JSON format. HexStream implements its own native Android engine; no browser extension is bundled.
+- [AndroidX](https://developer.android.com/jetpack/androidx), including Paging, Room, WorkManager and Media3; [Kotlin](https://kotlinlang.org/), kotlinx libraries, [Apollo Kotlin](https://github.com/apollographql/apollo-kotlin), [OkHttp](https://github.com/square/okhttp), [Cronet](https://chromium.googlesource.com/chromium/src/+/main/components/cronet/), [ML Kit](https://developers.google.com/ml-kit), image libraries and other dependencies listed in [`libs.versions.toml`](gradle/libs.versions.toml).
+- [7TV](https://7tv.app/), [BetterTTV](https://betterttv.com/) and [FrankerFaceZ](https://www.frankerfacez.com/): third-party emote ecosystems supported through Xtra’s integrations.
+- Luminous and PerfProd: independent operators of the preloaded playback endpoints. Inclusion does not imply affiliation, endorsement or guaranteed availability.
+
+Twitch names, content and services belong to their respective owners. HexStream is an independent client and is not affiliated with Twitch or Amazon.

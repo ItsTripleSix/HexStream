@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/stopDownload"
+        android:title="@string/stop_download"
+        android:visible="false" />
+    <item
+        android:id="@+id/resumeDownload"
+        android:title="@string/resume_download"
+        android:visible="false" />
+    <item
+        android:id="@+id/convertVideo"
+        android:title="@string/convert_vod_to_file"
+        android:visible="false" />
+    <item
+        android:id="@+id/moveVideo"
+        android:title="@string/move_to_shared_storage"
+        android:visible="false" />
+    <item
+        android:id="@+id/updateChatUrl"
+        android:title="@string/change_chat_file"
+        android:visible="false" />
+    <item
+        android:id="@+id/shareVideo"
+        android:title="@string/share"
+        android:visible="false" />
+    <item
+        android:id="@+id/delete"
+        android:title="@string/delete" />
+</menu>

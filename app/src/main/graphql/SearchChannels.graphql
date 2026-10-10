@@ -1,0 +1,30 @@
+query SearchChannels($query: String!, $first: Int, $after: Cursor) {
+    searchUsers(userQuery: $query, first: $first, after: $after) {
+        edges {
+            cursor
+            node {
+                broadcastSettings {
+                    title
+                    language
+                }
+                displayName
+                followers {
+                    totalCount
+                }
+                id
+                login
+                profileImageURL(width: 300)
+                stream {
+                    game { displayName }
+                    viewersCount
+                    freeformTags {
+                        name
+                    }
+                }
+            }
+        }
+        pageInfo {
+            hasNextPage
+        }
+    }
+}

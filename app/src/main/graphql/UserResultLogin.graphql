@@ -1,0 +1,14 @@
+query UserResultLogin($login: String!) {
+    userResultByLogin(login: $login) {
+        ... on User {
+            id
+        }
+        ... on UserDoesNotExist {
+            key
+            reason
+        }
+        ... on UserError {
+            key
+        }
+    }
+}
