@@ -12,6 +12,12 @@ The starting source is Xtra **2.60.7**, upstream commit [`a3cbb0325f3330573a6738
 
 Xtra provides the app architecture and much of the player, Twitch integration, chat, emote support, browsing, VOD/clip handling, downloads, saved content, themes and settings. HexStream’s changes focus on category pagination, global content controls, saved-account switching, global proxy presets, live-delay tuning, gestures, points/reward handling, reliability and branding.
 
+## Filtering inspiration: Unwanted Twitch
+
+**[Unwanted Twitch by kwaschny](https://github.com/kwaschny/unwanted-twitch)** inspired HexStream’s channel/category/title/tag blocking workflow and compatible blocking-list JSON format. Credit belongs to its author and contributors for establishing that approach.
+
+HexStream implements its own native Android filtering engine. The separate [HexStream Filter browser extension](https://github.com/ItsTripleSix/HexStream-Filter) is also independently implemented and credits Unwanted Twitch’s inspiration and format. No Unwanted Twitch source code or artwork is bundled in either project.
+
 ## License
 
 The app source is distributed under the **GNU Affero General Public License, version 3**, following Xtra’s license. See the complete [LICENSE](LICENSE). Keep upstream copyright and license notices when redistributing or modifying the source. Corresponding source for each published build is available at its release tag.
@@ -20,7 +26,6 @@ Dependency components and included assets can have their own licenses. Existing 
 
 ## Other projects and services
 
-- [Unwanted Twitch by kwaschny](https://github.com/kwaschny/unwanted-twitch): inspiration for the filtering workflow and compatible blocking-list JSON format. HexStream implements its own native Android engine; no browser extension is bundled.
 - [AndroidX](https://developer.android.com/jetpack/androidx), including Paging, Room, WorkManager and Media3; [Kotlin](https://kotlinlang.org/), kotlinx libraries, [Apollo Kotlin](https://github.com/apollographql/apollo-kotlin), [OkHttp](https://github.com/square/okhttp), [Cronet](https://chromium.googlesource.com/chromium/src/+/main/components/cronet/), [ML Kit](https://developers.google.com/ml-kit), image libraries and other dependencies listed in [`libs.versions.toml`](gradle/libs.versions.toml).
 - [7TV](https://7tv.app/), [BetterTTV](https://betterttv.com/) and [FrankerFaceZ](https://www.frankerfacez.com/): third-party emote ecosystems supported through Xtra’s integrations.
 - Luminous and PerfProd: independent operators of the preloaded playback endpoints. Inclusion does not imply affiliation, endorsement or guaranteed availability.

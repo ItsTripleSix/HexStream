@@ -16,9 +16,11 @@ HexStream is a custom Android Twitch client by TripleSix, built on [Xtra](https:
 
 Xtra supplies the foundation: playback, chat, browsing and much more. Credit belongs to **[Andrey Asadchy](https://github.com/AndreyAsadchy/Xtra), [crackededed](https://github.com/crackededed/Xtra), and Xtra’s contributors**. HexStream extends that work under the **GNU Affero General Public License v3**. See [credits and provenance](CREDITS.md).
 
+The filtering workflow and compatible list format were inspired by **[Unwanted Twitch by kwaschny](https://github.com/kwaschny/unwanted-twitch)**. HexStream implements those ideas in its own native Android filtering engine. Both projects are credited in the app’s **About** screen and [credits page](CREDITS.md).
+
 ## Get HexStream
 
-Download the APK from [Releases](https://github.com/ItsTripleSix/HexStream/releases). The current release is **1.0.0-beta.1**, built locally with Gradle and the Android SDK. Android 7.0 or newer is required. No GitHub Actions build is used.
+Download the APK from [Releases](https://github.com/ItsTripleSix/HexStream/releases). The current release is **1.0.0-beta.2**, built locally with Gradle and the Android SDK. Android 7.0 or newer is required. No GitHub Actions build is used.
 
 Fresh installations start with **empty filter lists**. Language restrictions and emoji blocking are off; you choose the rules. Upgrading preserves existing saved rules, accounts and proxy settings. See [installation and builds](docs/BUILDING.md) for signing and package details.
 

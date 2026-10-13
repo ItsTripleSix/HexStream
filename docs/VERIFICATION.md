@@ -1,5 +1,11 @@
 # Verification and known limits
 
+## Credits update: 1.0.0-beta.2
+
+The credits update passed the 90 JVM tests again. Android lint reported zero errors and 23 reviewed warnings covering dependency updates, compatibility hooks and UI suggestions; the optimized APK was built locally. Its package, version, existing signing certificate, empty starter lists and compiled Xtra/Unwanted Twitch attribution were verified. Only the app’s About text and version metadata changed; playback, pagination and filter behavior are unchanged.
+
+The physical-device results below refer to beta.1. Device tests were not repeated for this credits-only update.
+
 ## Automated checks
 
 The first public beta passes **90 JVM tests across 16 suites**, checked locally with JDK 21, the included Gradle wrapper and Android SDK 37. The JVM suites cover:

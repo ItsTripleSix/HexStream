@@ -4,7 +4,7 @@
 
 Get the APK from [the official HexStream releases](https://github.com/ItsTripleSix/HexStream/releases). Check its SHA-256 against the accompanying checksum file if you verify downloads. Android may ask you to allow installation from the browser/file manager you use.
 
-The current package is `com.github.andreyasadchy.xtra.prototype`. The inherited namespace and package are retained for compatibility with existing HexStream installations; the launcher name is HexStream. The version is **1.0.0-beta.1**, version code **135**. Do not uninstall an existing working installation merely to update it: a matching package/signature update preserves its app data.
+The current package is `com.github.andreyasadchy.xtra.prototype`. The inherited namespace and package are retained for compatibility with existing HexStream installations; the launcher name is HexStream. The version is **1.0.0-beta.2**, version code **136**. Do not uninstall an existing working installation merely to update it: a matching package/signature update preserves its app data.
 
 The published APK uses the existing HexStream signing certificate. Its SHA-256 certificate fingerprint is:
 

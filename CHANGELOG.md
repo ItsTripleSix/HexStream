@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0-beta.2
+
+- Credit Unwanted Twitch by kwaschny and its contributors in the app’s About screen for the filtering workflow and compatible list format, alongside the existing Xtra attribution.
+- Make both credits prominent on the repository page and expand the dedicated credits page.
+- Link the Android app and HexStream Filter browser extension, including explicit list-transfer and compatibility instructions.
+- Credits/documentation update; player, filtering and pagination behavior are unchanged.
+
 ## 1.0.0-beta.1
 
 First public HexStream beta, based on Xtra 2.60.7.
