@@ -84,6 +84,8 @@ Long-press supported normal or compact stream cards to act on a channel, title, 
 
 HexStream accepts the blocking-list JSON format used by [Unwanted Twitch](https://github.com/kwaschny/unwanted-twitch). Its `categories`, `channels`, `tags` and `titles` arrays map to the corresponding rule lists. A basic import does not silently enable language restrictions.
 
+Want the same list-based control on desktop? [HexStream Filter for Firefox and Chrome](https://github.com/ItsTripleSix/HexStream-Filter) checks complete supplied tags and supports explicit compatible-list import/export. It is a separate browser extension: no automatic sync, and phone-only language/emoji/followed-account options do not transfer as browser features. [Installation](https://github.com/ItsTripleSix/HexStream-Filter/blob/main/docs/INSTALLING.md) · [Cross-platform limits](https://github.com/ItsTripleSix/HexStream-Filter/blob/main/docs/FILTERING.md#using-it-with-hexstream-for-android).
+
 - **Full app export** preserves all filter options, allow lists and emoji choices for a HexStream round trip.
 - **Export for Unwanted Twitch** emits compatible blocking lists. Specific blocked emojis are emitted as ordinary rules. That format cannot express HexStream’s allow lists, block-all emoji setting, followed-account exemptions or language controls.
 

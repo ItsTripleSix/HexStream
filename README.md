@@ -7,6 +7,7 @@
   <img alt="Android 7 or newer" src="https://img.shields.io/badge/Android-7.0%2B-83D1B8?style=for-the-badge&labelColor=171B1B">
   <a href="LICENSE"><img alt="AGPL v3" src="https://img.shields.io/badge/License-AGPL_v3-FFF5E6?style=for-the-badge&labelColor=171B1B"></a>
   <a href="https://github.com/crackededed/Xtra"><img alt="Built on Xtra" src="https://img.shields.io/badge/Built_on-Xtra-83D1B8?style=for-the-badge&labelColor=171B1B"></a>
+  <a href="https://github.com/ItsTripleSix/HexStream-Filter"><img alt="Browser extension" src="https://img.shields.io/badge/Also_on-Firefox_%26_Chrome-FFF5E6?style=for-the-badge&labelColor=171B1B"></a>
 </p>
 
 **Twitch on your phone, without the shit you didn’t come for.**
@@ -20,6 +21,11 @@ Xtra supplies the foundation: playback, chat, browsing and much more. Credit bel
 Download the APK from [Releases](https://github.com/ItsTripleSix/HexStream/releases). The current release is **1.0.0-beta.1**, built locally with Gradle and the Android SDK. Android 7.0 or newer is required. No GitHub Actions build is used.
 
 Fresh installations start with **empty filter lists**. Language restrictions and emoji blocking are off; you choose the rules. Upgrading preserves existing saved rules, accounts and proxy settings. See [installation and builds](docs/BUILDING.md) for signing and package details.
+
+> **Want filtering in your browser too?** [HexStream Filter for Firefox and Chrome →](https://github.com/ItsTripleSix/HexStream-Filter)<br>
+> Hide users, categories, titles and every supplied tag—including tags the card leaves out. Import compatible lists, inspect why something disappeared and pick character filters from an easy Languages page. Firefox downloads are Mozilla-signed; Chrome uses an unpacked ZIP. [Install the extension →](https://github.com/ItsTripleSix/HexStream-Filter/blob/main/docs/INSTALLING.md)
+
+The app and extension are separate installations with explicit compatible-list export/import. There is no automatic phone/browser sync. Android's language identification and emoji controls differ from the extension's character presets, and advanced regex dialects can differ. [Browser filtering and migration details →](https://github.com/ItsTripleSix/HexStream-Filter/blob/main/docs/FILTERING.md#using-it-with-hexstream-for-android)
 
 ## What HexStream adds
 
