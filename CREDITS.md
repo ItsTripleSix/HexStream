@@ -10,7 +10,7 @@
 
 The starting source is Xtra **2.60.7**, upstream commit [`a3cbb0325f3330573a6738f7d36a2c5b785f4d1c`](https://github.com/crackededed/Xtra/commit/a3cbb0325f3330573a6738f7d36a2c5b785f4d1c). The public HexStream branch begins with a source snapshot; upstream author history remains available in those linked repositories. The original upstream README is retained in [docs/upstream/README-Xtra.md](docs/upstream/README-Xtra.md).
 
-The beta.3 development build incorporates **crackededed’s Xtra 2.60.8 fixes**, through upstream commit [`96772030c7712581ad150c9b8b619c77a3527e50`](https://github.com/crackededed/Xtra/commit/96772030c7712581ad150c9b8b619c77a3527e50). The [upstream synchronization record](docs/upstream/SYNC.md) links each original commit and describes adaptations for HexStream.
+Beta.3 incorporates **crackededed’s Xtra 2.60.8 fixes**, through upstream commit [`96772030c7712581ad150c9b8b619c77a3527e50`](https://github.com/crackededed/Xtra/commit/96772030c7712581ad150c9b8b619c77a3527e50). The [upstream synchronization record](docs/upstream/SYNC.md) links each original commit and describes adaptations for HexStream.
 
 Xtra provides the app architecture and much of the player, Twitch integration, chat, emote support, browsing, VOD/clip handling, downloads, saved content, themes and settings. HexStream’s changes focus on category pagination, global content controls, saved-account switching, global proxy presets, live-delay tuning, gestures, points/reward handling, reliability and branding.
 
@@ -18,7 +18,7 @@ Xtra provides the app architecture and much of the player, Twitch integration, c
 
 **[Unwanted Twitch by kwaschny](https://github.com/kwaschny/unwanted-twitch)** inspired HexStream’s channel/category/title/tag blocking workflow and compatible blocking-list JSON format. Credit belongs to its author and contributors for establishing that approach.
 
-HexStream implements its own native Android filtering engine. The separate [HexStream Filter browser extension](https://github.com/ItsTripleSix/HexStream-Filter) is also independently implemented and credits Unwanted Twitch’s inspiration and format. No Unwanted Twitch source code or artwork is bundled in either project.
+HexStream implements its own native Android filtering engine. The separate [HexStream Filter browser extension](https://github.com/OnlyTripleSix/HexStream-Filter) is also independently implemented and credits Unwanted Twitch’s inspiration and format. No Unwanted Twitch source code or artwork is bundled in either project.
 
 ## License
 

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/crackededed/Xtra.git",
+  "branch": "master",
+  "integratedCommit": "96772030c7712581ad150c9b8b619c77a3527e50",
+  "upstreamVersion": "2.60.8",
+  "hexStreamVersion": "1.0.0-beta.3",
+  "hexStreamVersionCode": 137
+}

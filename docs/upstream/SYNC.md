@@ -2,9 +2,9 @@
 
 HexStream started from Xtra 2.60.7, commit [`a3cbb0325f3330573a6738f7d36a2c5b785f4d1c`](https://github.com/crackededed/Xtra/commit/a3cbb0325f3330573a6738f7d36a2c5b785f4d1c). Its initial public commit is a source snapshot rather than a shared-history Git fork. Compare against the recorded upstream checkpoint when integrating later changes.
 
-## Current development checkpoint
+## Current integrated checkpoint
 
-HexStream **1.0.0-beta.3**, not yet released, incorporates all three upstream application changes through **Xtra 2.60.8**, commit [`96772030c7712581ad150c9b8b619c77a3527e50`](https://github.com/crackededed/Xtra/commit/96772030c7712581ad150c9b8b619c77a3527e50). HexStream keeps its own version, package and signing identity.
+HexStream **1.0.0-beta.3** incorporates all three upstream application changes through **Xtra 2.60.8**, commit [`96772030c7712581ad150c9b8b619c77a3527e50`](https://github.com/crackededed/Xtra/commit/96772030c7712581ad150c9b8b619c77a3527e50). HexStream keeps its own version, package and signing identity.
 
 All three original changes below were authored by **crackededed** on October 14, 2026.
 
@@ -22,8 +22,12 @@ All three original changes below were authored by **crackededed** on October 14,
 - On a device, check live playback, minimize/restore and back navigation, quality selection/recovery, and loading points/rewards. Spend or claim points only intentionally.
 - Confirm the existing pagination, filter, proxy and low-delay suites still pass. No changes to those implementations are required by this synchronization.
 
+The machine-readable checkpoint is [SYNC.json](SYNC.json); update it alongside this record after integrating upstream changes.
+
 Record actual results in [verification](../VERIFICATION.md). Compiling a fixture is not the same as running it, and a successful mocked response does not certify Twitch’s live API behavior.
 
 ## Future updates
 
 Fetch `crackededed/Xtra` and review commits after the checkpoint above. Adapt changes in areas HexStream extends, preserve upstream attribution and licenses, run the relevant regression suites and build locally. Update this checkpoint only after incorporating all intended changes through the new commit. Do not replace HexStream’s customized source wholesale with an upstream tree.
+
+A completed update includes the tested source on the existing repository’s main branch and a downloadable GitHub release with the signed APK, matching source ZIP and SHA-256 checksums. Builds run locally. Preserve the package/signing identity, empty defaults, credits and published release tags. A failed check leaves the previous downloadable release in place.

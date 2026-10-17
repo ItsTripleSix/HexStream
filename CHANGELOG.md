@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0-beta.3 (unreleased)
+## 1.0.0-beta.3
 
 - Incorporate crackededed’s Xtra 2.60.8 fixes: updated channel-points context query, player status-bar attachment guards, and unlisted video-quality recovery.
 - Use the updated points request for both HexStream’s rewards panel and the inherited bonus-points context, retaining active-account handling and redemption submission guards.
