@@ -1843,17 +1843,21 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
     }
 
     private fun showStatusBar() {
-        WindowCompat.getInsetsController(
-            requireActivity().window,
-            requireActivity().window.decorView
-        ).show(WindowInsetsCompat.Type.systemBars())
+        if (isAdded) {
+            WindowCompat.getInsetsController(
+                requireActivity().window,
+                requireActivity().window.decorView
+            ).show(WindowInsetsCompat.Type.systemBars())
+        }
     }
 
     private fun hideStatusBar() {
-        WindowCompat.getInsetsController(
-            requireActivity().window,
-            requireActivity().window.decorView
-        ).hide(WindowInsetsCompat.Type.systemBars())
+        if (isAdded) {
+            WindowCompat.getInsetsController(
+                requireActivity().window,
+                requireActivity().window.decorView
+            ).hide(WindowInsetsCompat.Type.systemBars())
+        }
     }
 
     private fun enableBackground() {
@@ -2184,20 +2188,10 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
     fun findUnlistedVideo() {
         val unavailableQualities = getUnavailableQualities()
         val qualities = if (unavailableQualities.isNotEmpty()) {
-            mutableListOf<VideoQuality>().apply {
+            UnlistedVideoQualities.ordered(mutableListOf<VideoQuality>().apply {
                 playbackService?.qualities?.filter { !it.url.isNullOrBlank() }?.let { addAll(it) }
                 addAll(unavailableQualities)
-                sortWith(
-                    compareByDescending<VideoQuality> { it.bitrate }
-                        .thenByDescending { it.frameRate }
-                        .thenByDescending { it.resolution }
-                )
-                val audio = find { it.name?.startsWith("audio", true) == true }
-                audio?.let {
-                    remove(it)
-                    add(it)
-                }
-            }
+            })
         } else {
             playbackService?.qualities?.filter { !it.url.isNullOrBlank() }
         }

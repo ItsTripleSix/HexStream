@@ -4,7 +4,7 @@
 
 Get the APK from [the official HexStream releases](https://github.com/ItsTripleSix/HexStream/releases). Check its SHA-256 against the accompanying checksum file if you verify downloads. Android may ask you to allow installation from the browser/file manager you use.
 
-The current package is `com.github.andreyasadchy.xtra.prototype`. The inherited namespace and package are retained for compatibility with existing HexStream installations; the launcher name is HexStream. The version is **1.0.0-beta.2**, version code **136**. Do not uninstall an existing working installation merely to update it: a matching package/signature update preserves its app data.
+The current package is `com.github.andreyasadchy.xtra.prototype`. The inherited namespace and package are retained for compatibility with existing HexStream installations; the launcher name is HexStream. The current development build is **1.0.0-beta.3**, version code **137**; the published release remains beta.2 until the upstream-fix update is verified. Do not uninstall an existing working installation merely to update it: a matching package/signature update preserves its app data.
 
 The published APK uses the existing HexStream signing certificate. Its SHA-256 certificate fingerprint is:
 
@@ -66,7 +66,9 @@ Use the `qa` build type to keep fixtures away from a real account’s installati
   --max-workers=2 -Dorg.gradle.jvmargs=-Xmx3072m
 ```
 
-The fixture that modifies preferences checks the QA package before doing so. This command runs seven account-free checks. The follow-list integration test is excluded because it needs a dedicated signed-in QA account; its missing-account assumption is reported as a failure by some Gradle/runner combinations. Run that test separately with an appropriate test account. Do not run state-changing fixtures against a personal account installation. Remove only QA/test packages when cleaning up; never clear the production app’s data as a routine verification step.
+The fixture that modifies preferences checks the QA package before doing so. Beta.1 ran seven account-free checks; beta.3 adds the eighth fixture described below. The follow-list integration test is excluded because it needs a dedicated signed-in QA account; its missing-account assumption is reported as a failure by some Gradle/runner combinations. Run that test separately with an appropriate test account. Do not run state-changing fixtures against a personal account installation. Remove only QA/test packages when cleaning up; never clear the production app’s data as a routine verification step.
+
+Beta.3 adds an eighth account-free fixture for status-bar callbacks on an unattached player. It must run in the QA package too. With `-PhexstreamTestBuildType=qa`, use `:app:testQaUnitTest` and `:app:lintQa` for the JVM/static checks; the debug unit-test task is not available in that configuration. `:app:compileQaAndroidTestKotlin` compiles the device fixtures without installing or running them.
 
 On the beta verification setup, Gradle’s aggregate device result remained unsuccessful even with a seven-test/zero-failure XML report. The same checks were verified directly:
 

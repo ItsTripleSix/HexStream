@@ -1,5 +1,15 @@
 # Verification and known limits
 
+## Upstream fixes: 1.0.0-beta.3 local test build
+
+The local beta.3 candidate incorporates the three Xtra 2.60.8 fixes listed in the [synchronization record](upstream/SYNC.md). **101 JVM tests across 18 suites passed**, including intercepted outgoing points requests, compatibility with both points response consumers, optional video-quality metadata and recovery ordering. The existing pagination, filter, proxy, account-action and low-delay suites passed too.
+
+Android lint reported **zero errors and 23 reviewed warnings**, the same warning categories as beta.2. The optimized signed APK built locally; its package/version, existing signing certificate, neutral starter lists, compiled attribution and updated points-query hash were verified. The status-bar device regression fixture compiled successfully.
+
+An anonymous read-only request to Twitch using the updated points query returned HTTP 200 with data and zero GraphQL errors. No account credentials were used and no bonus claim or reward redemption was submitted. This checks query availability, not authenticated point-spending behavior.
+
+No device was connected over ADB, so the new status-bar fixture, live playback, quality selection and minimize/back smoke checks have **not** run on a phone for beta.3. The physical-device results below remain historical beta.1 results. Beta.3 is a local test build; the published release remains beta.2.
+
 ## Credits update: 1.0.0-beta.2
 
 The credits update passed the 90 JVM tests again. Android lint reported zero errors and 23 reviewed warnings covering dependency updates, compatibility hooks and UI suggestions; the optimized APK was built locally. Its package, version, existing signing certificate, empty starter lists and compiled Xtra/Unwanted Twitch attribution were verified. Only the app’s About text and version metadata changed; playback, pagination and filter behavior are unchanged.

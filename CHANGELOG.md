@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0-beta.3 (unreleased)
+
+- Incorporate crackededed’s Xtra 2.60.8 fixes: updated channel-points context query, player status-bar attachment guards, and unlisted video-quality recovery.
+- Use the updated points request for both HexStream’s rewards panel and the inherited bonus-points context, retaining active-account handling and redemption submission guards.
+- Keep recoverable quality variants, normalize missing metadata, and prefer resolution, then frame rate, then bitrate when recovering an unlisted video; audio remains last.
+- Add regression coverage for the outgoing points request, response compatibility and video-quality behavior, plus an isolated-device status-bar regression fixture.
+- Keep category pagination, tag filtering, global settings, proxy presets and low-delay tuning unchanged.
+
 ## 1.0.0-beta.2
 
 - Credit Unwanted Twitch by kwaschny and its contributors in the app’s About screen for the filtering workflow and compatible list format, alongside the existing Xtra attribution.

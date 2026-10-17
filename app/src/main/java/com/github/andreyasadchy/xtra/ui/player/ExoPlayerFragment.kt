@@ -476,7 +476,7 @@ class ExoPlayerFragment : PlayerFragment() {
                                         if (filterReasons != null) {
                                             for (filterIndex in 0 until filterReasons.length()) {
                                                 val filter = filterReasons.optString(filterIndex)
-                                                if (filter.isNotEmpty()) {
+                                                if (!UnlistedVideoQualities.supportsReason(filter)) {
                                                     skip = true
                                                     break
                                                 }
@@ -488,9 +488,8 @@ class ExoPlayerFragment : PlayerFragment() {
                                             val frameRate = obj.optString("FRAME-RATE").toFloatOrNull()
                                             val bitrate = obj.optInt("BANDWIDTH")
                                             val codec = obj.optString("CODECS")
-                                            if (!newVariantId.isNullOrBlank()) {
-                                                stableVariantIds.add(VideoQuality(newVariantId, resolution.substringAfter('x').toIntOrNull(), frameRate, bitrate, codec))
-                                            }
+                                            UnlistedVideoQualities.variant(newVariantId, resolution, frameRate, bitrate, codec)
+                                                ?.let(stableVariantIds::add)
                                         }
                                     }
                                 }
