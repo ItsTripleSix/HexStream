@@ -1115,22 +1115,12 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
             findPreference<EditTextPreference>(C.PLAYER_REWIND)?.apply {
-                summary = getString(R.string.seconds_full, requireContext().prefs().getString(C.PLAYER_REWIND, "10"))
-                setOnPreferenceChangeListener { _, newValue ->
-                    summary = getString(R.string.seconds_full, newValue.toString())
-                    true
-                }
                 setOnBindEditTextListener {
                     it.inputType = InputType.TYPE_CLASS_NUMBER
                     it.setSelection(it.text.length)
                 }
             }
             findPreference<EditTextPreference>(C.PLAYER_FORWARD)?.apply {
-                summary = getString(R.string.seconds_full, requireContext().prefs().getString(C.PLAYER_FORWARD, "10"))
-                setOnPreferenceChangeListener { _, newValue ->
-                    summary = getString(R.string.seconds_full, newValue.toString())
-                    true
-                }
                 setOnBindEditTextListener {
                     it.inputType = InputType.TYPE_CLASS_NUMBER
                     it.setSelection(it.text.length)
@@ -1425,13 +1415,6 @@ class SettingsActivity : AppCompatActivity() {
                 }
                 true
             }
-            findPreference<EditTextPreference>("update_check_frequency")?.apply {
-                summary = getString(R.string.update_check_frequency_summary, text)
-                setOnPreferenceChangeListener { _, newValue ->
-                    summary = getString(R.string.update_check_frequency_summary, newValue)
-                    true
-                }
-            }
             findPreference<SwitchPreferenceCompat>("update_use_browser")?.setOnPreferenceChangeListener { _, newValue ->
                 if (Build.VERSION.SDK_INT == Build.VERSION_CODES.UPSIDE_DOWN_CAKE &&
                     newValue == false &&
@@ -1609,7 +1592,9 @@ class SettingsActivity : AppCompatActivity() {
                     Triple(R.xml.ui_preferences, SettingsNavGraphDirections.actionGlobalUiSettingsFragment(), getString(R.string.ui_settings)),
                     Triple(R.xml.update_preferences, SettingsNavGraphDirections.actionGlobalUpdateSettingsFragment(), getString(R.string.update_settings)),
                 ).forEach { item ->
-                    preferenceManager.inflateFromResource(requireContext(), item.first, null).forEach {
+                    val screen = preferenceManager.inflateFromResource(requireContext(), item.first, null)
+                    SettingsHelp.attach(screen)
+                    screen.forEach {
                         when (it) {
                             is SwitchPreferenceCompat -> {
                                 list.add(SettingsSearchItem(

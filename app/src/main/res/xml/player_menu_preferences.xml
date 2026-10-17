@@ -4,6 +4,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_menu_quality"
+        android:summary="@string/hex_help_player_menu_player_menu_quality"
         android:title="@string/quality"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -11,6 +12,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_menu_speed"
+        android:summary="@string/hex_help_player_menu_player_menu_speed"
         android:title="@string/playback_speed"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -18,6 +20,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_viewer_list"
+        android:summary="@string/hex_help_player_menu_player_menu_viewer_list"
         android:title="@string/viewer_list"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -25,6 +28,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_menu_games"
+        android:summary="@string/hex_help_player_menu_player_menu_games"
         android:title="@string/chapters"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -32,6 +36,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_download"
+        android:summary="@string/hex_help_player_menu_player_menu_download"
         android:title="@string/download"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -39,6 +44,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_bookmark"
+        android:summary="@string/hex_help_player_menu_player_menu_bookmark"
         android:title="@string/bookmark"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -46,6 +52,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_share"
+        android:summary="@string/hex_help_player_menu_player_menu_share"
         android:title="@string/share"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -53,6 +60,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_find_vod"
+        android:summary="@string/hex_help_player_menu_player_menu_find_vod"
         android:title="@string/find_unlisted_video"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -60,6 +68,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_sleep"
+        android:summary="@string/hex_help_player_menu_player_menu_sleep"
         android:title="@string/sleep_timer"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -67,6 +76,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_menu_aspect"
+        android:summary="@string/hex_help_player_menu_player_menu_aspect"
         android:title="@string/aspect_ratio"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -74,6 +84,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_menu_volume"
+        android:summary="@string/hex_help_player_menu_player_menu_volume"
         android:title="@string/volume"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -81,6 +92,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_subtitles"
+        android:summary="@string/hex_help_player_menu_player_menu_subtitles"
         android:title="@string/toggle_subtitles"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -88,6 +100,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_menu_restart"
+        android:summary="@string/hex_help_player_menu_player_menu_restart"
         android:title="@string/restart_player"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -95,6 +108,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_chat_bar"
+        android:summary="@string/hex_help_player_menu_player_menu_chat_bar"
         android:title="@string/toggle_chat_bar"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -102,6 +116,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_menu_chat_toggle"
+        android:summary="@string/hex_help_player_menu_player_menu_chat_toggle"
         android:title="@string/toggle_chat"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -109,6 +124,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_reload_emotes"
+        android:summary="@string/hex_help_player_menu_player_menu_reload_emotes"
         android:title="@string/reload_emotes"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -116,6 +132,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_menu_chat_disconnect"
+        android:summary="@string/hex_help_player_menu_player_menu_chat_disconnect"
         android:title="@string/disconnect_chat"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />

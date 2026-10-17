@@ -62,7 +62,6 @@
     <string name="no_storage_detected">Kullanılabilir depolama alanı bulunamadı (muhtemelen telefon bir bilgisayara bağlı).</string>
     <string name="rewind">Geri sar</string>
     <string name="forward">İleri sar</string>
-    <string name="seconds_full">%s saniye</string>
     <string name="unfollow_channel">%s takipten çıkılsın mı?</string>
     <string name="now_following">Artık %s kullanıcısını takip ediyorsunuz</string>
     <string name="unfollowed">%s takipten çıkıldı</string>
@@ -241,7 +240,6 @@
     <string name="aspect_ratio">En boy oranı</string>
     <string name="player_menu">Oynatıcı menüsü</string>
     <string name="restart_player">Oynatıcıyı yeniden başlat</string>
-    <string name="sub_only_summary">Sadece abonelere özel içerikler için</string>
     <string name="follow_button">Takip et düğmesi</string>
     <string name="follow_account">Twitch hesabıyla takip et</string>
     <string name="follow_local">Yerel olarak takip et</string>
@@ -278,7 +276,6 @@
     <string name="stream_live">%s şimdi canlı</string>
     <string name="stream_offline">%s şimdi çevrimdışı</string>
     <string name="keep_screen_on_when_paused">Video duraklatıldığında ekranı açık tut</string>
-    <string name="stream_proxy_url_desc">\"$channel\" kanal giriş adıyla değiştirilecektir</string>
     <string name="show_subtitles">Altyazıları göster</string>
     <string name="hide_subtitles">Altyazıları gizle</string>
     <string name="toggle_subtitles">Altyazıları aç/kapat</string>
@@ -311,7 +308,6 @@
     <string name="proxy_port">Port</string>
     <string name="proxy_user">Kullanıcı adı</string>
     <string name="proxy_password">Şifre</string>
-    <string name="proxy_settings">HTTP proxy ayarları</string>
     <string name="stop_download">İndirmeyi durdur</string>
     <string name="resume_download">İndirmeye devam et</string>
     <string name="show_view_count_icon">İzleyici sayısı ve yayın süresi simgelerini göster</string>
@@ -377,7 +373,6 @@
     <string name="update_using_browser">Güncelleme bağlantısını tarayıcıda aç</string>
     <string name="auto_check_updates">Başlangıçta güncellemeleri kontrol et</string>
     <string name="update_check_frequency">Güncelleme kontrol sıklığı</string>
-    <string name="update_check_frequency_summary">Her %s günde bir</string>
     <string name="notification_live_channel_title">Canlı bildirimler</string>
     <string name="live_notification">%s canlı yayında</string>
     <string name="live_notifications">Canlı bildirimler</string>
@@ -389,7 +384,6 @@
     <string name="enabled_notifications">Bildirimler etkinleştirildi</string>
     <string name="disabled_notifications">Bildirimler devre dışı bırakıldı</string>
     <string name="name_display">Kullanıcı adı gösterimi</string>
-    <string name="name_display_summary">Görünen ad, giriş adından farklı olduğunda gösterilen ad</string>
     <string name="name_display_entry1">Görünen adı ve giriş adını göster</string>
     <string name="name_display_entry2">Sadece görünen adı göster</string>
     <string name="name_display_entry3">Sadece giriş adını göster</string>
@@ -428,7 +422,6 @@
     <string name="ui_settings">Arayüz</string>
     <string name="debug_settings">Hata Ayıklama</string>
     <string name="download_threads">İndirme iş parçacığı sayısı</string>
-    <string name="download_threads_summary">Aynı anda indirilen parça sayısı</string>
     <string name="minimize">Simge Durumuna Küçült</string>
     <string name="player_menu_settings">Oynatıcı menü ayarları</string>
     <string name="chapters">Bölümler</string>
@@ -539,7 +532,6 @@
     <string name="recent_messages_api_url">Recent messages API URL</string>
     <string name="access_local_network_title">Grant local network permission</string>
     <string name="access_local_network_desc">Required for connecting to local proxies</string>
-    <string name="custom_proxy_settings">Custom proxy settings</string>
     <string name="add_proxy">Add proxy</string>
     <string name="delete_proxy_message">Are you sure you want to delete this proxy?</string>
     <string name="add_proxy_query_params">Add URL query parameters (allow_source, allow_audio_only, fast_bread)</string>
@@ -548,12 +540,10 @@
     <string name="offline">Offline</string>
     <string name="proxy_error">Proxy error. %s is offline</string>
     <string name="show_stream_notification_seekbar">Show seekbar on media notification when watching streams</string>
-    <string name="use_custom_proxies">Use custom proxies</string>
     <string name="use_stream_proxies">Use HTTP proxies</string>
     <string name="platform_param">Platform</string>
     <string name="player_type_param">Player type</string>
     <string name="use_video_swap">Use video swap</string>
-    <string name="use_video_swap_desc">Swaps playlist during ads</string>
     <string name="video_swap_settings">Video swap settings</string>
     <string name="default_values">Default values</string>
     <string name="add_item">Add item</string>

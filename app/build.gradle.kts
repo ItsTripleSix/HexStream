@@ -35,8 +35,8 @@ android {
         minSdk = 24
         targetSdk = 37
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        versionCode = 137
-        versionName = "1.0.0-beta.3"
+        versionCode = 138
+        versionName = "1.0.0-beta.4"
     }
 
     buildTypes {

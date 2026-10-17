@@ -61,7 +61,6 @@
     <string name="no_storage_detected">Es wurde kein verfügbarer Speicherplatz erkannt (wahrscheinlich ist das Telefon mit einem Computer verbunden).</string>
     <string name="rewind">Zurückspulen</string>
     <string name="forward">Vorspulen</string>
-    <string name="seconds_full">%s Sekunden</string>
     <string name="unfollow_channel">%s entfolgen?</string>
     <string name="now_following">Du folgst nun %s</string>
     <string name="unfollowed">Du folgst %s nicht mehr</string>
@@ -240,7 +239,6 @@
     <string name="aspect_ratio">Seitenverhältnis</string>
     <string name="player_menu">Player-Menü</string>
     <string name="restart_player">Player neustarten</string>
-    <string name="sub_only_summary">Inhalt nur für Abonnenten verfügbar</string>
     <string name="follow_button">Folgen-Button</string>
     <string name="follow_account">Mit Twitch Account folgen</string>
     <string name="follow_local">Lokal folgen</string>
@@ -277,7 +275,6 @@
     <string name="stream_live">%s ist jetzt live</string>
     <string name="stream_offline">%s ist jetzt offline</string>
     <string name="keep_screen_on_when_paused">Bildschirm wach halten, wenn Video pausiert ist</string>
-    <string name="stream_proxy_url_desc">\"$channel\" wird durch Kanal Login ersetzt</string>
     <string name="show_subtitles">Untertitel ausblenden</string>
     <string name="hide_subtitles">Untertitel anzeigen</string>
     <string name="toggle_subtitles">Anzeige der Untertitel umschalten</string>
@@ -310,7 +307,6 @@
     <string name="proxy_port">Port</string>
     <string name="proxy_user">Benutzername</string>
     <string name="proxy_password">Passwort</string>
-    <string name="proxy_settings">HTTP-Proxy-Einstellungen</string>
     <string name="stop_download">Download stoppen</string>
     <string name="resume_download">Download fortsetzen</string>
     <string name="show_view_count_icon">Symbole für Aufrufzahl und Verfügbarkeit anzeigen</string>
@@ -376,7 +372,6 @@
     <string name="update_using_browser">Update-Link im Browser öffnen</string>
     <string name="auto_check_updates">Beim Start nach Updates suchen</string>
     <string name="update_check_frequency">Häufigkeit der Update-Überprüfung</string>
-    <string name="update_check_frequency_summary">Alle %s Tage</string>
     <string name="notification_live_channel_title">Live-Benachrichtigungen</string>
     <string name="live_notification">%s ist Live</string>
     <string name="live_notifications">Live-Benachrichtigungen</string>
@@ -388,7 +383,6 @@
     <string name="enabled_notifications">Aktivierte Benachrichtigungen</string>
     <string name="disabled_notifications">Deaktivierte Benachrichtigungen</string>
     <string name="name_display">Anzeige des Benutzernamens</string>
-    <string name="name_display_summary">Angezeigter Name, wenn Anzeigename vom Anmeldenamen abweicht</string>
     <string name="name_display_entry1">Anzeigename und Login anzeigen</string>
     <string name="name_display_entry2">Nur Anzeigenamen anzeigen</string>
     <string name="name_display_entry3">Nur Anmeldung anzeigen</string>
@@ -427,7 +421,6 @@
     <string name="ui_settings">Benutzeroberfläche</string>
     <string name="debug_settings">Debuggen</string>
     <string name="download_threads">Download threads</string>
-    <string name="download_threads_summary">Anzahl der gleichzeitig heruntergeladenen Chunks</string>
     <string name="minimize">Minimieren</string>
     <string name="player_menu_settings">Player-Menüeinstellungen</string>
     <string name="chapters">Kapitel</string>
@@ -538,7 +531,6 @@
     <string name="recent_messages_api_url">API-URL für aktuelle Nachrichten</string>
     <string name="access_local_network_title">Berechtigung für lokales Netzwerk erteilen</string>
     <string name="access_local_network_desc">Erforderlich für die Verbindung zu lokalen Proxys</string>
-    <string name="custom_proxy_settings">Benutzerdefinierte Proxy-Einstellungen</string>
     <string name="add_proxy">Proxy hinzufügen</string>
     <string name="delete_proxy_message">Sind Sie sicher, dass Sie diesen Proxy löschen möchten?</string>
     <string name="add_proxy_query_params">URL-Abfrageparameter hinzufügen (allow_source, allow_audio_only, fast_bread)</string>
@@ -547,12 +539,10 @@
     <string name="offline">Offline</string>
     <string name="proxy_error">Proxy-Fehler. %s ist offline</string>
     <string name="show_stream_notification_seekbar">Suchleiste in Medienbenachrichtigungen beim Ansehen von Streams anzeigen</string>
-    <string name="use_custom_proxies">Benutzerdefinierte Proxys verwenden</string>
     <string name="use_stream_proxies">HTTP-Proxy verwenden</string>
     <string name="platform_param">Plattform</string>
     <string name="player_type_param">Player-Typ</string>
     <string name="use_video_swap">Videoswap verwenden</string>
-    <string name="use_video_swap_desc">Tauscht die Wiedergabeliste während Werbeclips aus</string>
     <string name="video_swap_settings">Videoswap-Einstellungen</string>
     <string name="default_values">Standardwerte</string>
     <string name="add_item">Element hinzufügen</string>

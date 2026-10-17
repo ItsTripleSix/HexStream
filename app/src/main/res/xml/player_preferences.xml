@@ -4,6 +4,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_disable_background_video"
+        android:summary="@string/hex_help_player_player_disable_background_video"
         android:title="@string/disable_background_video"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -11,6 +12,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_use_background_audio_track"
+        android:summary="@string/hex_help_player_player_use_background_audio_track"
         android:title="@string/use_background_audio_track"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -18,6 +20,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_background_audio_pip_closed"
+        android:summary="@string/hex_help_player_player_background_audio_pip_closed"
         android:title="@string/use_background_audio_pip_closed"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -25,6 +28,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_background_audio_pip_locked"
+        android:summary="@string/hex_help_player_player_background_audio_pip_locked"
         android:title="@string/use_background_audio_pip_locked"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -32,6 +36,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_keep_screen_on_when_paused"
+        android:summary="@string/hex_help_player_player_keep_screen_on_when_paused"
         android:title="@string/keep_screen_on_when_paused"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -39,6 +44,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_audio_focus"
+        android:summary="@string/hex_help_player_player_audio_focus"
         android:title="@string/use_audio_focus"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -46,6 +52,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_handle_audio_becoming_noisy"
+        android:summary="@string/hex_help_player_player_handle_audio_becoming_noisy"
         android:title="@string/handle_audio_becoming_noisy"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -53,6 +60,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_show_stream_notification_seekbar"
+        android:summary="@string/hex_help_player_player_show_stream_notification_seekbar"
         android:title="@string/show_stream_notification_seekbar"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -62,7 +70,7 @@
         android:entries="@array/playerQualityEntries"
         android:entryValues="@array/playerQualityValues"
         android:key="player_defaultquality"
-        android:summary="%s"
+        android:summary="@string/hex_help_player_player_defaultquality"
         android:title="@string/player_defaultquality"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -72,7 +80,7 @@
         android:entries="@array/playerQualityEntries"
         android:entryValues="@array/playerQualityValues"
         android:key="player_default_cellular_quality"
-        android:summary="%s"
+        android:summary="@string/hex_help_player_player_default_cellular_quality"
         android:title="@string/default_cellular_quality"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -80,6 +88,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_rounded_corner_padding"
+        android:summary="@string/hex_help_player_player_rounded_corner_padding"
         android:title="@string/avoid_rounded_corners"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -87,6 +96,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_move_freely"
+        android:summary="@string/hex_help_player_player_move_freely"
         android:title="@string/move_player_freely"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -94,27 +104,30 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="player_use_videopositions"
+        android:summary="@string/hex_help_player_player_use_videopositions"
         android:title="@string/save_video_positions"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
     <Preference
         android:key="delete_video_positions"
+        android:summary="@string/hex_help_player_delete_video_positions"
         android:title="@string/delete_video_positions"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
     <SwitchPreferenceCompat
         android:key="hex_swipe_brightness"
+        android:summary="@string/hex_help_player_hex_swipe_brightness"
         android:defaultValue="true"
         android:title="@string/hex_swipe_brightness"
-        android:summary="@string/hex_swipe_brightness_summary"
         app:iconSpaceReserved="false" />
     <SwitchPreferenceCompat
         android:key="hex_swipe_volume"
+        android:summary="@string/hex_help_player_hex_swipe_volume"
         android:defaultValue="true"
         android:title="@string/hex_swipe_volume"
-        android:summary="@string/hex_swipe_volume_summary"
         app:iconSpaceReserved="false" />
-    <SwitchPreferenceCompat android:key="hex_low_delay" android:defaultValue="true" android:title="@string/hex_low_delay" android:summary="@string/hex_low_delay_summary" app:iconSpaceReserved="false" />
+    <SwitchPreferenceCompat android:key="hex_low_delay"
+        android:summary="@string/hex_help_player_hex_low_delay" android:defaultValue="true" android:title="@string/hex_low_delay" app:iconSpaceReserved="false" />
 </androidx.preference.PreferenceScreen>

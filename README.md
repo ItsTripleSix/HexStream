@@ -20,9 +20,9 @@ The filtering workflow and compatible list format were inspired by **[Unwanted T
 
 ## Get HexStream
 
-Download the APK from [Releases](https://github.com/OnlyTripleSix/HexStream/releases). The current release is **1.0.0-beta.3**, built locally with Gradle and the Android SDK. Android 7.0 or newer is required. No GitHub Actions build is used.
+Download the APK from [Releases](https://github.com/OnlyTripleSix/HexStream/releases). The current release is **1.0.0-beta.4**, built locally with Gradle and the Android SDK. Android 7.0 or newer is required. No GitHub Actions build is used.
 
-Beta.3 includes Xtra 2.60.8 fixes for channel points, a player status-bar crash and unlisted video-quality recovery. [What changed →](CHANGELOG.md)
+Beta.4 explains the settings: every preference has a description and example, the main screen is grouped, and overlapping controls tell you how they differ. It retains beta.3's Xtra 2.60.8 fixes. [Settings guide →](docs/SETTINGS.md) · [What changed →](CHANGELOG.md)
 
 Fresh installations start with **empty filter lists**. Language restrictions and emoji blocking are off; you choose the rules. Upgrading preserves existing saved rules, accounts and proxy settings. See [installation and builds](docs/BUILDING.md) for signing and package details.
 
@@ -43,6 +43,7 @@ The app and extension are separate installations with explicit compatible-list e
 | **Six playback proxy presets** | Ordered Luminous and PerfProd endpoints, editable custom proxies, and the existing player’s fallback behavior. Shared by all accounts. |
 | **Lower live delay** | ExoPlayer starts closer to the live edge by default, with bounded speed adjustment and live-specific buffering. Network and source conditions still matter. |
 | **Swipe controls** | Left-side brightness and right-side volume, independently configurable, alongside the existing minimize/miniplayer gestures. |
+| **Explained settings** | Descriptions and examples under every preference, current values kept visible, and searchable explanations of overlapping controls. |
 | **Channel points** | Claim an available bonus chest and redeem available channel rewards, with balance, input and confirmation handling. |
 | **HexStream identity** | Custom launcher/adaptive/monochrome icon, About credits, and a HexStream release feed. |
 

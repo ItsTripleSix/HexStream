@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingStart="20dp"
@@ -17,7 +18,8 @@
             android:id="@+id/platformInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/platform_param">
+            android:hint="@string/platform_param"
+            app:helperText="@string/hex_swap_platform_help">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -32,7 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:hint="@string/player_type_param">
+            android:hint="@string/player_type_param"
+            app:helperText="@string/hex_swap_player_help">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

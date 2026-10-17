@@ -61,7 +61,6 @@
     <string name="no_storage_detected">Хранилище телефона не доступно (похоже, что телефон подключён к компьютеру).</string>
     <string name="rewind">Перемотка назад</string>
     <string name="forward">Перемотка вперёд</string>
-    <string name="seconds_full">%s секунд</string>
     <string name="unfollow_channel">Прекратить отслеживание %s?</string>
     <string name="now_following">Вы теперь отслеживаете %s</string>
     <string name="unfollowed">Вы перестали отслеживать %s</string>
@@ -240,7 +239,6 @@
     <string name="aspect_ratio">Соотношение сторон</string>
     <string name="player_menu">Меню проигрывателя</string>
     <string name="restart_player">Перезапустить проигрыватель</string>
-    <string name="sub_only_summary">Только для содержимого подписчиков</string>
     <string name="follow_button">Кнопка отслеживания</string>
     <string name="follow_account">Следить через учётную запись Твича</string>
     <string name="follow_local">Отслеживать локально</string>
@@ -277,7 +275,6 @@
     <string name="stream_live">%s теперь в эфире</string>
     <string name="stream_offline">%s теперь не в сети</string>
     <string name="keep_screen_on_when_paused">Сохранять экран во время паузы видео</string>
-    <string name="stream_proxy_url_desc">\"$channel\" заменится логином канала</string>
     <string name="show_subtitles">Показать субтитры</string>
     <string name="hide_subtitles">Скрыть субтитры</string>
     <string name="toggle_subtitles">Переключить субтитры</string>
@@ -310,7 +307,6 @@
     <string name="proxy_port">Порт</string>
     <string name="proxy_user">Имя пользователя</string>
     <string name="proxy_password">Пароль</string>
-    <string name="proxy_settings">Настройки HTTP-прокси</string>
     <string name="stop_download">Остановить закачку</string>
     <string name="resume_download">Возобновить закачку</string>
     <string name="show_view_count_icon">Значки просмотров и времени в эфире</string>
@@ -376,7 +372,6 @@
     <string name="update_using_browser">Открыть адрес обновления в браузере</string>
     <string name="auto_check_updates">Проверять обновления при запуске</string>
     <string name="update_check_frequency">Частота проверки обновления</string>
-    <string name="update_check_frequency_summary">Каждые %s дн.</string>
     <string name="notification_live_channel_title">Уведомления о выходе в эфир</string>
     <string name="live_notification">%s в эфире</string>
     <string name="live_notifications">Уведомлять о выходе в эфир</string>
@@ -388,7 +383,6 @@
     <string name="enabled_notifications">Уведомления включены</string>
     <string name="disabled_notifications">Уведомления отключены</string>
     <string name="name_display">Отображение имени пользователя</string>
-    <string name="name_display_summary">Показ имени, когда отображаемое имя отличается от логина</string>
     <string name="name_display_entry1">Показывать отображаемое имя и логин</string>
     <string name="name_display_entry2">Показывать только отображаемое имя</string>
     <string name="name_display_entry3">Показывать только логин</string>
@@ -427,7 +421,6 @@
     <string name="ui_settings">Интерфейс</string>
     <string name="debug_settings">Отладка</string>
     <string name="download_threads">Потоки загрузок</string>
-    <string name="download_threads_summary">Число одновременно загружаемых фрагментов</string>
     <string name="minimize">Свернуть</string>
     <string name="player_menu_settings">Настройки меню проигрывателя</string>
     <string name="chapters">Главы</string>
@@ -538,7 +531,6 @@
     <string name="recent_messages_api_url">URL API недавних сообщений</string>
     <string name="access_local_network_title">Предоставить разрешение на доступ к локальной сети</string>
     <string name="access_local_network_desc">Необходимо для соединения с локальным прокси</string>
-    <string name="custom_proxy_settings">Настройки пользовательских прокси</string>
     <string name="add_proxy">Добавить прокси</string>
     <string name="delete_proxy_message">Вы уверены, что хотите удалить этот прокси?</string>
     <string name="add_proxy_query_params">Добавить параметры URL запроса (allow_source, allow_audio_only, fast_bread)</string>
@@ -547,12 +539,10 @@
     <string name="offline">Оффлайн</string>
     <string name="proxy_error">Ошибка прокси. %s вне сети</string>
     <string name="show_stream_notification_seekbar">Показывать полосу перемотки в уведомлении при просмотре трансляций</string>
-    <string name="use_custom_proxies">Использовать пользовательский прокси</string>
     <string name="use_stream_proxies">Использовать HTTP прокси</string>
     <string name="platform_param">Платформа</string>
     <string name="player_type_param">Тип плеера</string>
     <string name="use_video_swap">Использовать смену видео</string>
-    <string name="use_video_swap_desc">Меняет плейлист во время рекламы</string>
     <string name="video_swap_settings">Настройки смены видео</string>
     <string name="default_values">Значения по умолчанию</string>
     <string name="add_item">Добавить элемент</string>

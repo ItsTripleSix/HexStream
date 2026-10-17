@@ -6,7 +6,7 @@
         android:entries="@array/themeEntries"
         android:entryValues="@array/themeValues"
         android:key="theme"
-        android:summary="%s"
+        android:summary="@string/hex_help_theme_theme"
         android:title="@string/theme"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -14,6 +14,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="ui_theme_follow_system"
+        android:summary="@string/hex_help_theme_ui_theme_follow_system"
         android:title="@string/follow_system_theme"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -23,7 +24,7 @@
         android:entries="@array/themeEntries"
         android:entryValues="@array/themeValues"
         android:key="ui_theme_dark_on"
-        android:summary="%s"
+        android:summary="@string/hex_help_theme_ui_theme_dark_on"
         android:title="@string/dark_theme_on"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -33,7 +34,7 @@
         android:entries="@array/themeEntries"
         android:entryValues="@array/themeValues"
         android:key="ui_theme_dark_off"
-        android:summary="%s"
+        android:summary="@string/hex_help_theme_ui_theme_dark_off"
         android:title="@string/dark_theme_off"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -43,7 +44,7 @@
         android:entries="@array/roundedCornerEntries"
         android:entryValues="@array/roundedCornerValues"
         android:key="ui_theme_rounded_corners_v2"
-        android:summary="%s"
+        android:summary="@string/hex_help_theme_ui_theme_rounded_corners_v2"
         android:title="@string/rounded_corners"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -51,6 +52,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="ui_theme_reduced_padding"
+        android:summary="@string/hex_help_theme_ui_theme_reduced_padding"
         android:title="@string/reduced_padding"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -58,6 +60,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="ui_theme_compact_text"
+        android:summary="@string/hex_help_theme_ui_theme_compact_text"
         android:title="@string/compact_text"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -65,6 +68,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="ui_theme_appbar_lift"
+        android:summary="@string/hex_help_theme_ui_theme_appbar_lift"
         android:title="@string/appbar_lift"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -72,6 +76,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="ui_theme_bottom_nav_color"
+        android:summary="@string/hex_help_theme_ui_theme_bottom_nav_color"
         android:title="@string/bottom_nav_color"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -79,6 +84,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="ui_theme_material3"
+        android:summary="@string/hex_help_theme_ui_theme_material3"
         android:title="@string/material_3"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />

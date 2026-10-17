@@ -4,6 +4,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="chat_boldnames"
+        android:summary="@string/hex_help_chat_chat_boldnames"
         android:title="@string/bold_usernames"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -11,6 +12,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_randomcolor"
+        android:summary="@string/hex_help_chat_chat_randomcolor"
         android:title="@string/randomcolor"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -18,6 +20,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_theme_adapted_username_color"
+        android:summary="@string/hex_help_chat_chat_theme_adapted_username_color"
         android:title="@string/theme_adapted_username_color"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -25,6 +28,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="chat_timestamps"
+        android:summary="@string/hex_help_chat_chat_timestamps"
         android:title="@string/timestamps"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -34,7 +38,7 @@
         android:entries="@array/timestampEntries"
         android:entryValues="@array/timestampValues"
         android:key="chat_timestamp_format"
-        android:summary="%s"
+        android:summary="@string/hex_help_chat_chat_timestamp_format"
         android:title="@string/timestamp_format"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -44,7 +48,7 @@
         android:entries="@array/imageLibraryEntries"
         android:entryValues="@array/imageLibraryValues"
         android:key="chat_image_library"
-        android:summary="%s"
+        android:summary="@string/hex_help_chat_chat_image_library"
         android:title="@string/image_library"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -52,6 +56,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_use_webp"
+        android:summary="@string/hex_help_chat_chat_use_webp"
         android:title="@string/use_webp_images"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -61,7 +66,7 @@
         android:entries="@array/imageQualityEntries"
         android:entryValues="@array/imageQualityValues"
         android:key="chat_image_quality"
-        android:summary="%s"
+        android:summary="@string/hex_help_chat_chat_image_quality"
         android:title="@string/image_quality"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -69,6 +74,7 @@
     <SeekBarPreference
         android:defaultValue="100"
         android:key="chat_size_modifier"
+        android:summary="@string/hex_help_chat_chat_size_modifier"
         android:max="200"
         android:title="@string/chat_size_modifier"
         app:iconSpaceReserved="false"
@@ -79,30 +85,31 @@
     <EditTextPreference
         android:defaultValue="14"
         android:key="chat_text_size"
+        android:summary="@string/hex_help_chat_chat_text_size"
         android:title="@string/text_size"
         app:iconSpaceReserved="false"
-        app:singleLineTitle="false"
-        app:useSimpleSummaryProvider="true" />
+        app:singleLineTitle="false" />
 
     <EditTextPreference
         android:defaultValue="29.5"
         android:key="chat_emote_size"
+        android:summary="@string/hex_help_chat_chat_emote_size"
         android:title="@string/chat_emote_size"
         app:iconSpaceReserved="false"
-        app:singleLineTitle="false"
-        app:useSimpleSummaryProvider="true" />
+        app:singleLineTitle="false" />
 
     <EditTextPreference
         android:defaultValue="18.5"
         android:key="chat_badge_size"
+        android:summary="@string/hex_help_chat_chat_badge_size"
         android:title="@string/chat_badge_size"
         app:iconSpaceReserved="false"
-        app:singleLineTitle="false"
-        app:useSimpleSummaryProvider="true" />
+        app:singleLineTitle="false" />
 
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_show_gif_messages"
+        android:summary="@string/hex_help_chat_chat_show_gif_messages"
         android:title="@string/show_gif_messages"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -110,14 +117,15 @@
     <EditTextPreference
         android:defaultValue="79.5"
         android:key="chat_gif_size"
+        android:summary="@string/hex_help_chat_chat_gif_size"
         android:title="@string/chat_gif_size"
         app:iconSpaceReserved="false"
-        app:singleLineTitle="false"
-        app:useSimpleSummaryProvider="true" />
+        app:singleLineTitle="false" />
 
     <SeekBarPreference
         android:defaultValue="30"
         android:key="chatWidth"
+        android:summary="@string/hex_help_chat_chatwidth"
         android:max="100"
         android:title="@string/landscape_chat_width"
         app:iconSpaceReserved="false"
@@ -127,6 +135,7 @@
     <SeekBarPreference
         android:defaultValue="600"
         android:key="chat_limit"
+        android:summary="@string/hex_help_chat_chat_limit"
         android:max="1000"
         android:title="@string/message_limit"
         app:iconSpaceReserved="false"
@@ -137,6 +146,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_recent"
+        android:summary="@string/hex_help_chat_chat_recent"
         android:title="@string/recentMsg_enable"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -144,7 +154,7 @@
     <EditTextPreference
         android:defaultValue="https://recent-messages.robotty.de/api/v2/recent-messages/$channel"
         android:key="chat_recent_messages_url"
-        android:summary="@string/stream_proxy_url_desc"
+        android:summary="@string/hex_help_chat_chat_recent_messages_url"
         android:title="@string/recent_messages_api_url"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -152,6 +162,7 @@
     <SeekBarPreference
         android:defaultValue="100"
         android:key="chat_recent_limit"
+        android:summary="@string/hex_help_chat_chat_recent_limit"
         android:max="800"
         android:title="@string/recentMsg_limit"
         app:iconSpaceReserved="false"
@@ -162,12 +173,14 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="chat_translate"
+        android:summary="@string/hex_help_chat_chat_translate"
         android:title="@string/translate_chat_messages"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
     <Preference
         android:key="downloaded_languages"
+        android:summary="@string/hex_help_chat_downloaded_languages"
         android:title="@string/downloaded_languages"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -175,7 +188,7 @@
     <ListPreference
         android:defaultValue="en"
         android:key="chat_translate_target"
-        android:summary="%s"
+        android:summary="@string/hex_help_chat_chat_translate_target"
         android:title="@string/translate_target_language"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -183,6 +196,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="player_keep_chat_open"
+        android:summary="@string/hex_help_chat_player_keep_chat_open"
         android:title="@string/keep_chat_open"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -190,6 +204,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_use_websocket"
+        android:summary="@string/hex_help_chat_chat_use_websocket"
         android:title="@string/use_websocket"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -197,6 +212,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_use_ssl"
+        android:summary="@string/hex_help_chat_chat_use_ssl"
         android:title="@string/chat_ssl"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -204,6 +220,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_pubsub_enabled"
+        android:summary="@string/hex_help_chat_chat_pubsub_enabled"
         android:title="@string/enable_pubsub"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -211,6 +228,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_points_collect"
+        android:summary="@string/hex_help_chat_chat_points_collect"
         android:title="@string/points_collect"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -218,6 +236,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="chat_points_notify"
+        android:summary="@string/hex_help_chat_chat_points_notify"
         android:title="@string/points_notify"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -225,6 +244,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_raids_show"
+        android:summary="@string/hex_help_chat_chat_raids_show"
         android:title="@string/show_raids"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -232,6 +252,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_raids_auto_switch"
+        android:summary="@string/hex_help_chat_chat_raids_auto_switch"
         android:title="@string/auto_switch_raids"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -239,6 +260,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_polls_show"
+        android:summary="@string/hex_help_chat_chat_polls_show"
         android:title="@string/show_polls"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -246,6 +268,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_predictions_show"
+        android:summary="@string/hex_help_chat_chat_predictions_show"
         android:title="@string/show_predictions"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -253,6 +276,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_show_paints"
+        android:summary="@string/hex_help_chat_chat_show_paints"
         android:title="@string/show_name_paints"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -260,6 +284,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_show_stv_badges"
+        android:summary="@string/hex_help_chat_chat_show_stv_badges"
         android:title="@string/show_stv_badges"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -267,6 +292,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_show_personal_emotes"
+        android:summary="@string/hex_help_chat_chat_show_personal_emotes"
         android:title="@string/show_stv_personal_emotes"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -274,6 +300,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_stv_live_updates"
+        android:summary="@string/hex_help_chat_chat_stv_live_updates"
         android:title="@string/stv_live_updates"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -281,6 +308,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_enable_stv"
+        android:summary="@string/hex_help_chat_chat_enable_stv"
         android:title="@string/enable_stv"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -288,6 +316,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_enable_bttv"
+        android:summary="@string/hex_help_chat_chat_enable_bttv"
         android:title="@string/enable_bttv"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -295,6 +324,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_enable_ffz"
+        android:summary="@string/hex_help_chat_chat_enable_ffz"
         android:title="@string/enable_ffz"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -302,6 +332,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_show_usernotice"
+        android:summary="@string/hex_help_chat_chat_show_usernotice"
         android:title="@string/show_usernotice"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -309,6 +340,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_show_clearmsg"
+        android:summary="@string/hex_help_chat_chat_show_clearmsg"
         android:title="@string/show_clearmsg"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -316,6 +348,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_show_clearchat"
+        android:summary="@string/hex_help_chat_chat_show_clearchat"
         android:title="@string/show_clearchat"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -325,7 +358,7 @@
         android:entries="@array/chatFirstMsgEntries"
         android:entryValues="@array/miscValues"
         android:key="chat_firstmsg_visibility"
-        android:summary="%s"
+        android:summary="@string/hex_help_chat_chat_firstmsg_visibility"
         android:title="@string/chat_firstmsg_visibility"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -333,6 +366,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="animatedGifEmotes"
+        android:summary="@string/hex_help_chat_animatedgifemotes"
         android:title="@string/animated_emotes"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -340,6 +374,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_zerowidth"
+        android:summary="@string/hex_help_chat_chat_zerowidth"
         android:title="@string/overlay_emotes"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -347,6 +382,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="chat_system_message_emotes"
+        android:summary="@string/hex_help_chat_chat_system_message_emotes"
         android:title="@string/show_system_message_emotes"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -354,6 +390,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="chat_disable"
+        android:summary="@string/hex_help_chat_chat_disable"
         android:title="@string/disable_chat"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />

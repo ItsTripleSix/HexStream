@@ -51,6 +51,7 @@ class StreamProxySettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
+            settingsHelp.setText(R.string.hex_http_list_help)
             val adapter = StreamProxySettingsAdapter()
             val itemTouchHelper = ItemTouchHelper(
                 object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {

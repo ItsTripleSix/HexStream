@@ -16,11 +16,12 @@ class SettingsSearchAdapter(
 ) : ListAdapter<SettingsSearchItem, SettingsSearchAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<SettingsSearchItem>() {
         override fun areItemsTheSame(oldItem: SettingsSearchItem, newItem: SettingsSearchItem): Boolean {
-            return oldItem.key == newItem.key
+            return oldItem.key == newItem.key && oldItem.location == newItem.location
         }
 
         override fun areContentsTheSame(oldItem: SettingsSearchItem, newItem: SettingsSearchItem): Boolean {
-            return true
+            return oldItem.title?.toString() == newItem.title?.toString() &&
+                    oldItem.summary?.toString() == newItem.summary?.toString() && oldItem.value == newItem.value
         }
     }) {
 

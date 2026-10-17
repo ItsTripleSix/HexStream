@@ -6,7 +6,7 @@
         android:entries="@array/loginApiEntries"
         android:entryValues="@array/miscValues"
         android:key="api_login"
-        android:summary="%s"
+        android:summary="@string/hex_help_api_token_api_login"
         android:title="@string/api_login"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -14,24 +14,24 @@
     <EditTextPreference
         android:defaultValue="ilfexgv3nnljz3isbm257gzwrzr7bi"
         android:key="helix_client_id"
+        android:summary="@string/hex_help_api_token_helix_client_id"
         android:title="@string/api_helix_client_id"
-        app:useSimpleSummaryProvider="true"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
     <EditTextPreference
         android:defaultValue="https://localhost"
         android:key="helix_redirect"
+        android:summary="@string/hex_help_api_token_helix_redirect"
         android:title="@string/api_helix_redirect"
-        app:useSimpleSummaryProvider="true"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
     <EditTextPreference
         android:defaultValue="kd1unb4b3q4t58fwlpcbzcbnm76a8fp"
         android:key="gql_client_id2"
+        android:summary="@string/hex_help_api_token_gql_client_id2"
         android:title="@string/api_gql_client_id"
-        app:useSimpleSummaryProvider="true"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
@@ -41,30 +41,35 @@
 
     <EditTextPreference
         android:key="user_id"
+        android:summary="@string/hex_help_api_token_user_id"
         android:title="@string/api_user_id"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
     <EditTextPreference
         android:key="username"
+        android:summary="@string/hex_help_api_token_username"
         android:title="@string/api_user_login"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
     <EditTextPreference
         android:key="token"
+        android:summary="@string/hex_help_api_token_token"
         android:title="@string/api_helix_token"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
     <EditTextPreference
         android:key="gql_token2"
+        android:summary="@string/hex_help_api_token_gql_token2"
         android:title="@string/api_gql_token"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
 
     <EditTextPreference
         android:key="gql_token_web"
+        android:summary="@string/hex_help_api_token_gql_token_web"
         android:title="@string/api_web_gql_token"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -72,6 +77,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="validate_tokens"
+        android:summary="@string/hex_help_api_token_validate_tokens"
         android:title="@string/api_validate_tokens"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />

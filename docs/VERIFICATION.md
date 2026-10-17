@@ -1,5 +1,15 @@
 # Verification and known limits
 
+## Settings explanations: 1.0.0-beta.4
+
+All **101 JVM tests across 18 suites passed**, with zero failures/errors/skips. Android lint reported **zero errors and the same 23 reviewed warnings** as beta.3. The optimized signed release APK built locally. Preference-resource comparison confirmed all **224 existing keys, defaults, choice arrays and other behavior attributes** were preserved; only help text, labels and main-screen grouping changed in those resources.
+
+**Four new device tests passed** on a physical Samsung Galaxy S21 Ultra in the isolated QA package. They check that every preference row inflates with an example; selected-value changes retain help without writing preferences; credential/header/account values stay out of summaries; and all 13 settings screens render with unrestricted summary line counts. The render fixture waits for navigation transitions before checking the views. QA/test packages were removed afterward. The personal app was neither updated nor cleared.
+
+Root and buffer-screen captures were inspected. This run used the phone's existing display/font configuration; it did not independently test every font scale or device size. The full-line layout avoids the inherited fixed summary-line cap. New help is currently English. Live playback, actual reward spending, real notification delivery and backup/restore round trips were not repeated for this settings update.
+
+The filter screen's immediate-save flow retains scroll position and open detail sections on a switch change. Its rule engine, preset storage, account switching, pagination and low-delay implementations are unchanged. See the [settings guide](SETTINGS.md) for the distinctions between similar controls and the limits of the inherited general backup format.
+
 ## Upstream fixes: 1.0.0-beta.3
 
 Beta.3 incorporates the three Xtra 2.60.8 fixes listed in the [synchronization record](upstream/SYNC.md). **101 JVM tests across 18 suites passed**, including intercepted outgoing points requests, compatibility with both points response consumers, optional video-quality metadata and recovery ordering. The existing pagination, filter, proxy, account-action and low-delay suites passed too.

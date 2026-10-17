@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.0-beta.4
+
+- Add a description and practical example beneath all 224 preference rows, with current picker/input values retained and explanations included in settings search.
+- Group the main settings screen and distinguish playback URL presets from HTTP host/port proxies, low-delay overrides from advanced buffering, and the separate background/PiP controls.
+- Add visible examples to filter switches, lists and import/export actions, plus guidance inside proxy and video-swap editors. Retain the detailed filter explanations.
+- Keep filter scroll position and expanded details when changing a switch. Distinguish same-named actions in different settings-search sections.
+- Let settings explanations wrap fully instead of cutting them off at a fixed line limit. Keep token, header and account-detail values out of summaries and search.
+- Document the general backup's limits: saved-account vault and separate global filter/proxy storage require their own handling.
+- Preserve all existing preference keys, defaults, choices, playback behavior, global rules and proxy lists.
+
 ## 1.0.0-beta.3
 
 - Incorporate crackededed’s Xtra 2.60.8 fixes: updated channel-points context query, player status-bar attachment guards, and unlisted video-quality recovery.

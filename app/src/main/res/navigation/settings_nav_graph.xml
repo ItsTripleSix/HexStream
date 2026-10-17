@@ -105,14 +105,14 @@
     <fragment
         android:id="@+id/customProxySettingsFragment"
         android:name="com.github.andreyasadchy.xtra.ui.settings.CustomProxySettingsFragment"
-        android:label="@string/custom_proxy_settings" />
+        android:label="@string/hex_playback_url_proxy_settings" />
     <action
         android:id="@+id/action_global_customProxySettingsFragment"
         app:destination="@id/customProxySettingsFragment" />
     <fragment
         android:id="@+id/streamProxySettingsFragment"
         android:name="com.github.andreyasadchy.xtra.ui.settings.StreamProxySettingsFragment"
-        android:label="@string/proxy_settings" />
+        android:label="@string/hex_http_proxy_settings" />
     <action
         android:id="@+id/action_global_streamProxySettingsFragment"
         app:destination="@id/streamProxySettingsFragment" />

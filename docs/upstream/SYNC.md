@@ -4,7 +4,7 @@ HexStream started from Xtra 2.60.7, commit [`a3cbb0325f3330573a6738f7d36a2c5b785
 
 ## Current integrated checkpoint
 
-HexStream **1.0.0-beta.3** incorporates all three upstream application changes through **Xtra 2.60.8**, commit [`96772030c7712581ad150c9b8b619c77a3527e50`](https://github.com/crackededed/Xtra/commit/96772030c7712581ad150c9b8b619c77a3527e50). HexStream keeps its own version, package and signing identity.
+HexStream **1.0.0-beta.4** retains all three upstream application changes through **Xtra 2.60.8**, commit [`96772030c7712581ad150c9b8b619c77a3527e50`](https://github.com/crackededed/Xtra/commit/96772030c7712581ad150c9b8b619c77a3527e50). Beta.4 improves settings explanations without changing the integrated upstream checkpoint. HexStream keeps its own version, package and signing identity.
 
 All three original changes below were authored by **crackededed** on October 14, 2026.
 

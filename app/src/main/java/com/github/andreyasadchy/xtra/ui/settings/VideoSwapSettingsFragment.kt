@@ -49,6 +49,7 @@ class VideoSwapSettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
+            settingsHelp.setText(R.string.hex_swap_list_help)
             addItem.text = getString(R.string.add_item)
             val adapter = VideoSwapSettingsAdapter(this@VideoSwapSettingsFragment)
             val itemTouchHelper = ItemTouchHelper(

@@ -61,7 +61,6 @@
     <string name="no_storage_detected">沒有檢測到的可用儲存空間（手機很可能已連接到電腦）。</string>
     <string name="rewind">倒轉</string>
     <string name="forward">快轉</string>
-    <string name="seconds_full">%s 秒</string>
     <string name="unfollow_channel">取消追隨 %s？</string>
     <string name="now_following">您現在正在追隨 %s</string>
     <string name="unfollowed">已取消追隨 %s</string>
@@ -240,7 +239,6 @@
     <string name="aspect_ratio">寬高比例</string>
     <string name="player_menu">播放器選單</string>
     <string name="restart_player">重新啟動播放器</string>
-    <string name="sub_only_summary">僅適用於訂閱的內容</string>
     <string name="follow_button">追隨按鈕</string>
     <string name="follow_account">使用 twitch 帳號追隨</string>
     <string name="follow_local">本地追隨</string>
@@ -277,7 +275,6 @@
     <string name="stream_live">%s 目前實況</string>
     <string name="stream_offline">%s 目前離線</string>
     <string name="keep_screen_on_when_paused">當影片已暫停時維持畫面開啟</string>
-    <string name="stream_proxy_url_desc">\"$channel\" 將被取代為頻道登入</string>
     <string name="show_subtitles">顯示字幕</string>
     <string name="hide_subtitles">隱藏字幕</string>
     <string name="toggle_subtitles">開關字幕</string>
@@ -310,7 +307,6 @@
     <string name="proxy_port">通訊埠</string>
     <string name="proxy_user">使用者名稱</string>
     <string name="proxy_password">密碼</string>
-    <string name="proxy_settings">HTTP Proxy 設定</string>
     <string name="stop_download">停止下載</string>
     <string name="resume_download">繼續下載</string>
     <string name="show_view_count_icon">顯示觀看數量與上線時間圖示</string>
@@ -376,7 +372,6 @@
     <string name="update_using_browser">在瀏覽器開啟更新連結</string>
     <string name="auto_check_updates">在啟動時檢查更新</string>
     <string name="update_check_frequency">更新檢查頻率</string>
-    <string name="update_check_frequency_summary">每 %s 日</string>
     <string name="notification_live_channel_title">實況通知</string>
     <string name="live_notification">%s 正在實況</string>
     <string name="live_notifications">實況通知</string>
@@ -388,7 +383,6 @@
     <string name="enabled_notifications">已啟用通知</string>
     <string name="disabled_notifications">已禁用通知</string>
     <string name="name_display">使用者名稱顯示</string>
-    <string name="name_display_summary">當顯示名稱不同於登入名稱時顯示的名稱</string>
     <string name="name_display_entry1">展示顯示名稱與登入名稱</string>
     <string name="name_display_entry2">僅顯示顯示名稱</string>
     <string name="name_display_entry3">僅顯示登入名稱</string>
@@ -427,7 +421,6 @@
     <string name="ui_settings">使用者介面</string>
     <string name="debug_settings">除錯</string>
     <string name="download_threads">下載執行緒數</string>
-    <string name="download_threads_summary">同時下載區塊數量</string>
     <string name="minimize">最小化</string>
     <string name="player_menu_settings">播放選單設定</string>
     <string name="chapters">章節</string>
@@ -538,7 +531,6 @@
     <string name="recent_messages_api_url">Recent messages API URL</string>
     <string name="access_local_network_title">Grant local network permission</string>
     <string name="access_local_network_desc">Required for connecting to local proxies</string>
-    <string name="custom_proxy_settings">Custom proxy settings</string>
     <string name="add_proxy">Add proxy</string>
     <string name="delete_proxy_message">Are you sure you want to delete this proxy?</string>
     <string name="add_proxy_query_params">Add URL query parameters (allow_source, allow_audio_only, fast_bread)</string>
@@ -547,12 +539,10 @@
     <string name="offline">Offline</string>
     <string name="proxy_error">Proxy error. %s is offline</string>
     <string name="show_stream_notification_seekbar">Show seekbar on media notification when watching streams</string>
-    <string name="use_custom_proxies">Use custom proxies</string>
     <string name="use_stream_proxies">Use HTTP proxies</string>
     <string name="platform_param">Platform</string>
     <string name="player_type_param">Player type</string>
     <string name="use_video_swap">Use video swap</string>
-    <string name="use_video_swap_desc">Swaps playlist during ads</string>
     <string name="video_swap_settings">Video swap settings</string>
     <string name="default_values">Default values</string>
     <string name="add_item">Add item</string>

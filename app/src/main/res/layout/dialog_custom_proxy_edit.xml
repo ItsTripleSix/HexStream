@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="@string/stream_proxy_url_desc"
+            android:text="@string/hex_proxy_url_help"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textColor="?android:attr/textColorSecondary" />
 
@@ -41,6 +41,13 @@
             android:layout_marginTop="7dp"
             android:text="@string/add_proxy_query_params"
             android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hex_proxy_params_help"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

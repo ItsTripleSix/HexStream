@@ -4,6 +4,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="download_playlist_to_file"
+        android:summary="@string/hex_help_download_download_playlist_to_file"
         android:title="@string/download_vod_to_file"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -11,6 +12,7 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="download_wifi_only"
+        android:summary="@string/hex_help_download_download_wifi_only"
         android:title="@string/download_wifi_only"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />
@@ -18,6 +20,7 @@
     <SeekBarPreference
         android:defaultValue="2"
         android:key="download_limit"
+        android:summary="@string/hex_help_download_download_limit"
         android:max="10"
         android:title="@string/concurrent_downloads"
         app:iconSpaceReserved="false"
@@ -28,8 +31,8 @@
     <SeekBarPreference
         android:defaultValue="10"
         android:key="download_concurrent_limit"
+        android:summary="@string/hex_help_download_download_concurrent_limit"
         android:max="20"
-        android:summary="@string/download_threads_summary"
         android:title="@string/download_threads"
         app:iconSpaceReserved="false"
         app:min="1"
@@ -39,41 +42,42 @@
     <EditTextPreference
         android:defaultValue="2"
         android:key="download_stream_live_check"
+        android:summary="@string/hex_help_download_download_stream_live_check"
         android:title="@string/download_live_check"
         app:dialogMessage="@string/download_live_check_summary"
         app:iconSpaceReserved="false"
-        app:singleLineTitle="false"
-        app:useSimpleSummaryProvider="true" />
+        app:singleLineTitle="false" />
 
     <EditTextPreference
         android:defaultValue="10"
         android:key="download_stream_offline_check"
+        android:summary="@string/hex_help_download_download_stream_offline_check"
         android:title="@string/download_offline_check"
         app:dialogMessage="@string/download_offline_check_summary"
         app:iconSpaceReserved="false"
-        app:singleLineTitle="false"
-        app:useSimpleSummaryProvider="true" />
+        app:singleLineTitle="false" />
 
     <EditTextPreference
         android:defaultValue="120"
         android:key="download_stream_start_wait"
+        android:summary="@string/hex_help_download_download_stream_start_wait"
         android:title="@string/download_start_wait"
         app:dialogMessage="@string/download_start_wait_summary"
         app:iconSpaceReserved="false"
-        app:singleLineTitle="false"
-        app:useSimpleSummaryProvider="true" />
+        app:singleLineTitle="false" />
 
     <EditTextPreference
         android:defaultValue="15"
         android:key="download_stream_end_wait"
+        android:summary="@string/hex_help_download_download_stream_end_wait"
         android:title="@string/download_end_wait"
         app:dialogMessage="@string/download_end_wait_summary"
         app:iconSpaceReserved="false"
-        app:singleLineTitle="false"
-        app:useSimpleSummaryProvider="true" />
+        app:singleLineTitle="false" />
 
     <Preference
         android:key="import_app_downloads"
+        android:summary="@string/hex_help_download_import_app_downloads"
         android:title="@string/import_app_downloads"
         app:iconSpaceReserved="false"
         app:singleLineTitle="false" />

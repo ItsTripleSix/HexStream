@@ -2,6 +2,7 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingStart="20dp"
     android:paddingLeft="20dp"
@@ -18,7 +19,8 @@
             android:id="@+id/hostInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/proxy_host">
+            android:hint="@string/proxy_host"
+            app:helperText="@string/hex_http_host_help">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -33,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:hint="@string/proxy_port">
+            android:hint="@string/proxy_port"
+            app:helperText="@string/hex_http_port_help">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -48,7 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:hint="@string/proxy_user">
+            android:hint="@string/proxy_user"
+            app:helperText="@string/hex_http_login_help">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -63,7 +67,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:hint="@string/proxy_password">
+            android:hint="@string/proxy_password"
+            app:helperText="@string/hex_http_password_help">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -81,6 +86,10 @@
             android:text="@string/proxy_playback_access_token"
             android:textSize="16sp" />
 
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/hex_http_token_help" android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary" />
+
         <CheckBox
             android:id="@+id/proxyMultivariantPlaylistCheckBox"
             android:layout_width="match_parent"
@@ -88,12 +97,20 @@
             android:text="@string/proxy_multivariant_playlist"
             android:textSize="16sp" />
 
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/hex_http_master_help" android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary" />
+
         <CheckBox
             android:id="@+id/proxyMediaPlaylistCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/proxy_media_playlist"
             android:textSize="16sp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/hex_http_media_help" android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary" />
 
         <Button
             android:id="@+id/permissionButton"

@@ -51,6 +51,7 @@ class CustomProxySettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
+            settingsHelp.setText(R.string.hex_proxy_list_help)
             val adapter = CustomProxySettingsAdapter(this@CustomProxySettingsFragment)
             val itemTouchHelper = ItemTouchHelper(
                 object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
