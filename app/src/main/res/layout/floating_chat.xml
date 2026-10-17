@@ -1,34 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.github.andreyasadchy.xtra.ui.player.ChatOverlayLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:orientation="vertical" android:elevation="8dp" android:visibility="gone">
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="48dp"
-        android:orientation="horizontal" android:background="#DD101214">
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/moveChat" android:layout_width="0dp" android:layout_height="48dp"
-            android:layout_weight="1" android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/outline_drag_handle_black_24" app:tint="#FFF5E6"
-            android:contentDescription="@string/hex_floating_move" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/contrastChat" android:layout_width="48dp" android:layout_height="48dp"
-            android:minWidth="0dp" android:minHeight="0dp" android:padding="0dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="@string/hex_floating_contrast_symbol" android:textColor="#FFF5E6" android:textStyle="bold"
-            android:contentDescription="@string/hex_floating_contrast" />
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/resizeChat" android:layout_width="48dp" android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/baseline_aspect_ratio_black_24" app:tint="#FFF5E6"
-            android:contentDescription="@string/hex_floating_resize" />
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/closeChat" android:layout_width="48dp" android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless" android:padding="12dp"
-            android:src="@drawable/baseline_close_black_36" app:tint="#FFF5E6"
-            android:contentDescription="@string/hex_floating_close" />
-    </LinearLayout>
+    android:visibility="gone">
 
     <FrameLayout android:id="@+id/floatingMessages"
-        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
-</LinearLayout>
+        android:layout_width="match_parent" android:layout_height="match_parent" />
+</com.github.andreyasadchy.xtra.ui.player.ChatOverlayLayout>

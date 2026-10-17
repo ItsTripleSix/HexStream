@@ -5,8 +5,13 @@
         android:key="hex_floating_chat" android:defaultValue="false"
         android:title="@string/hex_floating_title" android:summary="@string/hex_floating_help"
         app:iconSpaceReserved="false" app:singleLineTitle="false" />
+    <ListPreference
+        android:key="hex_fullscreen_chat_side" android:defaultValue="right"
+        android:title="@string/hex_chat_side" android:summary="@string/hex_chat_side_help"
+        android:entries="@array/hex_chat_sides" android:entryValues="@array/hex_chat_side_values"
+        app:iconSpaceReserved="false" app:singleLineTitle="false" />
     <SeekBarPreference
-        android:key="hex_floating_chat_opacity" android:defaultValue="35" android:max="100"
+        android:key="hex_floating_chat_opacity" android:defaultValue="0" android:max="100"
         android:dependency="hex_floating_chat"
         android:title="@string/hex_floating_opacity" android:summary="@string/hex_floating_opacity_help"
         app:min="0" app:showSeekBarValue="true" app:iconSpaceReserved="false" app:singleLineTitle="false" />

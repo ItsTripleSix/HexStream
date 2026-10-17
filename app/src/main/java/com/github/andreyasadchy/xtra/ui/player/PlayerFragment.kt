@@ -186,7 +186,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
         observePlayback()
         swipeControls = PlayerSwipeControls(requireActivity(), binding.gestureLevel)
         floatingChat = FloatingChatController(binding.playerLayout, binding.chatFragmentContainer, requireContext().prefs(),
-            hideChat = { hideChat() }, styleChat = { floating, contrast -> chatFragment?.setFloatingPresentation(floating, contrast) })
+            styleChat = { floating, contrast -> chatFragment?.setFloatingPresentation(floating, contrast) }, controls = binding.playerControls.root)
         with(binding) {
             viewLifecycleOwner.lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -230,6 +230,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                     }
                 }
                 chatLayout.updatePadding(bottom = insets.bottom)
+                floatingChat?.setBottomInset(insets.bottom)
                 WindowInsetsCompat.CONSUMED
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)) {
@@ -967,7 +968,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                             if (slidingLayout.isKeyboardShown) {
                                 if (!isKeyboardShown) {
                                     isKeyboardShown = true
-                                    if (!isPortrait) {
+                                    if (!isPortrait && floatingChat?.active != true) {
                                         chatLayout.updateLayoutParams { width = (slidingLayout.width / 1.8f).toInt() }
                                         showStatusBar()
                                     }
@@ -976,7 +977,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                                 if (isKeyboardShown) {
                                     isKeyboardShown = false
                                     chatLayout.clearFocus()
-                                    if (!isPortrait) {
+                                    if (!isPortrait && floatingChat?.active != true) {
                                         chatLayout.updateLayoutParams { width = chatWidthLandscape }
                                         if (isMaximized) {
                                             hideStatusBar()
@@ -1187,7 +1188,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                 playerLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                     width = ViewGroup.LayoutParams.MATCH_PARENT
                     height = ViewGroup.LayoutParams.MATCH_PARENT
-                    marginEnd = 0
+                    marginStart = 0; marginEnd = 0
                 }
                 chatLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                     width = ViewGroup.LayoutParams.MATCH_PARENT
@@ -1243,12 +1244,13 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                     playerLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                         width = ViewGroup.LayoutParams.MATCH_PARENT
                         height = ViewGroup.LayoutParams.MATCH_PARENT
-                        marginEnd = chatWidth
+                        marginStart = if (chatAtStart()) chatWidth else 0
+                        marginEnd = if (chatAtStart()) 0 else chatWidth
                     }
                     chatLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                         width = chatWidthLandscape
                         height = ViewGroup.LayoutParams.MATCH_PARENT
-                        gravity = Gravity.END
+                        gravity = if (chatAtStart()) Gravity.START else Gravity.END
                     }
                     if (isChatOpen) {
                         chatLayout.visibility = View.VISIBLE
@@ -1265,12 +1267,12 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                     playerLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                         width = ViewGroup.LayoutParams.MATCH_PARENT
                         height = ViewGroup.LayoutParams.MATCH_PARENT
-                        marginEnd = 0
+                        marginStart = 0; marginEnd = 0
                     }
                     chatLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                         width = chatWidthLandscape
                         height = ViewGroup.LayoutParams.MATCH_PARENT
-                        gravity = Gravity.END
+                        gravity = if (chatAtStart()) Gravity.START else Gravity.END
                     }
                     chatLayout.visibility = View.GONE
                     val (minimizedScaleX, minimizedScaleY) = getScaleValues()
@@ -1459,7 +1461,6 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
     }
 
     fun toggleChatBar() {
-        dockChatForInput()
         with(binding) {
             requireView().findViewById<LinearLayout>(R.id.messageView)?.let {
                 if (it.isVisible) {
@@ -1521,7 +1522,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
             playerLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                 width = ViewGroup.LayoutParams.MATCH_PARENT
                 height = ViewGroup.LayoutParams.MATCH_PARENT
-                marginEnd = 0
+                marginStart = 0; marginEnd = 0
             }
             (requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(chatLayout.windowToken, 0)
             chatLayout.clearFocus()
@@ -1534,12 +1535,12 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
             playerLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                 width = ViewGroup.LayoutParams.MATCH_PARENT
                 height = ViewGroup.LayoutParams.MATCH_PARENT
-                marginEnd = chatWidthLandscape
+                marginStart = if (chatAtStart()) chatWidthLandscape else 0; marginEnd = if (chatAtStart()) 0 else chatWidthLandscape
             }
             chatLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                 width = chatWidthLandscape
                 height = ViewGroup.LayoutParams.MATCH_PARENT
-                gravity = Gravity.END
+                gravity = if (chatAtStart()) Gravity.START else Gravity.END
             }
             chatLayout.visibility = View.VISIBLE
             refreshFloatingChat()
@@ -1555,8 +1556,9 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
         else refreshFloatingChat()
     }
 
-    fun dockChatForInput() {
-        if (floatingChat?.active == true) setFloatingChatEnabled(false)
+    private fun chatAtStart(): Boolean {
+        val left = requireContext().prefs().getString(FloatingChatController.SIDE, "right") == "left"
+        return left == (binding.root.layoutDirection != View.LAYOUT_DIRECTION_RTL)
     }
 
     fun refreshFloatingChat() {
@@ -1565,16 +1567,16 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
         val quality = playbackService?.quality?.name
         val active = FloatingChatGeometry.shouldFloat(isFloatingChatSelected(), isPortrait, isMaximized,
             isChatOpen && !requireContext().prefs().getBoolean(C.CHAT_DISABLE, false), inPip || !useController,
-            quality != VideoQuality.CHAT_ONLY_QUALITY && quality != VideoQuality.AUDIO_ONLY_QUALITY, isKeyboardShown)
-        val wasFloating = floatingChat?.active == true
+            quality != VideoQuality.CHAT_ONLY_QUALITY && quality != VideoQuality.AUDIO_ONLY_QUALITY)
         floatingChat?.update(active, chatFragment?.view)
         if (active) {
             current.chatLayout.visibility = View.GONE
-            current.playerLayout.updateLayoutParams<FrameLayout.LayoutParams> { marginEnd = 0 }
-        } else if (wasFloating && isMaximized && !isPortrait && !inPip && useController && isChatOpen) {
-            current.playerLayout.updateLayoutParams<FrameLayout.LayoutParams> { marginEnd = chatWidthLandscape }
+            current.playerLayout.updateLayoutParams<FrameLayout.LayoutParams> { marginStart = 0; marginEnd = 0 }
+        } else if (isMaximized && !isPortrait && !inPip && useController && isChatOpen &&
+            quality != VideoQuality.CHAT_ONLY_QUALITY && quality != VideoQuality.AUDIO_ONLY_QUALITY) {
+            current.playerLayout.updateLayoutParams<FrameLayout.LayoutParams> { marginStart = if (chatAtStart()) chatWidthLandscape else 0; marginEnd = if (chatAtStart()) 0 else chatWidthLandscape }
             current.chatLayout.updateLayoutParams<FrameLayout.LayoutParams> {
-                width = chatWidthLandscape; height = ViewGroup.LayoutParams.MATCH_PARENT; gravity = Gravity.END
+                width = chatWidthLandscape; height = ViewGroup.LayoutParams.MATCH_PARENT; gravity = if (chatAtStart()) Gravity.START else Gravity.END
             }
             current.chatLayout.visibility = View.VISIBLE
         }
@@ -1820,6 +1822,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                                     controllerIsAnimating = true
                                     if (view != null) {
                                         binding.playerControls.root.visibility = View.VISIBLE
+                                        floatingChat?.updateInputInsets()
                                     }
                                 }
 
@@ -1847,6 +1850,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                 binding.playerControls.root.removeCallbacks(controllerHideAction)
                 binding.playerControls.root.alpha = 1f
                 binding.playerControls.root.visibility = View.VISIBLE
+                floatingChat?.updateInputInsets()
                 if (controllerAutoHide && controllerHideOnTouch && !binding.playerControls.progressBar.isPressed) {
                     binding.playerControls.root.postDelayed(controllerHideAction, 3000)
                 }
@@ -1870,6 +1874,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                             setListener(null)
                             if (view != null) {
                                 binding.playerControls.root.visibility = View.GONE
+                                floatingChat?.updateInputInsets()
                             }
                         }
                     }
@@ -1881,6 +1886,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                 controllerAnimation?.cancel()
                 binding.playerControls.root.alpha = 0f
                 binding.playerControls.root.visibility = View.GONE
+                floatingChat?.updateInputInsets()
             }
         }
     }
@@ -2094,6 +2100,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                 controllerAnimation?.cancel()
                 binding.playerControls.root.alpha = 0f
                 binding.playerControls.root.visibility = View.GONE
+                floatingChat?.updateInputInsets()
                 // player dialog
                 (childFragmentManager.findFragmentByTag("closeOnPip") as? BottomSheetDialogFragment)?.dismiss()
                 // player chat message dialog

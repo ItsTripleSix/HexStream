@@ -22,17 +22,15 @@ The main screen groups app/browsing controls, watching/listening, proxies, downl
 | Simultaneous downloads / download threads | Number of jobs versus chunks fetched concurrently inside a job. Lower either if downloads crowd out playback. |
 | App language / translation / stream filters | Menus, how received chat is translated, and what browsing results are hidden. Changing one does not select the others. |
 
-## Floating fullscreen chat
+## Transparent fullscreen chat
 
-While watching in landscape, open the **player menu → Floating fullscreen chat**. The same switch is at **Settings → Chat**. Docked chat remains the default.
+While watching in landscape, open the **player menu → Fullscreen chat overlay**. The same switch is at **Settings → Chat**. Docked chat remains the default.
 
-- Drag the handle to move the window; tap it for accessible direction/reset actions.
-- Drag the size button to resize; tap it to switch between sizes.
-- Tap **A** for high-contrast text. It changes rendering without replacing the chat session.
-- Choose **background opacity** under Chat settings: `0` is transparent, `100` is black. Text and emotes keep their opacity.
-- **X** hides chat. The existing show-chat control brings it back. Disable floating mode to return to the sidebar.
+With overlay enabled, chat appears directly over the selected side of the full-size game. With it disabled, the original docked layout puts chat beside the picture. **Fullscreen chat side** chooses left or right for either layout. There is no floating window, header, border, move handle or resize toolbar. The usual player chat button hides/shows it; disable overlay mode to return to the sidebar.
 
-Portrait, the mini-player, PiP and audio/chat-only playback use their normal layouts. Opening the composer or replying docks chat for typing. Brightness/volume and center-minimize gestures continue outside the chat window. Position and size are shared across accounts and clamped to the video area; no draw-over-other-apps permission is needed.
+**Background opacity** defaults to `0`: only the text/emotes cover the picture. Raise it if busy gameplay makes chat hard to read; text and emotes keep their opacity. Existing opacity choices from beta.5 are retained, so choose `0` for a fully transparent background after upgrading. **High-contrast text** adds bold text and a dark shadow.
+
+Portrait, the mini-player, PiP and audio/chat-only playback use their normal layouts. The message box stays at the bottom of overlay chat for live streams. Signed-in viewers can type/reply and use emotes there; signed-out viewers see “Sign in to chat”. The keyboard gets its own inset while video remains in overlay mode. The existing player chat-input toggle can hide/show the box. Brightness/volume and center-minimize gestures continue outside the chat column. Settings are shared across accounts; no draw-over-other-apps permission is needed.
 
 This feature adapts [ThystTV's work](upstream/THYST-CHAT.md), credited to tzii (Simone Perini) and its contributors.
 

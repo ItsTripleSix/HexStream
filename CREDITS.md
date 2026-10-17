@@ -22,7 +22,7 @@ HexStream implements its own native Android filtering engine. The separate [HexS
 
 ## Floating chat: ThystTV
 
-HexStream's floating fullscreen chat adapts the movable/resizable overlay and **same-view reparenting** approach in **[ThystTV](https://github.com/tzii/ThystTV)**, by **tzii (Simone Perini) and ThystTV contributors**. Their work on preserving a chat session while moving it between the sidebar and the video, readable text over video, sizing and positioning informed this feature.
+HexStream's fullscreen chat overlay adapts the overlay and **same-view reparenting** approach in **[ThystTV](https://github.com/tzii/ThystTV)**, by **tzii (Simone Perini) and ThystTV contributors**. Their work on preserving a chat session while moving it between the sidebar and the video, readable text over video, sizing and positioning informed this feature.
 
 The reviewed source snapshot is [`ae3b1c6c784c1ebc4b8096c3a8df5791827787e4`](https://github.com/tzii/ThystTV/tree/ae3b1c6c784c1ebc4b8096c3a8df5791827787e4), licensed under GNU AGPL v3. The [adaptation record](docs/upstream/THYST-CHAT.md) links the relevant original changes. HexStream retains the existing Xtra foundation and credits above; ThystTV is also credited in the app's About screen.
 

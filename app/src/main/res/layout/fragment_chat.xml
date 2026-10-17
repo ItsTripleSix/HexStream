@@ -86,6 +86,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:completionThreshold="1"
+                android:hint="@string/hex_chat_message_hint"
                 android:imeOptions="actionSend|flagNoFullscreen"
                 android:importantForAutofill="no"
                 android:inputType="textCapSentences|textAutoCorrect"

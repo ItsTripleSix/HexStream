@@ -1,5 +1,15 @@
 # Verification and known limits
 
+## Transparent chat: 1.0.0-beta.6
+
+All **111 JVM tests across 19 suites passed**, with zero failures/errors/skips. The geometry regressions now cover the full-height left/right chat column, viewport/density changes, invalid or unmeasured bounds and mode eligibility. Android lint reported **zero errors and 23 reviewed warnings**. The optimized APK built locally with the existing signing certificate.
+
+**All 17 account-free device tests passed** in the isolated QA package on a physical Samsung Galaxy S21 Ultra. Five overlay checks cover same-view/scroll preservation, a transparent full-height presentation with no toolbar or reduced video host, opacity/contrast with dock restoration, stored side selection, touch delivery to player controls beneath chat, and the real chat-input layout with draft/focus, keyboard inset and signed-out hint. The control-touch regression also preserves the original player-layer order: visible controls receive touches through the overlay's initial-touch pass-through, keeping the existing gesture handler in use. The four settings tests still cover all 228 preference rows. QA/test packages were removed afterward; the signed-in follow-list integration test remains excluded.
+
+The signed candidate passed an in-place upgrade with its original first-install time preserved and a live video/chat smoke check. Left/right overlay placement, the left-side docked layout, real keyboard focus/spacing, right-side chat-button hide/show, and minimize/restore were exercised. No message was submitted. The layout retains the same fragment/session and the existing portrait/minimize/PiP eligibility paths. The live composer stays in the overlay, with keyboard/control insets, account gating, replies and emotes. PiP/audio-only transitions, reward spending, real notification delivery and backup round trips were not repeated against a live account for this update. One phone and its existing font/theme configuration do not cover every device or display setup.
+
+The default backdrop is now fully transparent. Existing chosen opacity values are retained; the old beta.5 window geometry is ignored. ThystTV, Xtra, Unwanted Twitch and dependency attribution remain intact. Pagination, filters, account handling, global proxies and live-delay policies are unchanged.
+
 ## Floating chat: 1.0.0-beta.5
 
 All **110 JVM tests across 19 suites passed**, with zero failures/errors/skips. Nine new geometry tests cover bounds, normalization, resizing, invalid stored values and mode eligibility. Android lint reported **zero errors and the same 23 reviewed warnings** as beta.4. The optimized APK built locally with the existing signing certificate.

@@ -4,7 +4,7 @@
 
 Get the APK from [the official HexStream releases](https://github.com/OnlyTripleSix/HexStream/releases). Check its SHA-256 against the accompanying checksum file if you verify downloads. Android may ask you to allow installation from the browser/file manager you use.
 
-The current package is `com.github.andreyasadchy.xtra.prototype`. The inherited namespace and package are retained for compatibility with existing HexStream installations; the launcher name is HexStream. The current release is **1.0.0-beta.5**, version code **139**. Do not uninstall an existing working installation merely to update it: a matching package/signature update preserves its app data.
+The current package is `com.github.andreyasadchy.xtra.prototype`. The inherited namespace and package are retained for compatibility with existing HexStream installations; the launcher name is HexStream. The current release is **1.0.0-beta.6**, version code **140**. Do not uninstall an existing working installation merely to update it: a matching package/signature update preserves its app data.
 
 The published APK uses the existing HexStream signing certificate. Its SHA-256 certificate fingerprint is:
 
@@ -72,7 +72,7 @@ Beta.3 adds an eighth account-free fixture for status-bar callbacks on an unatta
 
 Beta.4 adds four settings-help checks, including rendering all 13 preference screens. To run just these in the isolated QA package, pass `-Pandroid.testInstrumentationRunnerArguments.class=com.github.andreyasadchy.xtra.ui.settings.SettingsHelpDeviceTest`. The fixture's saved screenshots stay in the QA app's external cache; do not package device caches with a release.
 
-Beta.5 adds three isolated floating-chat checks in `com.github.andreyasadchy.xtra.ui.player.FloatingChatDeviceTest`. They exercise the controller with synthetic chat content: same-view/scroll preservation, bounded movement/cancellation, resize, contrast and close controls. This fixture does not connect a real Twitch chat or spend points.
+Beta.6 has five isolated chat-overlay checks in `com.github.andreyasadchy.xtra.ui.player.FloatingChatDeviceTest`. They exercise the controller with synthetic chat content: same-view/scroll preservation, transparent full-height rendering without shrinking the host, opacity/contrast changes with dock restoration, stored side selection, touch delivery to player controls beneath chat, and the real chat-input layout with a draft, keyboard inset and signed-out hint. This fixture does not connect a real Twitch chat or spend points.
 
 On the beta verification setup, Gradle’s aggregate device result remained unsuccessful even with a seven-test/zero-failure XML report. The same checks were verified directly:
 

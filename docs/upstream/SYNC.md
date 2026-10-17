@@ -4,7 +4,7 @@ HexStream started from Xtra 2.60.7, commit [`a3cbb0325f3330573a6738f7d36a2c5b785
 
 ## Current integrated checkpoint
 
-HexStream **1.0.0-beta.5** retains all three upstream application changes through **Xtra 2.60.8**, commit [`96772030c7712581ad150c9b8b619c77a3527e50`](https://github.com/crackededed/Xtra/commit/96772030c7712581ad150c9b8b619c77a3527e50). Beta.4 improves settings explanations and beta.5 adds the [credited ThystTV chat adaptation](THYST-CHAT.md), without changing this Xtra checkpoint. HexStream keeps its own version, package and signing identity.
+HexStream **1.0.0-beta.6** retains all three upstream application changes through **Xtra 2.60.8**, commit [`96772030c7712581ad150c9b8b619c77a3527e50`](https://github.com/crackededed/Xtra/commit/96772030c7712581ad150c9b8b619c77a3527e50). Beta.4 improves settings explanations; beta.5 introduces the [credited ThystTV chat adaptation](THYST-CHAT.md) and beta.6 simplifies it to a frameless transparent overlay, without changing this Xtra checkpoint. HexStream keeps its own version, package and signing identity.
 
 All three original changes below were authored by **crackededed** on October 14, 2026.
 
@@ -30,6 +30,6 @@ Record actual results in [verification](../VERIFICATION.md). Compiling a fixture
 
 Fetch `crackededed/Xtra` and review commits after the checkpoint above. Adapt changes in areas HexStream extends, preserve upstream attribution and licenses, run the relevant regression suites and build locally. Update this checkpoint only after incorporating all intended changes through the new commit. Do not replace HexStream’s customized source wholesale with an upstream tree.
 
-Player/chat updates must also preserve floating chat's single existing fragment/connection, full-video layout, normalized bounds, minimize/PiP/portrait suppression and input docking, along with the existing swipe controls. Run both the geometry and isolated-view regressions when modifying those paths.
+Player/chat updates must also preserve the chat overlay's single existing fragment/connection, full-video layout, frameless transparent default, selectable side, minimize/PiP/portrait suppression and inline composer/keyboard handling, along with the existing swipe controls. Run both the geometry and isolated-view regressions when modifying those paths.
 
 A completed update includes the tested source on the existing repository’s main branch and a downloadable GitHub release with the signed APK, matching source ZIP and SHA-256 checksums. Builds run locally. Preserve the package/signing identity, empty defaults, credits and published release tags. A failed check leaves the previous downloadable release in place.

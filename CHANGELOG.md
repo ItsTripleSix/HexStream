@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.0-beta.6
+
+- Replace the floating chat window with a simple transparent fullscreen chat overlay: a full-height left/right chat column over the unchanged full-size game.
+- Remove the floating header, move/resize controls and window positioning. Chat is hidden/shown with the existing player controls.
+- Default background opacity to zero while retaining existing chosen opacity values; contrast and optional backdrop remain under Settings → Chat.
+- Add a shared left/right preference for both transparent and original docked fullscreen chat.
+- Keep the existing live-chat input, replies and emotes available inside the overlay, above keyboard/control insets. Show a sign-in hint when sending is unavailable.
+- Preserve the existing chat session, portrait/minimize/PiP suppression, gestures, message authorization and ThystTV/Xtra/Unwanted Twitch credits.
+
 ## 1.0.0-beta.5
 
 - Add floating fullscreen chat, adapting ThystTV's movable/resizable overlay and same-view reparenting approach, with credit to tzii (Simone Perini) and its contributors in About and the source documentation.

@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hex_floating_title" translatable="false">Floating fullscreen chat</string>
-    <string name="hex_floating_help" translatable="false">Shows chat over landscape video instead of shrinking it. Example: enable here or in the player menu, drag the handle to move and drag the size button to resize. Portrait, mini-player and PiP keep their normal layout. Opening chat input docks chat again.</string>
-    <string name="hex_floating_opacity" translatable="false">Floating chat background opacity</string>
-    <string name="hex_floating_opacity_help" translatable="false">Darkens the chat background without fading text or emotes. Example: 0 is transparent; 70 makes busy video easier to read through. Applies when chat is next shown.</string>
-    <string name="hex_floating_high_contrast" translatable="false">Floating chat high-contrast text</string>
-    <string name="hex_floating_contrast_help" translatable="false">Adds bold text and a dark shadow while floating. Example: keep messages readable over bright gameplay. The A button in the chat window toggles this immediately; sidebar styling is restored when chat docks.</string>
-    <string name="hex_floating_move" translatable="false">Move chat: drag, or tap for position actions</string>
-    <string name="hex_floating_resize" translatable="false">Resize chat: drag, or tap to switch size</string>
-    <string name="hex_floating_close" translatable="false">Hide floating chat</string>
-    <string name="hex_floating_contrast" translatable="false">Toggle high-contrast chat text</string>
-    <string name="hex_floating_contrast_on" translatable="false">High-contrast text is on. Tap to turn off</string>
-    <string name="hex_floating_contrast_off" translatable="false">High-contrast text is off. Tap to turn on</string>
-    <string name="hex_floating_contrast_symbol" translatable="false">A</string>
-    <string-array name="hex_floating_move_actions" translatable="false">
-        <item>Move left</item><item>Move right</item><item>Move up</item><item>Move down</item><item>Reset position and size</item>
-    </string-array>
+    <string name="hex_floating_title" translatable="false">Fullscreen chat overlay</string>
+    <string name="hex_floating_help" translatable="false">Choose how chat shares fullscreen video. Off keeps the original chat beside the game; on places transparent chat over the full-size game. Example: enable here or in the player menu for overlay chat, choose its side in Chat settings, and type in the box at the bottom. Use the usual chat button to hide or show it. Portrait, mini-player and PiP keep their normal layout.</string>
+    <string name="hex_chat_side" translatable="false">Fullscreen chat side</string>
+    <string name="hex_chat_side_help" translatable="false">Places fullscreen chat on the left or right, for both docked and transparent layouts. Example: choose the left if chat covers a scoreboard on the right. Reopen the player after changing this setting.</string>
+    <string name="hex_chat_message_hint" translatable="false">Send a message</string>
+    <string name="hex_chat_sign_in_hint" translatable="false">Sign in to chat</string>
+    <string-array name="hex_chat_sides" translatable="false"><item>Left</item><item>Right</item></string-array>
+    <string-array name="hex_chat_side_values" translatable="false"><item>left</item><item>right</item></string-array>
+    <string name="hex_floating_opacity" translatable="false">Chat overlay background opacity</string>
+    <string name="hex_floating_opacity_help" translatable="false">Darkens the background behind chat without fading text or emotes. Example: 0 leaves only text over the game; 70 adds a dark backdrop for busy video. Defaults to 0. An existing choice from an earlier build is retained; choose 0 for full transparency. Applies when chat is next shown.</string>
+    <string name="hex_floating_high_contrast" translatable="false">Chat overlay high-contrast text</string>
+    <string name="hex_floating_contrast_help" translatable="false">Adds bold text and a dark shadow over video. Example: keep messages readable over bright gameplay. Sidebar styling is restored when chat docks.</string>
 </resources>

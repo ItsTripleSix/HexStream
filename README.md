@@ -20,7 +20,7 @@ The filtering workflow and compatible list format were inspired by **[Unwanted T
 
 ## Get HexStream
 
-Download the APK from [Releases](https://github.com/OnlyTripleSix/HexStream/releases). The current release is **1.0.0-beta.5**, built locally with Gradle and the Android SDK. Android 7.0 or newer is required. No GitHub Actions build is used.
+Download the APK from [Releases](https://github.com/OnlyTripleSix/HexStream/releases). The current release is **1.0.0-beta.6**, built locally with Gradle and the Android SDK. Android 7.0 or newer is required. No GitHub Actions build is used.
 
 Beta.5 adds movable, resizable fullscreen chat, adapted from [ThystTV by tzii and its contributors](https://github.com/tzii/ThystTV), with opacity and high-contrast controls. It retains the explained settings and Xtra 2.60.8 fixes. [Settings guide →](docs/SETTINGS.md) · [What changed →](CHANGELOG.md)
 
@@ -44,7 +44,7 @@ The app and extension are separate installations with explicit compatible-list e
 | **Lower live delay** | ExoPlayer starts closer to the live edge by default, with bounded speed adjustment and live-specific buffering. Network and source conditions still matter. |
 | **Swipe controls** | Left-side brightness and right-side volume, independently configurable, alongside the existing minimize/miniplayer gestures. |
 | **Explained settings** | Descriptions and examples under every preference, current values kept visible, and searchable explanations of overlapping controls. |
-| **Floating fullscreen chat** | Move/resize chat over landscape video, choose background opacity and high-contrast text, and keep the same chat session. Adapted from ThystTV, with attribution. |
+| **Transparent fullscreen chat** | Chat sits directly over the full-size game, without a floating window or toolbar. Choose left/right placement, type/reply at the bottom, and adjust background opacity/contrast; same chat session. Adapted from ThystTV, with attribution. |
 | **Channel points** | Claim an available bonus chest and redeem available channel rewards, with balance, input and confirmation handling. |
 | **HexStream identity** | Custom launcher/adaptive/monochrome icon, About credits, and a HexStream release feed. |
 

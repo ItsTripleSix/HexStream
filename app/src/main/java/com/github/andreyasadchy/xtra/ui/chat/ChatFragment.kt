@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.MultiAutoCompleteTextView
 import android.widget.TextView
+import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.res.use
 import androidx.core.view.ViewCompat
@@ -78,7 +79,12 @@ class ChatFragment : BaseNetworkFragment(), MessageClickedDialog.OnButtonClickLi
     private val viewModel: ChatViewModel by viewModels { ChatViewModelFactory }
     private var adapter: ChatAdapter? = null
     private var floatingPresentation = false
-    private var dockedComposerVisibility = View.GONE
+    private var canSendMessages = false
+    private var dockedInputEnabled = true
+    private var dockedInputHint: CharSequence? = null
+    private var dockedHintColors: ColorStateList? = null
+    private var dockedEmoteVisibility = View.VISIBLE
+    private val dockedImageTints = mutableMapOf<ImageView, ColorStateList?>()
     private val dockedTextColors = mutableMapOf<TextView, ColorStateList>()
 
     private var isChatTouched = false
@@ -131,6 +137,8 @@ class ChatFragment : BaseNetworkFragment(), MessageClickedDialog.OnButtonClickLi
                 val chatUrl = args.getString(KEY_CHAT_URL)
                 if (isLive || (args.getString(KEY_VIDEO_ID) != null && args.getInt(KEY_START_TIME) != -1) || chatUrl != null) {
                     val enableMessaging = isLive && isLoggedIn
+                    canSendMessages = enableMessaging
+                    view.post { if (this@ChatFragment.view === view) updateOverlayComposer() }
                     val sizeModifier = (requireContext().prefs().getInt(C.CHAT_SIZE_MODIFIER, 100).toFloat() / 100f)
                     adapter = ChatAdapter(
                         messages = viewModel.chatMessages,
@@ -1005,7 +1013,6 @@ class ChatFragment : BaseNetworkFragment(), MessageClickedDialog.OnButtonClickLi
     }
 
     override fun onReplyClicked(replyId: String?, userLogin: String?, userName: String?, message: String?) {
-        (parentFragment as? PlayerFragment)?.dockChatForInput()
         with(binding) {
             messageView.visibility = View.VISIBLE
             if (!replyId.isNullOrBlank()) {
@@ -1254,11 +1261,22 @@ class ChatFragment : BaseNetworkFragment(), MessageClickedDialog.OnButtonClickLi
     fun setFloatingPresentation(floating: Boolean, highContrast: Boolean) {
         val current = _binding ?: return
         adapter?.setFloatingPresentation(floating, highContrast)
-        if (floatingPresentation == floating) return
+        if (floatingPresentation == floating) {
+            if (floating) updateOverlayComposer()
+            return
+        }
         floatingPresentation = floating
         if (floating) {
-            dockedComposerVisibility = current.messageView.visibility
-            current.messageView.visibility = View.GONE
+            dockedInputEnabled = current.editText.isEnabled
+            dockedInputHint = current.editText.hint
+            dockedHintColors = current.editText.hintTextColors
+            dockedEmoteVisibility = current.emotes.visibility
+            for (image in listOf(current.emotes, current.send, current.clear)) {
+                dockedImageTints[image] = image.imageTintList
+                image.imageTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+            current.editText.setHintTextColor(Color.WHITE)
+            updateOverlayComposer()
             fun collect(view: View) {
                 if (view is RecyclerView) return
                 if (view is TextView) {
@@ -1269,13 +1287,27 @@ class ChatFragment : BaseNetworkFragment(), MessageClickedDialog.OnButtonClickLi
             }
             collect(current.root)
         } else {
-            current.messageView.visibility = dockedComposerVisibility
+            current.messageView.isVisible = canSendMessages && requireContext().prefs().getBoolean(C.KEY_CHAT_BAR_VISIBLE, true)
+            current.editText.isEnabled = dockedInputEnabled
+            current.editText.hint = dockedInputHint
+            dockedHintColors?.let { current.editText.setHintTextColor(it) }
+            current.emotes.visibility = dockedEmoteVisibility
+            dockedImageTints.forEach { (image, tint) -> image.imageTintList = tint }
+            dockedImageTints.clear()
             dockedTextColors.forEach { (view, colors) -> view.setTextColor(colors) }
             dockedTextColors.clear()
         }
     }
 
+    private fun updateOverlayComposer() {
+        val current = _binding ?: return
+        if (floatingPresentation) ChatOverlayComposer.show(current, canSendMessages,
+            requireContext().prefs().getBoolean(C.KEY_CHAT_BAR_VISIBLE, true))
+    }
+
     override fun onDestroyView() {
+        canSendMessages = false
+        dockedImageTints.clear()
         dockedTextColors.clear()
         floatingPresentation = false
         super.onDestroyView()
