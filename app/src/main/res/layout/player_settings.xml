@@ -10,6 +10,16 @@
         android:orientation="vertical"
         android:padding="?attr/dialogLayoutPadding">
 
+        <LinearLayout android:id="@+id/menuFloatingChatGroup" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+            <CheckBox android:id="@+id/menuFloatingChat" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:minHeight="48dp"
+                android:text="@string/hex_floating_title" android:textAppearance="?attr/textAppearanceBodyMedium" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:padding="12dp" android:text="@string/hex_floating_help"
+                android:textAppearance="?attr/textAppearanceBodyMedium" android:textColor="?android:attr/textColorSecondary" />
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/menuQuality"
             android:layout_width="match_parent"

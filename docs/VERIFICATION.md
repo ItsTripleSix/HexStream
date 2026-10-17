@@ -1,5 +1,15 @@
 # Verification and known limits
 
+## Floating chat: 1.0.0-beta.5
+
+All **110 JVM tests across 19 suites passed**, with zero failures/errors/skips. Nine new geometry tests cover bounds, normalization, resizing, invalid stored values and mode eligibility. Android lint reported **zero errors and the same 23 reviewed warnings** as beta.4. The optimized APK built locally with the existing signing certificate.
+
+**All 15 account-free device tests passed** on a physical Samsung Galaxy S21 Ultra in the isolated QA package. Three new floating-chat checks exercise repeated moves between hosts while retaining the same view and scroll position; bounded dragging and cancellation; resizing, contrast and hiding. The four settings tests now include all 227 preference rows. Fixtures wait for actual layout, keep their test activity awake and use only synthetic chat. QA/test packages were removed afterward; the signed-in follow-list integration test remains excluded.
+
+The signed candidate passed an in-place upgrade with its original first-install time preserved. A live-stream smoke check confirmed video/chat rendering, enabling floating mode from the landscape player menu, dragging, resizing, contrast changes, accessible reset, hide/show, minimize/restore and return to docked portrait chat. These checks do not measure socket traffic or certify every device, font scale or theme. PiP/audio-only suppression has deterministic eligibility coverage; those transitions were not repeated against the live stream. Reward spending, real notification delivery and backup/restore round trips were not repeated.
+
+The overlay adapts [ThystTV's work](upstream/THYST-CHAT.md), with attribution in About and the source. It uses the existing chat view and connection; no second chat fragment, system overlay permission or new network route is introduced. Existing pagination, filtering, accounts, proxy and low-delay implementations are unchanged.
+
 ## Settings explanations: 1.0.0-beta.4
 
 All **101 JVM tests across 18 suites passed**, with zero failures/errors/skips. Android lint reported **zero errors and the same 23 reviewed warnings** as beta.3. The optimized signed release APK built locally. Preference-resource comparison confirmed all **224 existing keys, defaults, choice arrays and other behavior attributes** were preserved; only help text, labels and main-screen grouping changed in those resources.

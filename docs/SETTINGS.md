@@ -22,6 +22,20 @@ The main screen groups app/browsing controls, watching/listening, proxies, downl
 | Simultaneous downloads / download threads | Number of jobs versus chunks fetched concurrently inside a job. Lower either if downloads crowd out playback. |
 | App language / translation / stream filters | Menus, how received chat is translated, and what browsing results are hidden. Changing one does not select the others. |
 
+## Floating fullscreen chat
+
+While watching in landscape, open the **player menu → Floating fullscreen chat**. The same switch is at **Settings → Chat**. Docked chat remains the default.
+
+- Drag the handle to move the window; tap it for accessible direction/reset actions.
+- Drag the size button to resize; tap it to switch between sizes.
+- Tap **A** for high-contrast text. It changes rendering without replacing the chat session.
+- Choose **background opacity** under Chat settings: `0` is transparent, `100` is black. Text and emotes keep their opacity.
+- **X** hides chat. The existing show-chat control brings it back. Disable floating mode to return to the sidebar.
+
+Portrait, the mini-player, PiP and audio/chat-only playback use their normal layouts. Opening the composer or replying docks chat for typing. Brightness/volume and center-minimize gestures continue outside the chat window. Position and size are shared across accounts and clamped to the video area; no draw-over-other-apps permission is needed.
+
+This feature adapts [ThystTV's work](upstream/THYST-CHAT.md), credited to tzii (Simone Perini) and its contributors.
+
 ## Filters and exceptions
 
 Open **content filters** from the main menu. All filter switches and lists have visible examples; expanded explanations retain the detailed rules and limitations. Changes save immediately. Changing a switch keeps your scroll position and any open explanation sections.

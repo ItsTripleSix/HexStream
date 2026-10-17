@@ -1,9 +1,11 @@
 package com.github.andreyasadchy.xtra.ui.settings
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.graphics.Bitmap
 import android.os.SystemClock
 import android.widget.TextView
+import android.view.WindowManager
 import androidx.core.view.children
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.EditTextPreference
@@ -104,7 +106,7 @@ class SettingsHelpDeviceTest {
             check(screen)
             assertEquals(before, manager.sharedPreferences!!.all)
         }
-        assertEquals(224, count)
+        assertEquals(227, count)
     }
 
     @Test fun settingsScreensRenderWithFullSummaries() {
@@ -113,6 +115,11 @@ class SettingsHelpDeviceTest {
         assertEquals("Use the isolated QA package", "com.github.andreyasadchy.xtra.qa", context.packageName)
         val activity = instrumentation.startActivitySync(Intent(context, SettingsActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) as SettingsActivity
         try {
+            instrumentation.runOnMainSync {
+                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
+                activity.window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            }
+            instrumentation.waitForIdleSync()
             val destinations = listOf(
                 R.id.settingsFragment, R.id.playerSettingsFragment, R.id.bufferSettingsFragment,
                 R.id.playbackSettingsFragment, R.id.playerButtonSettingsFragment, R.id.playerMenuSettingsFragment,

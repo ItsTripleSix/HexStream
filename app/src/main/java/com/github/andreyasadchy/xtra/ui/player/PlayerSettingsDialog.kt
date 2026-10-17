@@ -52,6 +52,14 @@ class PlayerSettingsDialog : BottomSheetDialogFragment() {
         val arguments = requireArguments()
         val type = arguments.getString(TYPE)
         with(binding) {
+            if ((parentFragment as? PlayerFragment)?.getIsPortrait() == false && !requireContext().prefs().getBoolean(C.CHAT_DISABLE, false)) {
+                menuFloatingChatGroup.visibility = View.VISIBLE
+                menuFloatingChat.isChecked = (parentFragment as? PlayerFragment)?.isFloatingChatSelected() == true
+                menuFloatingChat.setOnCheckedChangeListener { _, checked ->
+                    (parentFragment as? PlayerFragment)?.setFloatingChatEnabled(checked)
+                    dismiss()
+                }
+            }
             if (type != BasePlaybackService.STREAM && requireContext().prefs().getBoolean(C.PLAYER_MENU_SPEED, false)) {
                 menuSpeed.visibility = View.VISIBLE
                 menuSpeed.setOnClickListener {

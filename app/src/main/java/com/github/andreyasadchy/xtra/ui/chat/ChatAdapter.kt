@@ -2,6 +2,8 @@ package com.github.andreyasadchy.xtra.ui.chat
 
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.LayerDrawable
+import android.graphics.Color
+import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -81,6 +83,18 @@ class ChatAdapter(
 ) : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
     var translateAllMessages = false
+    private var floating = false
+    private var highContrast = false
+    private val effectiveLightTheme get() = isLightTheme && !floating
+
+    fun setFloatingPresentation(enabled: Boolean, contrast: Boolean) {
+        if (floating == enabled && highContrast == (enabled && contrast)) return
+        floating = enabled
+        highContrast = enabled && contrast
+        savedColors.clear()
+        userColors.clear()
+        notifyItemRangeChanged(0, itemCount)
+    }
     private var selectedMessage: ChatMessage? = null
     private val random = Random()
     private val userColors = HashMap<String, Int>()
@@ -100,7 +114,7 @@ class ChatAdapter(
         } ?: return
         val result = ChatAdapterUtils.prepareChatMessage(
             chatMessage, fragment.requireContext(), holder.textView, enableTimestamps, timestampFormat, firstMsgVisibility, firstChatMsg,
-            redeemedChatMsg, redeemedNoMsg, rewardChatMsg, replyMessage, null, useRandomColors, random, useReadableColors, isLightTheme,
+            redeemedChatMsg, redeemedNoMsg, rewardChatMsg, replyMessage, null, useRandomColors, random, useReadableColors, effectiveLightTheme,
             nameDisplay, useBoldNames, showNamePaints, namePaints, showSTVBadges, stvBadges, showGifMessages, showPersonalEmotes, personalEmoteSets,
             stvUsers, enableOverlayEmotes, showSystemMessageEmotes, loggedInUser, chatUrl, getEmoteBytes, userColors, savedColors, translateAllMessages,
             translateMessage, showLanguageDownloadDialog, true, localTwitchEmotes, thirdPartyEmotes, globalBadges, channelBadges, cheerEmotes,
@@ -109,8 +123,8 @@ class ChatAdapter(
         holder.bind(chatMessage, result.builder)
         ChatAdapterUtils.loadImages(
             fragment, holder.textView, { holder.bind(chatMessage, it) }, result.images, result.imagePaint, result.userName, result.userNameStartIndex,
-            backgroundColor, imageLibrary, result.builder, result.translated, emoteSize, badgeSize, gifSize, emoteQuality, animateGifs, enableOverlayEmotes,
-            chatMessage, savedColors, useReadableColors, isLightTheme, showLanguageDownloadDialog, true
+            if (floating) Color.BLACK else backgroundColor, imageLibrary, result.builder, result.translated, emoteSize, badgeSize, gifSize, emoteQuality, animateGifs, enableOverlayEmotes,
+            chatMessage, savedColors, useReadableColors, effectiveLightTheme, showLanguageDownloadDialog, true
         )
     }
 
@@ -125,7 +139,7 @@ class ChatAdapter(
                 }
             )
             if (!chatMessage.translationFailed) {
-                ChatAdapterUtils.addTranslation(chatMessage, builder, builder.length, savedColors, useReadableColors, isLightTheme, showLanguageDownloadDialog, true)
+                ChatAdapterUtils.addTranslation(chatMessage, builder, builder.length, savedColors, useReadableColors, effectiveLightTheme, showLanguageDownloadDialog, true)
             }
             item.text = builder
         }
@@ -232,11 +246,16 @@ class ChatAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val textView = itemView as TextView
+        private val normalColors = textView.textColors
+        private val normalTypeface = textView.typeface
 
         fun bind(chatMessage: ChatMessage, formattedMessage: SpannableStringBuilder) {
             textView.apply {
                 text = formattedMessage
                 textSize = messageTextSize
+                setTextColor(if (floating) android.content.res.ColorStateList.valueOf(Color.WHITE) else normalColors)
+                typeface = if (highContrast) Typeface.create(normalTypeface, Typeface.BOLD) else normalTypeface
+                setShadowLayer(if (highContrast) 2f * resources.displayMetrics.density else 0f, 0f, 0f, Color.BLACK)
                 if (chatMessage.type == ChatMessage.REPLY_MESSAGE) {
                     movementMethod = null
                     maxLines = 2

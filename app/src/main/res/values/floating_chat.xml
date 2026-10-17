@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hex_floating_title" translatable="false">Floating fullscreen chat</string>
+    <string name="hex_floating_help" translatable="false">Shows chat over landscape video instead of shrinking it. Example: enable here or in the player menu, drag the handle to move and drag the size button to resize. Portrait, mini-player and PiP keep their normal layout. Opening chat input docks chat again.</string>
+    <string name="hex_floating_opacity" translatable="false">Floating chat background opacity</string>
+    <string name="hex_floating_opacity_help" translatable="false">Darkens the chat background without fading text or emotes. Example: 0 is transparent; 70 makes busy video easier to read through. Applies when chat is next shown.</string>
+    <string name="hex_floating_high_contrast" translatable="false">Floating chat high-contrast text</string>
+    <string name="hex_floating_contrast_help" translatable="false">Adds bold text and a dark shadow while floating. Example: keep messages readable over bright gameplay. The A button in the chat window toggles this immediately; sidebar styling is restored when chat docks.</string>
+    <string name="hex_floating_move" translatable="false">Move chat: drag, or tap for position actions</string>
+    <string name="hex_floating_resize" translatable="false">Resize chat: drag, or tap to switch size</string>
+    <string name="hex_floating_close" translatable="false">Hide floating chat</string>
+    <string name="hex_floating_contrast" translatable="false">Toggle high-contrast chat text</string>
+    <string name="hex_floating_contrast_on" translatable="false">High-contrast text is on. Tap to turn off</string>
+    <string name="hex_floating_contrast_off" translatable="false">High-contrast text is off. Tap to turn on</string>
+    <string name="hex_floating_contrast_symbol" translatable="false">A</string>
+    <string-array name="hex_floating_move_actions" translatable="false">
+        <item>Move left</item><item>Move right</item><item>Move up</item><item>Move down</item><item>Reset position and size</item>
+    </string-array>
+</resources>

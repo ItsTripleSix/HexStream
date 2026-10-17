@@ -20,6 +20,12 @@ Xtra provides the app architecture and much of the player, Twitch integration, c
 
 HexStream implements its own native Android filtering engine. The separate [HexStream Filter browser extension](https://github.com/OnlyTripleSix/HexStream-Filter) is also independently implemented and credits Unwanted Twitch’s inspiration and format. No Unwanted Twitch source code or artwork is bundled in either project.
 
+## Floating chat: ThystTV
+
+HexStream's floating fullscreen chat adapts the movable/resizable overlay and **same-view reparenting** approach in **[ThystTV](https://github.com/tzii/ThystTV)**, by **tzii (Simone Perini) and ThystTV contributors**. Their work on preserving a chat session while moving it between the sidebar and the video, readable text over video, sizing and positioning informed this feature.
+
+The reviewed source snapshot is [`ae3b1c6c784c1ebc4b8096c3a8df5791827787e4`](https://github.com/tzii/ThystTV/tree/ae3b1c6c784c1ebc4b8096c3a8df5791827787e4), licensed under GNU AGPL v3. The [adaptation record](docs/upstream/THYST-CHAT.md) links the relevant original changes. HexStream retains the existing Xtra foundation and credits above; ThystTV is also credited in the app's About screen.
+
 ## License
 
 The app source is distributed under the **GNU Affero General Public License, version 3**, following Xtra’s license. See the complete [LICENSE](LICENSE). Keep upstream copyright and license notices when redistributing or modifying the source. Corresponding source for each published build is available at its release tag.

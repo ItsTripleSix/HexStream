@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0-beta.5
+
+- Add floating fullscreen chat, adapting ThystTV's movable/resizable overlay and same-view reparenting approach, with credit to tzii (Simone Perini) and its contributors in About and the source documentation.
+- Toggle floating chat from the landscape player menu or Settings → Chat. Move and resize with the handles, choose background opacity, and toggle high-contrast text without reconnecting chat.
+- Keep the same chat fragment, message history and browsing/playback session. Hide the overlay in portrait, mini-player, PiP and audio/chat-only playback; dock it when opening input or replying.
+- Store bounded normalized position/size globally so the window stays within the video after a viewport change. Include accessible move/reset and tap-to-resize actions.
+- Retain existing brightness, volume and minimize gestures, show/hide chat controls, pagination, full-tag rules, accounts, global proxies and low-delay tuning.
+
 ## 1.0.0-beta.4
 
 - Add a description and practical example beneath all 224 preference rows, with current picker/input values retained and explanations included in settings search.

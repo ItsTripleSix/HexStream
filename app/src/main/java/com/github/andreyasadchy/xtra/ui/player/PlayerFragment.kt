@@ -93,6 +93,7 @@ import kotlin.time.Instant
 abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment.OnSortOptionChanged, IntegrityDialog.Listener {
 
     private var swipeControls: PlayerSwipeControls? = null
+    private var floatingChat: FloatingChatController? = null
     private var _binding: FragmentPlayerBinding? = null
     protected val binding get() = _binding!!
     protected val viewModel: PlayerViewModel by viewModels { PlayerViewModelFactory }
@@ -184,6 +185,8 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
         observePlayback()
         swipeControls = PlayerSwipeControls(requireActivity(), binding.gestureLevel)
+        floatingChat = FloatingChatController(binding.playerLayout, binding.chatFragmentContainer, requireContext().prefs(),
+            hideChat = { hideChat() }, styleChat = { floating, contrast -> chatFragment?.setFloatingPresentation(floating, contrast) })
         with(binding) {
             viewLifecycleOwner.lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -299,7 +302,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
 
                     override fun onDoubleTap(e: MotionEvent): Boolean {
                         return if (doubleTap && !isPortrait && isMaximized) {
-                            if (chatLayout.isVisible) {
+                            if (isChatOpen) {
                                 hideChat()
                             } else {
                                 showChat()
@@ -1172,6 +1175,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                 }
                 chatFragment = fragment
             }
+            refreshFloatingChat()
         }
     }
 
@@ -1326,6 +1330,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                 }
             }
         }
+        refreshFloatingChat()
     }
 
     fun setResizeMode() {
@@ -1454,6 +1459,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
     }
 
     fun toggleChatBar() {
+        dockChatForInput()
         with(binding) {
             requireView().findViewById<LinearLayout>(R.id.messageView)?.let {
                 if (it.isVisible) {
@@ -1511,6 +1517,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
 
     private fun hideChatLayout() {
         with(binding) {
+            floatingChat?.update(false, chatFragment?.view)
             playerLayout.updateLayoutParams<FrameLayout.LayoutParams> {
                 width = ViewGroup.LayoutParams.MATCH_PARENT
                 height = ViewGroup.LayoutParams.MATCH_PARENT
@@ -1535,6 +1542,41 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                 gravity = Gravity.END
             }
             chatLayout.visibility = View.VISIBLE
+            refreshFloatingChat()
+        }
+    }
+
+    fun isFloatingChatSelected(): Boolean = context?.prefs()?.getBoolean(FloatingChatController.ENABLED, false) == true
+
+    fun setFloatingChatEnabled(enabled: Boolean) {
+        requireContext().prefs().edit { putBoolean(FloatingChatController.ENABLED, enabled) }
+        if (enabled && !isChatOpen) showChat()
+        else if (!isPortrait && isMaximized && isChatOpen) showChatLayout()
+        else refreshFloatingChat()
+    }
+
+    fun dockChatForInput() {
+        if (floatingChat?.active == true) setFloatingChatEnabled(false)
+    }
+
+    fun refreshFloatingChat() {
+        val current = _binding ?: return
+        val inPip = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && activity?.isInPictureInPictureMode == true
+        val quality = playbackService?.quality?.name
+        val active = FloatingChatGeometry.shouldFloat(isFloatingChatSelected(), isPortrait, isMaximized,
+            isChatOpen && !requireContext().prefs().getBoolean(C.CHAT_DISABLE, false), inPip || !useController,
+            quality != VideoQuality.CHAT_ONLY_QUALITY && quality != VideoQuality.AUDIO_ONLY_QUALITY, isKeyboardShown)
+        val wasFloating = floatingChat?.active == true
+        floatingChat?.update(active, chatFragment?.view)
+        if (active) {
+            current.chatLayout.visibility = View.GONE
+            current.playerLayout.updateLayoutParams<FrameLayout.LayoutParams> { marginEnd = 0 }
+        } else if (wasFloating && isMaximized && !isPortrait && !inPip && useController && isChatOpen) {
+            current.playerLayout.updateLayoutParams<FrameLayout.LayoutParams> { marginEnd = chatWidthLandscape }
+            current.chatLayout.updateLayoutParams<FrameLayout.LayoutParams> {
+                width = chatWidthLandscape; height = ViewGroup.LayoutParams.MATCH_PARENT; gravity = Gravity.END
+            }
+            current.chatLayout.visibility = View.VISIBLE
         }
     }
 
@@ -1761,6 +1803,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                 }
             }
         }
+        refreshFloatingChat()
     }
 
     protected fun showController(show: Boolean = true, force: Boolean = false) {
@@ -1995,6 +2038,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
             }
             useController = false
         }
+        refreshFloatingChat()
     }
 
     override fun initialize() {
@@ -2059,6 +2103,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
             } else {
                 useController = true
             }
+            refreshFloatingChat()
         }
     }
 
@@ -2072,6 +2117,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
         swipeControls?.restore()
         with(binding) {
             isMaximized = false
+            floatingChat?.update(false, chatFragment?.view)
             if (playbackService?.type == BasePlaybackService.STREAM && chatFragment?.emoteMenuIsVisible() == true) {
                 chatFragment?.toggleBackPressedCallback(false)
             }
@@ -2182,6 +2228,7 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
                 )
                 start()
             }
+            refreshFloatingChat()
         }
     }
 
@@ -2411,6 +2458,8 @@ abstract class PlayerFragment : BaseNetworkFragment(), RadioButtonDialogFragment
     }
 
     override fun onDestroyView() {
+        floatingChat?.dispose()
+        floatingChat = null
         swipeControls?.restore()
         swipeControls = null
         super.onDestroyView()

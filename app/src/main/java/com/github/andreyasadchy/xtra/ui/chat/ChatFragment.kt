@@ -1,6 +1,8 @@
 package com.github.andreyasadchy.xtra.ui.chat
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.format.DateUtils
@@ -75,6 +77,9 @@ class ChatFragment : BaseNetworkFragment(), MessageClickedDialog.OnButtonClickLi
     private val binding get() = _binding!!
     private val viewModel: ChatViewModel by viewModels { ChatViewModelFactory }
     private var adapter: ChatAdapter? = null
+    private var floatingPresentation = false
+    private var dockedComposerVisibility = View.GONE
+    private val dockedTextColors = mutableMapOf<TextView, ColorStateList>()
 
     private var isChatTouched = false
     private var showChatStatus = false
@@ -105,6 +110,7 @@ class ChatFragment : BaseNetworkFragment(), MessageClickedDialog.OnButtonClickLi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.post { if (this.view === view) (parentFragment as? PlayerFragment)?.refreshFloatingChat() }
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.integrity.collect {
@@ -999,7 +1005,9 @@ class ChatFragment : BaseNetworkFragment(), MessageClickedDialog.OnButtonClickLi
     }
 
     override fun onReplyClicked(replyId: String?, userLogin: String?, userName: String?, message: String?) {
+        (parentFragment as? PlayerFragment)?.dockChatForInput()
         with(binding) {
+            messageView.visibility = View.VISIBLE
             if (!replyId.isNullOrBlank()) {
                 messageDialog?.dismiss()
                 replyView.visibility = View.VISIBLE
@@ -1243,7 +1251,33 @@ class ChatFragment : BaseNetworkFragment(), MessageClickedDialog.OnButtonClickLi
         }
     }
 
+    fun setFloatingPresentation(floating: Boolean, highContrast: Boolean) {
+        val current = _binding ?: return
+        adapter?.setFloatingPresentation(floating, highContrast)
+        if (floatingPresentation == floating) return
+        floatingPresentation = floating
+        if (floating) {
+            dockedComposerVisibility = current.messageView.visibility
+            current.messageView.visibility = View.GONE
+            fun collect(view: View) {
+                if (view is RecyclerView) return
+                if (view is TextView) {
+                    dockedTextColors[view] = view.textColors
+                    view.setTextColor(Color.WHITE)
+                }
+                if (view is ViewGroup) for (index in 0 until view.childCount) collect(view.getChildAt(index))
+            }
+            collect(current.root)
+        } else {
+            current.messageView.visibility = dockedComposerVisibility
+            dockedTextColors.forEach { (view, colors) -> view.setTextColor(colors) }
+            dockedTextColors.clear()
+        }
+    }
+
     override fun onDestroyView() {
+        dockedTextColors.clear()
+        floatingPresentation = false
         super.onDestroyView()
         _binding = null
     }
